@@ -1,0 +1,14 @@
+﻿___________________________________________________________
+
+===        Software Rivision History                    ===
+___________________________________________________________
+
+
+Software Start                  |  Ver1.00 20130618 By Prasarn783
+Process Header add (MAP-XX-XX)  |  Ver1.00 20130621 By Prasarn783
+M/C List Del PassWord Protect,  |  Ver1.01 20130708 By Prasar783
+Add ReMark CompoBox
+Change Input Goods Ng to INT32     |  Ver1.01 20130809 : By Prasar783
+Add BM Request 		|  Ver 1.02 20131014   : By tharin 5588
+Fix MCNo on Config file	|  Ver 1.02 20141226   : By tharin 5588
+

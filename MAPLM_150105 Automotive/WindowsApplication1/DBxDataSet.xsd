@@ -1,0 +1,587 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DBxDataSet" targetNamespace="http://tempuri.org/DBxDataSet.xsd" xmlns:mstns="http://tempuri.org/DBxDataSet.xsd" xmlns="http://tempuri.org/DBxDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="DBxConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="DBxConnectionString (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.MAP_LM.My.MySettings.GlobalReference.Default.DBxConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="MAPLMDataTableAdapter" GeneratorDataComponentClassName="MAPLMDataTableAdapter" Name="MAPLMData" UserDataComponentName="MAPLMDataTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="DBxConnectionString (MySettings)" DbObjectName="DBx.dbo.MAPLMData" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="LoadLot" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="LoadLot" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="LoadLot">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [MAPLMData] WHERE (([MCNo] = @Original_MCNo) AND ([LotNo] = @Original_LotNo) AND ([LotStartTime] = @Original_LotStartTime) AND ((@IsNull_LotEndTime = 1 AND [LotEndTime] IS NULL) OR ([LotEndTime] = @Original_LotEndTime)) AND ((@IsNull_OPNo = 1 AND [OPNo] IS NULL) OR ([OPNo] = @Original_OPNo)) AND ((@IsNull_InputQty = 1 AND [InputQty] IS NULL) OR ([InputQty] = @Original_InputQty)) AND ((@IsNull_TotalGood = 1 AND [TotalGood] IS NULL) OR ([TotalGood] = @Original_TotalGood)) AND ((@IsNull_TotalNG = 1 AND [TotalNG] IS NULL) OR ([TotalNG] = @Original_TotalNG)) AND ((@IsNull_MarkingSpec = 1 AND [MarkingSpec] IS NULL) OR ([MarkingSpec] = @Original_MarkingSpec)) AND ((@IsNull_NoMarkBe = 1 AND [NoMarkBe] IS NULL) OR ([NoMarkBe] = @Original_NoMarkBe)) AND ((@IsNull_NoMarkAf = 1 AND [NoMarkAf] IS NULL) OR ([NoMarkAf] = @Original_NoMarkAf)) AND ((@IsNull_DoubleMarkBe = 1 AND [DoubleMarkBe] IS NULL) OR ([DoubleMarkBe] = @Original_DoubleMarkBe)) AND ((@IsNull_DoubleMarkAf = 1 AND [DoubleMarkAf] IS NULL) OR ([DoubleMarkAf] = @Original_DoubleMarkAf)) AND ((@IsNull_CutThinMarkBe = 1 AND [CutThinMarkBe] IS NULL) OR ([CutThinMarkBe] = @Original_CutThinMarkBe)) AND ((@IsNull_CutThinMarkAf = 1 AND [CutThinMarkAf] IS NULL) OR ([CutThinMarkAf] = @Original_CutThinMarkAf)) AND ((@IsNull_MarkMisalightMissPosBe = 1 AND [MarkMisalightMissPosBe] IS NULL) OR ([MarkMisalightMissPosBe] = @Original_MarkMisalightMissPosBe)) AND ((@IsNull_MarkMisalightMissPosAf = 1 AND [MarkMisalightMissPosAf] IS NULL) OR ([MarkMisalightMissPosAf] = @Original_MarkMisalightMissPosAf)) AND ((@IsNull_AlmFrameDirectMissQty = 1 AND [AlmFrameDirectMissQty] IS NULL) OR ([AlmFrameDirectMissQty] = @Original_AlmFrameDirectMissQty)) AND ((@IsNull_AlmFrameWorkNonQty = 1 AND [AlmFrameWorkNonQty] IS NULL) OR ([AlmFrameWorkNonQty] = @Original_AlmFrameWorkNonQty)) AND ((@IsNull_AlmFramePushMissQty = 1 AND [AlmFramePushMissQty] IS NULL) OR ([AlmFramePushMissQty] = @Original_AlmFramePushMissQty)) AND ((@IsNull_AlmTransPinMissQty = 1 AND [AlmTransPinMissQty] IS NULL) OR ([AlmTransPinMissQty] = @Original_AlmTransPinMissQty)) AND ((@IsNull_AlmNoRadiationMissQty = 1 AND [AlmNoRadiationMissQty] IS NULL) OR ([AlmNoRadiationMissQty] = @Original_AlmNoRadiationMissQty)) AND ((@IsNull_AlmOtherName = 1 AND [AlmOtherName] IS NULL) OR ([AlmOtherName] = @Original_AlmOtherName)) AND ((@IsNull_AlmOtherQty = 1 AND [AlmOtherQty] IS NULL) OR ([AlmOtherQty] = @Original_AlmOtherQty)) AND ((@IsNull_Andon = 1 AND [Andon] IS NULL) OR ([Andon] = @Original_Andon)) AND ((@IsNull_OPJudgement = 1 AND [OPJudgement] IS NULL) OR ([OPJudgement] = @Original_OPJudgement)) AND ((@IsNull_LotJudgement = 1 AND [LotJudgement] IS NULL) OR ([LotJudgement] = @Original_LotJudgement)) AND ((@IsNull_GLCheck = 1 AND [GLCheck] IS NULL) OR ([GLCheck] = @Original_GLCheck)) AND ((@IsNull_Remark = 1 AND [Remark] IS NULL) OR ([Remark] = @Original_Remark)) AND ((@IsNull_SelfConVersion = 1 AND [SelfConVersion] IS NULL) OR ([SelfConVersion] = @Original_SelfConVersion)) AND ((@IsNull_NetVersion = 1 AND [NetVersion] IS NULL) OR ([NetVersion] = @Original_NetVersion)))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_MCNo" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MCNo" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_LotNo" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="LotNo" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@Original_LotStartTime" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="LotStartTime" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_LotEndTime" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="LotEndTime" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@Original_LotEndTime" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="LotEndTime" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_OPNo" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="OPNo" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_OPNo" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="OPNo" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_InputQty" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="InputQty" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_InputQty" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="InputQty" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_TotalGood" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="TotalGood" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_TotalGood" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="TotalGood" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_TotalNG" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="TotalNG" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_TotalNG" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="TotalNG" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_MarkingSpec" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="MarkingSpec" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_MarkingSpec" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MarkingSpec" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_NoMarkBe" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="NoMarkBe" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_NoMarkBe" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="NoMarkBe" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_NoMarkAf" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="NoMarkAf" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_NoMarkAf" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="NoMarkAf" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_DoubleMarkBe" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="DoubleMarkBe" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_DoubleMarkBe" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="DoubleMarkBe" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_DoubleMarkAf" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="DoubleMarkAf" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_DoubleMarkAf" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="DoubleMarkAf" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_CutThinMarkBe" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="CutThinMarkBe" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_CutThinMarkBe" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="CutThinMarkBe" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_CutThinMarkAf" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="CutThinMarkAf" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_CutThinMarkAf" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="CutThinMarkAf" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_MarkMisalightMissPosBe" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="MarkMisalightMissPosBe" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_MarkMisalightMissPosBe" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MarkMisalightMissPosBe" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_MarkMisalightMissPosAf" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="MarkMisalightMissPosAf" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_MarkMisalightMissPosAf" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MarkMisalightMissPosAf" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_AlmFrameDirectMissQty" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="AlmFrameDirectMissQty" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int16" Direction="Input" ParameterName="@Original_AlmFrameDirectMissQty" Precision="0" ProviderType="SmallInt" Scale="0" Size="0" SourceColumn="AlmFrameDirectMissQty" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_AlmFrameWorkNonQty" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="AlmFrameWorkNonQty" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int16" Direction="Input" ParameterName="@Original_AlmFrameWorkNonQty" Precision="0" ProviderType="SmallInt" Scale="0" Size="0" SourceColumn="AlmFrameWorkNonQty" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_AlmFramePushMissQty" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="AlmFramePushMissQty" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int16" Direction="Input" ParameterName="@Original_AlmFramePushMissQty" Precision="0" ProviderType="SmallInt" Scale="0" Size="0" SourceColumn="AlmFramePushMissQty" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_AlmTransPinMissQty" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="AlmTransPinMissQty" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int16" Direction="Input" ParameterName="@Original_AlmTransPinMissQty" Precision="0" ProviderType="SmallInt" Scale="0" Size="0" SourceColumn="AlmTransPinMissQty" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_AlmNoRadiationMissQty" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="AlmNoRadiationMissQty" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int16" Direction="Input" ParameterName="@Original_AlmNoRadiationMissQty" Precision="0" ProviderType="SmallInt" Scale="0" Size="0" SourceColumn="AlmNoRadiationMissQty" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_AlmOtherName" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="AlmOtherName" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_AlmOtherName" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="AlmOtherName" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_AlmOtherQty" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="AlmOtherQty" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int16" Direction="Input" ParameterName="@Original_AlmOtherQty" Precision="0" ProviderType="SmallInt" Scale="0" Size="0" SourceColumn="AlmOtherQty" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Andon" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Andon" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Andon" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Andon" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_OPJudgement" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="OPJudgement" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_OPJudgement" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="OPJudgement" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_LotJudgement" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="LotJudgement" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_LotJudgement" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="LotJudgement" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_GLCheck" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="GLCheck" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_GLCheck" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="GLCheck" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Remark" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Remark" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Remark" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Remark" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_SelfConVersion" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="SelfConVersion" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_SelfConVersion" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="SelfConVersion" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_NetVersion" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="NetVersion" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_NetVersion" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="NetVersion" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [MAPLMData] ([MCNo], [LotNo], [LotStartTime], [LotEndTime], [OPNo], [InputQty], [TotalGood], [TotalNG], [MarkingSpec], [NoMarkBe], [NoMarkAf], [DoubleMarkBe], [DoubleMarkAf], [CutThinMarkBe], [CutThinMarkAf], [MarkMisalightMissPosBe], [MarkMisalightMissPosAf], [AlmFrameDirectMissQty], [AlmFrameWorkNonQty], [AlmFramePushMissQty], [AlmTransPinMissQty], [AlmNoRadiationMissQty], [AlmOtherName], [AlmOtherQty], [Andon], [OPJudgement], [LotJudgement], [GLCheck], [Remark], [SelfConVersion], [NetVersion]) VALUES (@MCNo, @LotNo, @LotStartTime, @LotEndTime, @OPNo, @InputQty, @TotalGood, @TotalNG, @MarkingSpec, @NoMarkBe, @NoMarkAf, @DoubleMarkBe, @DoubleMarkAf, @CutThinMarkBe, @CutThinMarkAf, @MarkMisalightMissPosBe, @MarkMisalightMissPosAf, @AlmFrameDirectMissQty, @AlmFrameWorkNonQty, @AlmFramePushMissQty, @AlmTransPinMissQty, @AlmNoRadiationMissQty, @AlmOtherName, @AlmOtherQty, @Andon, @OPJudgement, @LotJudgement, @GLCheck, @Remark, @SelfConVersion, @NetVersion);
+SELECT MCNo, LotNo, LotStartTime, LotEndTime, OPNo, InputQty, TotalGood, TotalNG, MarkingSpec, NoMarkBe, NoMarkAf, DoubleMarkBe, DoubleMarkAf, CutThinMarkBe, CutThinMarkAf, MarkMisalightMissPosBe, MarkMisalightMissPosAf, AlmFrameDirectMissQty, AlmFrameWorkNonQty, AlmFramePushMissQty, AlmTransPinMissQty, AlmNoRadiationMissQty, AlmOtherName, AlmOtherQty, Andon, OPJudgement, LotJudgement, GLCheck, Remark, SelfConVersion, NetVersion FROM MAPLMData WHERE (LotNo = @LotNo) AND (LotStartTime = @LotStartTime) AND (MCNo = @MCNo)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@MCNo" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MCNo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@LotNo" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="LotNo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@LotStartTime" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="LotStartTime" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@LotEndTime" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="LotEndTime" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@OPNo" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="OPNo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@InputQty" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="InputQty" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@TotalGood" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="TotalGood" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@TotalNG" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="TotalNG" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@MarkingSpec" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MarkingSpec" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@NoMarkBe" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="NoMarkBe" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@NoMarkAf" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="NoMarkAf" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@DoubleMarkBe" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="DoubleMarkBe" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@DoubleMarkAf" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="DoubleMarkAf" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@CutThinMarkBe" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="CutThinMarkBe" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@CutThinMarkAf" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="CutThinMarkAf" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@MarkMisalightMissPosBe" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MarkMisalightMissPosBe" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@MarkMisalightMissPosAf" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MarkMisalightMissPosAf" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int16" Direction="Input" ParameterName="@AlmFrameDirectMissQty" Precision="0" ProviderType="SmallInt" Scale="0" Size="0" SourceColumn="AlmFrameDirectMissQty" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int16" Direction="Input" ParameterName="@AlmFrameWorkNonQty" Precision="0" ProviderType="SmallInt" Scale="0" Size="0" SourceColumn="AlmFrameWorkNonQty" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int16" Direction="Input" ParameterName="@AlmFramePushMissQty" Precision="0" ProviderType="SmallInt" Scale="0" Size="0" SourceColumn="AlmFramePushMissQty" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int16" Direction="Input" ParameterName="@AlmTransPinMissQty" Precision="0" ProviderType="SmallInt" Scale="0" Size="0" SourceColumn="AlmTransPinMissQty" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int16" Direction="Input" ParameterName="@AlmNoRadiationMissQty" Precision="0" ProviderType="SmallInt" Scale="0" Size="0" SourceColumn="AlmNoRadiationMissQty" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@AlmOtherName" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="AlmOtherName" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int16" Direction="Input" ParameterName="@AlmOtherQty" Precision="0" ProviderType="SmallInt" Scale="0" Size="0" SourceColumn="AlmOtherQty" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Andon" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Andon" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@OPJudgement" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="OPJudgement" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@LotJudgement" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="LotJudgement" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@GLCheck" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="GLCheck" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Remark" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Remark" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@SelfConVersion" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="SelfConVersion" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@NetVersion" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="NetVersion" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT                      MCNo, LotNo, LotStartTime, LotEndTime, OPNo, InputQty, TotalGood, TotalNG, MarkingSpec, NoMarkBe, NoMarkAf, DoubleMarkBe, DoubleMarkAf, 
+                                      CutThinMarkBe, CutThinMarkAf, MarkMisalightMissPosBe, MarkMisalightMissPosAf, AlmFrameDirectMissQty, AlmFrameWorkNonQty, 
+                                      AlmFramePushMissQty, AlmTransPinMissQty, AlmNoRadiationMissQty, AlmOtherName, AlmOtherQty, Andon, OPJudgement, LotJudgement, GLCheck, 
+                                      Remark, SelfConVersion, NetVersion
+FROM                         MAPLMData
+WHERE                       (LotNo = @lotno) AND (MCNo = @mcno) AND (LotStartTime = @startTime)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="lotno" ColumnName="LotNo" DataSourceName="DBx.dbo.MAPLMData" DataTypeServer="varchar(10)" DbType="AnsiString" Direction="Input" ParameterName="@lotno" Precision="0" ProviderType="VarChar" Scale="0" Size="10" SourceColumn="LotNo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="mcno" ColumnName="MCNo" DataSourceName="DBx.dbo.MAPLMData" DataTypeServer="varchar(10)" DbType="AnsiString" Direction="Input" ParameterName="@mcno" Precision="0" ProviderType="VarChar" Scale="0" Size="10" SourceColumn="MCNo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="startTime" ColumnName="LotStartTime" DataSourceName="DBx.dbo.MAPLMData" DataTypeServer="datetime" DbType="DateTime" Direction="Input" ParameterName="@startTime" Precision="0" ProviderType="DateTime" Scale="0" Size="8" SourceColumn="LotStartTime" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [MAPLMData] SET [MCNo] = @MCNo, [LotNo] = @LotNo, [LotStartTime] = @LotStartTime, [LotEndTime] = @LotEndTime, [OPNo] = @OPNo, [InputQty] = @InputQty, [TotalGood] = @TotalGood, [TotalNG] = @TotalNG, [MarkingSpec] = @MarkingSpec, [NoMarkBe] = @NoMarkBe, [NoMarkAf] = @NoMarkAf, [DoubleMarkBe] = @DoubleMarkBe, [DoubleMarkAf] = @DoubleMarkAf, [CutThinMarkBe] = @CutThinMarkBe, [CutThinMarkAf] = @CutThinMarkAf, [MarkMisalightMissPosBe] = @MarkMisalightMissPosBe, [MarkMisalightMissPosAf] = @MarkMisalightMissPosAf, [AlmFrameDirectMissQty] = @AlmFrameDirectMissQty, [AlmFrameWorkNonQty] = @AlmFrameWorkNonQty, [AlmFramePushMissQty] = @AlmFramePushMissQty, [AlmTransPinMissQty] = @AlmTransPinMissQty, [AlmNoRadiationMissQty] = @AlmNoRadiationMissQty, [AlmOtherName] = @AlmOtherName, [AlmOtherQty] = @AlmOtherQty, [Andon] = @Andon, [OPJudgement] = @OPJudgement, [LotJudgement] = @LotJudgement, [GLCheck] = @GLCheck, [Remark] = @Remark, [SelfConVersion] = @SelfConVersion, [NetVersion] = @NetVersion WHERE (([MCNo] = @Original_MCNo) AND ([LotNo] = @Original_LotNo) AND ([LotStartTime] = @Original_LotStartTime) AND ((@IsNull_LotEndTime = 1 AND [LotEndTime] IS NULL) OR ([LotEndTime] = @Original_LotEndTime)) AND ((@IsNull_OPNo = 1 AND [OPNo] IS NULL) OR ([OPNo] = @Original_OPNo)) AND ((@IsNull_InputQty = 1 AND [InputQty] IS NULL) OR ([InputQty] = @Original_InputQty)) AND ((@IsNull_TotalGood = 1 AND [TotalGood] IS NULL) OR ([TotalGood] = @Original_TotalGood)) AND ((@IsNull_TotalNG = 1 AND [TotalNG] IS NULL) OR ([TotalNG] = @Original_TotalNG)) AND ((@IsNull_MarkingSpec = 1 AND [MarkingSpec] IS NULL) OR ([MarkingSpec] = @Original_MarkingSpec)) AND ((@IsNull_NoMarkBe = 1 AND [NoMarkBe] IS NULL) OR ([NoMarkBe] = @Original_NoMarkBe)) AND ((@IsNull_NoMarkAf = 1 AND [NoMarkAf] IS NULL) OR ([NoMarkAf] = @Original_NoMarkAf)) AND ((@IsNull_DoubleMarkBe = 1 AND [DoubleMarkBe] IS NULL) OR ([DoubleMarkBe] = @Original_DoubleMarkBe)) AND ((@IsNull_DoubleMarkAf = 1 AND [DoubleMarkAf] IS NULL) OR ([DoubleMarkAf] = @Original_DoubleMarkAf)) AND ((@IsNull_CutThinMarkBe = 1 AND [CutThinMarkBe] IS NULL) OR ([CutThinMarkBe] = @Original_CutThinMarkBe)) AND ((@IsNull_CutThinMarkAf = 1 AND [CutThinMarkAf] IS NULL) OR ([CutThinMarkAf] = @Original_CutThinMarkAf)) AND ((@IsNull_MarkMisalightMissPosBe = 1 AND [MarkMisalightMissPosBe] IS NULL) OR ([MarkMisalightMissPosBe] = @Original_MarkMisalightMissPosBe)) AND ((@IsNull_MarkMisalightMissPosAf = 1 AND [MarkMisalightMissPosAf] IS NULL) OR ([MarkMisalightMissPosAf] = @Original_MarkMisalightMissPosAf)) AND ((@IsNull_AlmFrameDirectMissQty = 1 AND [AlmFrameDirectMissQty] IS NULL) OR ([AlmFrameDirectMissQty] = @Original_AlmFrameDirectMissQty)) AND ((@IsNull_AlmFrameWorkNonQty = 1 AND [AlmFrameWorkNonQty] IS NULL) OR ([AlmFrameWorkNonQty] = @Original_AlmFrameWorkNonQty)) AND ((@IsNull_AlmFramePushMissQty = 1 AND [AlmFramePushMissQty] IS NULL) OR ([AlmFramePushMissQty] = @Original_AlmFramePushMissQty)) AND ((@IsNull_AlmTransPinMissQty = 1 AND [AlmTransPinMissQty] IS NULL) OR ([AlmTransPinMissQty] = @Original_AlmTransPinMissQty)) AND ((@IsNull_AlmNoRadiationMissQty = 1 AND [AlmNoRadiationMissQty] IS NULL) OR ([AlmNoRadiationMissQty] = @Original_AlmNoRadiationMissQty)) AND ((@IsNull_AlmOtherName = 1 AND [AlmOtherName] IS NULL) OR ([AlmOtherName] = @Original_AlmOtherName)) AND ((@IsNull_AlmOtherQty = 1 AND [AlmOtherQty] IS NULL) OR ([AlmOtherQty] = @Original_AlmOtherQty)) AND ((@IsNull_Andon = 1 AND [Andon] IS NULL) OR ([Andon] = @Original_Andon)) AND ((@IsNull_OPJudgement = 1 AND [OPJudgement] IS NULL) OR ([OPJudgement] = @Original_OPJudgement)) AND ((@IsNull_LotJudgement = 1 AND [LotJudgement] IS NULL) OR ([LotJudgement] = @Original_LotJudgement)) AND ((@IsNull_GLCheck = 1 AND [GLCheck] IS NULL) OR ([GLCheck] = @Original_GLCheck)) AND ((@IsNull_Remark = 1 AND [Remark] IS NULL) OR ([Remark] = @Original_Remark)) AND ((@IsNull_SelfConVersion = 1 AND [SelfConVersion] IS NULL) OR ([SelfConVersion] = @Original_SelfConVersion)) AND ((@IsNull_NetVersion = 1 AND [NetVersion] IS NULL) OR ([NetVersion] = @Original_NetVersion)));
+SELECT MCNo, LotNo, LotStartTime, LotEndTime, OPNo, InputQty, TotalGood, TotalNG, MarkingSpec, NoMarkBe, NoMarkAf, DoubleMarkBe, DoubleMarkAf, CutThinMarkBe, CutThinMarkAf, MarkMisalightMissPosBe, MarkMisalightMissPosAf, AlmFrameDirectMissQty, AlmFrameWorkNonQty, AlmFramePushMissQty, AlmTransPinMissQty, AlmNoRadiationMissQty, AlmOtherName, AlmOtherQty, Andon, OPJudgement, LotJudgement, GLCheck, Remark, SelfConVersion, NetVersion FROM MAPLMData WHERE (LotNo = @LotNo) AND (LotStartTime = @LotStartTime) AND (MCNo = @MCNo)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@MCNo" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MCNo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@LotNo" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="LotNo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@LotStartTime" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="LotStartTime" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@LotEndTime" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="LotEndTime" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@OPNo" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="OPNo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@InputQty" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="InputQty" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@TotalGood" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="TotalGood" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@TotalNG" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="TotalNG" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@MarkingSpec" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MarkingSpec" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@NoMarkBe" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="NoMarkBe" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@NoMarkAf" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="NoMarkAf" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@DoubleMarkBe" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="DoubleMarkBe" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@DoubleMarkAf" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="DoubleMarkAf" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@CutThinMarkBe" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="CutThinMarkBe" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@CutThinMarkAf" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="CutThinMarkAf" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@MarkMisalightMissPosBe" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MarkMisalightMissPosBe" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@MarkMisalightMissPosAf" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MarkMisalightMissPosAf" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int16" Direction="Input" ParameterName="@AlmFrameDirectMissQty" Precision="0" ProviderType="SmallInt" Scale="0" Size="0" SourceColumn="AlmFrameDirectMissQty" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int16" Direction="Input" ParameterName="@AlmFrameWorkNonQty" Precision="0" ProviderType="SmallInt" Scale="0" Size="0" SourceColumn="AlmFrameWorkNonQty" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int16" Direction="Input" ParameterName="@AlmFramePushMissQty" Precision="0" ProviderType="SmallInt" Scale="0" Size="0" SourceColumn="AlmFramePushMissQty" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int16" Direction="Input" ParameterName="@AlmTransPinMissQty" Precision="0" ProviderType="SmallInt" Scale="0" Size="0" SourceColumn="AlmTransPinMissQty" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int16" Direction="Input" ParameterName="@AlmNoRadiationMissQty" Precision="0" ProviderType="SmallInt" Scale="0" Size="0" SourceColumn="AlmNoRadiationMissQty" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@AlmOtherName" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="AlmOtherName" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int16" Direction="Input" ParameterName="@AlmOtherQty" Precision="0" ProviderType="SmallInt" Scale="0" Size="0" SourceColumn="AlmOtherQty" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Andon" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Andon" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@OPJudgement" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="OPJudgement" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@LotJudgement" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="LotJudgement" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@GLCheck" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="GLCheck" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Remark" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Remark" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@SelfConVersion" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="SelfConVersion" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@NetVersion" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="NetVersion" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_MCNo" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MCNo" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_LotNo" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="LotNo" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@Original_LotStartTime" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="LotStartTime" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_LotEndTime" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="LotEndTime" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@Original_LotEndTime" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="LotEndTime" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_OPNo" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="OPNo" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_OPNo" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="OPNo" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_InputQty" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="InputQty" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_InputQty" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="InputQty" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_TotalGood" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="TotalGood" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_TotalGood" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="TotalGood" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_TotalNG" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="TotalNG" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_TotalNG" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="TotalNG" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_MarkingSpec" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="MarkingSpec" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_MarkingSpec" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MarkingSpec" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_NoMarkBe" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="NoMarkBe" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_NoMarkBe" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="NoMarkBe" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_NoMarkAf" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="NoMarkAf" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_NoMarkAf" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="NoMarkAf" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_DoubleMarkBe" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="DoubleMarkBe" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_DoubleMarkBe" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="DoubleMarkBe" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_DoubleMarkAf" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="DoubleMarkAf" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_DoubleMarkAf" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="DoubleMarkAf" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_CutThinMarkBe" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="CutThinMarkBe" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_CutThinMarkBe" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="CutThinMarkBe" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_CutThinMarkAf" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="CutThinMarkAf" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_CutThinMarkAf" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="CutThinMarkAf" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_MarkMisalightMissPosBe" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="MarkMisalightMissPosBe" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_MarkMisalightMissPosBe" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MarkMisalightMissPosBe" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_MarkMisalightMissPosAf" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="MarkMisalightMissPosAf" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_MarkMisalightMissPosAf" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MarkMisalightMissPosAf" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_AlmFrameDirectMissQty" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="AlmFrameDirectMissQty" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int16" Direction="Input" ParameterName="@Original_AlmFrameDirectMissQty" Precision="0" ProviderType="SmallInt" Scale="0" Size="0" SourceColumn="AlmFrameDirectMissQty" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_AlmFrameWorkNonQty" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="AlmFrameWorkNonQty" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int16" Direction="Input" ParameterName="@Original_AlmFrameWorkNonQty" Precision="0" ProviderType="SmallInt" Scale="0" Size="0" SourceColumn="AlmFrameWorkNonQty" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_AlmFramePushMissQty" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="AlmFramePushMissQty" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int16" Direction="Input" ParameterName="@Original_AlmFramePushMissQty" Precision="0" ProviderType="SmallInt" Scale="0" Size="0" SourceColumn="AlmFramePushMissQty" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_AlmTransPinMissQty" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="AlmTransPinMissQty" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int16" Direction="Input" ParameterName="@Original_AlmTransPinMissQty" Precision="0" ProviderType="SmallInt" Scale="0" Size="0" SourceColumn="AlmTransPinMissQty" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_AlmNoRadiationMissQty" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="AlmNoRadiationMissQty" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int16" Direction="Input" ParameterName="@Original_AlmNoRadiationMissQty" Precision="0" ProviderType="SmallInt" Scale="0" Size="0" SourceColumn="AlmNoRadiationMissQty" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_AlmOtherName" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="AlmOtherName" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_AlmOtherName" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="AlmOtherName" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_AlmOtherQty" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="AlmOtherQty" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int16" Direction="Input" ParameterName="@Original_AlmOtherQty" Precision="0" ProviderType="SmallInt" Scale="0" Size="0" SourceColumn="AlmOtherQty" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Andon" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Andon" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Andon" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Andon" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_OPJudgement" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="OPJudgement" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_OPJudgement" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="OPJudgement" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_LotJudgement" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="LotJudgement" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_LotJudgement" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="LotJudgement" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_GLCheck" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="GLCheck" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_GLCheck" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="GLCheck" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Remark" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Remark" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Remark" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Remark" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_SelfConVersion" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="SelfConVersion" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_SelfConVersion" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="SelfConVersion" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_NetVersion" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="NetVersion" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_NetVersion" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="NetVersion" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="MCNo" DataSetColumn="MCNo" />
+              <Mapping SourceColumn="LotNo" DataSetColumn="LotNo" />
+              <Mapping SourceColumn="LotStartTime" DataSetColumn="LotStartTime" />
+              <Mapping SourceColumn="LotEndTime" DataSetColumn="LotEndTime" />
+              <Mapping SourceColumn="OPNo" DataSetColumn="OPNo" />
+              <Mapping SourceColumn="MarkingSpec" DataSetColumn="MarkingSpec" />
+              <Mapping SourceColumn="NoMarkBe" DataSetColumn="NoMarkBe" />
+              <Mapping SourceColumn="NoMarkAf" DataSetColumn="NoMarkAf" />
+              <Mapping SourceColumn="DoubleMarkBe" DataSetColumn="DoubleMarkBe" />
+              <Mapping SourceColumn="DoubleMarkAf" DataSetColumn="DoubleMarkAf" />
+              <Mapping SourceColumn="CutThinMarkBe" DataSetColumn="CutThinMarkBe" />
+              <Mapping SourceColumn="CutThinMarkAf" DataSetColumn="CutThinMarkAf" />
+              <Mapping SourceColumn="MarkMisalightMissPosBe" DataSetColumn="MarkMisalightMissPosBe" />
+              <Mapping SourceColumn="MarkMisalightMissPosAf" DataSetColumn="MarkMisalightMissPosAf" />
+              <Mapping SourceColumn="AlmFrameDirectMissQty" DataSetColumn="AlmFrameDirectMissQty" />
+              <Mapping SourceColumn="AlmFrameWorkNonQty" DataSetColumn="AlmFrameWorkNonQty" />
+              <Mapping SourceColumn="AlmFramePushMissQty" DataSetColumn="AlmFramePushMissQty" />
+              <Mapping SourceColumn="AlmTransPinMissQty" DataSetColumn="AlmTransPinMissQty" />
+              <Mapping SourceColumn="AlmNoRadiationMissQty" DataSetColumn="AlmNoRadiationMissQty" />
+              <Mapping SourceColumn="AlmOtherName" DataSetColumn="AlmOtherName" />
+              <Mapping SourceColumn="AlmOtherQty" DataSetColumn="AlmOtherQty" />
+              <Mapping SourceColumn="Andon" DataSetColumn="Andon" />
+              <Mapping SourceColumn="OPJudgement" DataSetColumn="OPJudgement" />
+              <Mapping SourceColumn="LotJudgement" DataSetColumn="LotJudgement" />
+              <Mapping SourceColumn="GLCheck" DataSetColumn="GLCheck" />
+              <Mapping SourceColumn="Remark" DataSetColumn="Remark" />
+              <Mapping SourceColumn="SelfConVersion" DataSetColumn="SelfConVersion" />
+              <Mapping SourceColumn="InputQty" DataSetColumn="InputQty" />
+              <Mapping SourceColumn="TotalGood" DataSetColumn="TotalGood" />
+              <Mapping SourceColumn="TotalNG" DataSetColumn="TotalNG" />
+              <Mapping SourceColumn="NetVersion" DataSetColumn="NetVersion" />
+            </Mappings>
+            <Sources>
+              <DbSource ConnectionRef="DBxConnectionString (MySettings)" DbObjectName="DBx.dbo.MAPLMData" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillByMCno" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="FillByMCno" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillByMCno">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT TOP (1) AlmFrameDirectMissQty, AlmFramePushMissQty, AlmFrameWorkNonQty, AlmNoRadiationMissQty, AlmOtherName, AlmOtherQty, AlmTransPinMissQty, Andon, CutThinMarkAf, CutThinMarkBe, DoubleMarkAf, DoubleMarkBe, GLCheck, InputQty, LotEndTime, LotJudgement, LotNo, LotStartTime, MCNo, MarkMisalightMissPosAf, MarkMisalightMissPosBe, MarkingSpec, NetVersion, NoMarkAf, NoMarkBe, OPJudgement, OPNo, Remark, SelfConVersion, TotalGood, TotalNG FROM MAPLMData WHERE (MCNo = @mcno) AND (LotEndTime IS NULL) ORDER BY LotStartTime DESC</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="mcno" ColumnName="MCNo" DataSourceName="DBx.dbo.MAPLMData" DataTypeServer="varchar(10)" DbType="AnsiString" Direction="Input" ParameterName="@mcno" Precision="0" ProviderType="VarChar" Scale="0" Size="10" SourceColumn="MCNo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="TransactionDataTableAdapter" GeneratorDataComponentClassName="TransactionDataTableAdapter" Name="TransactionData" UserDataComponentName="TransactionDataTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="DBxConnectionString (MySettings)" DbObjectName="DBx.dbo.TransactionData" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [TransactionData] WHERE (([LotNo] = @Original_LotNo) AND ((@IsNull_Package = 1 AND [Package] IS NULL) OR ([Package] = @Original_Package)) AND ((@IsNull_Device = 1 AND [Device] IS NULL) OR ([Device] = @Original_Device)) AND ((@IsNull_MarkTextLine1 = 1 AND [MarkTextLine1] IS NULL) OR ([MarkTextLine1] = @Original_MarkTextLine1)) AND ((@IsNull_MarkTextLine2 = 1 AND [MarkTextLine2] IS NULL) OR ([MarkTextLine2] = @Original_MarkTextLine2)) AND ((@IsNull_MarkTextLine3 = 1 AND [MarkTextLine3] IS NULL) OR ([MarkTextLine3] = @Original_MarkTextLine3)))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_LotNo" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="LotNo" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Package" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Package" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Package" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Package" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Device" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Device" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Device" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Device" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_MarkTextLine1" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="MarkTextLine1" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_MarkTextLine1" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MarkTextLine1" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_MarkTextLine2" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="MarkTextLine2" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_MarkTextLine2" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MarkTextLine2" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_MarkTextLine3" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="MarkTextLine3" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_MarkTextLine3" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MarkTextLine3" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [TransactionData] ([LotNo], [Package], [Device], [MarkTextLine1], [MarkTextLine2], [MarkTextLine3]) VALUES (@LotNo, @Package, @Device, @MarkTextLine1, @MarkTextLine2, @MarkTextLine3);
+SELECT LotNo, Package, Device, MarkTextLine1, MarkTextLine2, MarkTextLine3 FROM TransactionData WHERE (LotNo = @LotNo)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@LotNo" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="LotNo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Package" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Package" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Device" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Device" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@MarkTextLine1" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MarkTextLine1" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@MarkTextLine2" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MarkTextLine2" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@MarkTextLine3" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MarkTextLine3" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT                      LotNo, Package, Device, MarkTextLine1, MarkTextLine2, MarkTextLine3
+FROM                         TransactionData
+WHERE                       (LotNo = @Lotno)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="Lotno" ColumnName="LotNo" DataSourceName="DBx.dbo.TransactionData" DataTypeServer="varchar(10)" DbType="AnsiString" Direction="Input" ParameterName="@Lotno" Precision="0" ProviderType="VarChar" Scale="0" Size="10" SourceColumn="LotNo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [TransactionData] SET [LotNo] = @LotNo, [Package] = @Package, [Device] = @Device, [MarkTextLine1] = @MarkTextLine1, [MarkTextLine2] = @MarkTextLine2, [MarkTextLine3] = @MarkTextLine3 WHERE (([LotNo] = @Original_LotNo) AND ((@IsNull_Package = 1 AND [Package] IS NULL) OR ([Package] = @Original_Package)) AND ((@IsNull_Device = 1 AND [Device] IS NULL) OR ([Device] = @Original_Device)) AND ((@IsNull_MarkTextLine1 = 1 AND [MarkTextLine1] IS NULL) OR ([MarkTextLine1] = @Original_MarkTextLine1)) AND ((@IsNull_MarkTextLine2 = 1 AND [MarkTextLine2] IS NULL) OR ([MarkTextLine2] = @Original_MarkTextLine2)) AND ((@IsNull_MarkTextLine3 = 1 AND [MarkTextLine3] IS NULL) OR ([MarkTextLine3] = @Original_MarkTextLine3)));
+SELECT LotNo, Package, Device, MarkTextLine1, MarkTextLine2, MarkTextLine3 FROM TransactionData WHERE (LotNo = @LotNo)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@LotNo" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="LotNo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Package" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Package" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Device" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Device" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@MarkTextLine1" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MarkTextLine1" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@MarkTextLine2" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MarkTextLine2" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@MarkTextLine3" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MarkTextLine3" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_LotNo" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="LotNo" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Package" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Package" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Package" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Package" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Device" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Device" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Device" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Device" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_MarkTextLine1" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="MarkTextLine1" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_MarkTextLine1" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MarkTextLine1" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_MarkTextLine2" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="MarkTextLine2" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_MarkTextLine2" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MarkTextLine2" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_MarkTextLine3" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="MarkTextLine3" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_MarkTextLine3" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MarkTextLine3" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="LotNo" DataSetColumn="LotNo" />
+              <Mapping SourceColumn="Package" DataSetColumn="Package" />
+              <Mapping SourceColumn="Device" DataSetColumn="Device" />
+              <Mapping SourceColumn="MarkTextLine1" DataSetColumn="MarkTextLine1" />
+              <Mapping SourceColumn="MarkTextLine2" DataSetColumn="MarkTextLine2" />
+              <Mapping SourceColumn="MarkTextLine3" DataSetColumn="MarkTextLine3" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DBxDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="DBxDataSet" msprop:Generator_DataSetName="DBxDataSet" msprop:EnableTableAdapterManager="True">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="MAPLMData" msprop:Generator_UserTableName="MAPLMData" msprop:Generator_RowDeletedName="MAPLMDataRowDeleted" msprop:Generator_RowChangedName="MAPLMDataRowChanged" msprop:Generator_RowClassName="MAPLMDataRow" msprop:Generator_RowChangingName="MAPLMDataRowChanging" msprop:Generator_RowEvArgName="MAPLMDataRowChangeEvent" msprop:Generator_RowEvHandlerName="MAPLMDataRowChangeEventHandler" msprop:Generator_TableClassName="MAPLMDataDataTable" msprop:Generator_TableVarName="tableMAPLMData" msprop:Generator_RowDeletingName="MAPLMDataRowDeleting" msprop:Generator_TablePropName="MAPLMData">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="MCNo" msprop:Generator_UserColumnName="MCNo" msprop:Generator_ColumnVarNameInTable="columnMCNo" msprop:Generator_ColumnPropNameInRow="MCNo" msprop:Generator_ColumnPropNameInTable="MCNoColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="LotNo" msprop:Generator_UserColumnName="LotNo" msprop:Generator_ColumnVarNameInTable="columnLotNo" msprop:Generator_ColumnPropNameInRow="LotNo" msprop:Generator_ColumnPropNameInTable="LotNoColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="LotStartTime" msprop:Generator_UserColumnName="LotStartTime" msprop:Generator_ColumnVarNameInTable="columnLotStartTime" msprop:Generator_ColumnPropNameInRow="LotStartTime" msprop:Generator_ColumnPropNameInTable="LotStartTimeColumn" type="xs:dateTime" />
+              <xs:element name="LotEndTime" msprop:Generator_UserColumnName="LotEndTime" msprop:Generator_ColumnVarNameInTable="columnLotEndTime" msprop:Generator_ColumnPropNameInRow="LotEndTime" msprop:Generator_ColumnPropNameInTable="LotEndTimeColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="OPNo" msprop:Generator_UserColumnName="OPNo" msprop:Generator_ColumnVarNameInTable="columnOPNo" msprop:Generator_ColumnPropNameInRow="OPNo" msprop:Generator_ColumnPropNameInTable="OPNoColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="InputQty" msprop:Generator_UserColumnName="InputQty" msprop:Generator_ColumnVarNameInTable="columnInputQty" msprop:Generator_ColumnPropNameInRow="InputQty" msprop:Generator_ColumnPropNameInTable="InputQtyColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="TotalGood" msprop:Generator_UserColumnName="TotalGood" msprop:Generator_ColumnVarNameInTable="columnTotalGood" msprop:Generator_ColumnPropNameInRow="TotalGood" msprop:Generator_ColumnPropNameInTable="TotalGoodColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="TotalNG" msprop:Generator_UserColumnName="TotalNG" msprop:Generator_ColumnVarNameInTable="columnTotalNG" msprop:Generator_ColumnPropNameInRow="TotalNG" msprop:Generator_ColumnPropNameInTable="TotalNGColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="MarkingSpec" msprop:Generator_UserColumnName="MarkingSpec" msprop:Generator_ColumnVarNameInTable="columnMarkingSpec" msprop:Generator_ColumnPropNameInRow="MarkingSpec" msprop:Generator_ColumnPropNameInTable="MarkingSpecColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="NoMarkBe" msprop:Generator_UserColumnName="NoMarkBe" msprop:Generator_ColumnVarNameInTable="columnNoMarkBe" msprop:Generator_ColumnPropNameInRow="NoMarkBe" msprop:Generator_ColumnPropNameInTable="NoMarkBeColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="NoMarkAf" msprop:Generator_UserColumnName="NoMarkAf" msprop:Generator_ColumnVarNameInTable="columnNoMarkAf" msprop:Generator_ColumnPropNameInRow="NoMarkAf" msprop:Generator_ColumnPropNameInTable="NoMarkAfColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DoubleMarkBe" msprop:Generator_UserColumnName="DoubleMarkBe" msprop:Generator_ColumnVarNameInTable="columnDoubleMarkBe" msprop:Generator_ColumnPropNameInRow="DoubleMarkBe" msprop:Generator_ColumnPropNameInTable="DoubleMarkBeColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DoubleMarkAf" msprop:Generator_UserColumnName="DoubleMarkAf" msprop:Generator_ColumnVarNameInTable="columnDoubleMarkAf" msprop:Generator_ColumnPropNameInRow="DoubleMarkAf" msprop:Generator_ColumnPropNameInTable="DoubleMarkAfColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CutThinMarkBe" msprop:Generator_UserColumnName="CutThinMarkBe" msprop:Generator_ColumnVarNameInTable="columnCutThinMarkBe" msprop:Generator_ColumnPropNameInRow="CutThinMarkBe" msprop:Generator_ColumnPropNameInTable="CutThinMarkBeColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CutThinMarkAf" msprop:Generator_UserColumnName="CutThinMarkAf" msprop:Generator_ColumnVarNameInTable="columnCutThinMarkAf" msprop:Generator_ColumnPropNameInRow="CutThinMarkAf" msprop:Generator_ColumnPropNameInTable="CutThinMarkAfColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MarkMisalightMissPosBe" msprop:Generator_UserColumnName="MarkMisalightMissPosBe" msprop:Generator_ColumnVarNameInTable="columnMarkMisalightMissPosBe" msprop:Generator_ColumnPropNameInRow="MarkMisalightMissPosBe" msprop:Generator_ColumnPropNameInTable="MarkMisalightMissPosBeColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MarkMisalightMissPosAf" msprop:Generator_UserColumnName="MarkMisalightMissPosAf" msprop:Generator_ColumnVarNameInTable="columnMarkMisalightMissPosAf" msprop:Generator_ColumnPropNameInRow="MarkMisalightMissPosAf" msprop:Generator_ColumnPropNameInTable="MarkMisalightMissPosAfColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="AlmFrameDirectMissQty" msprop:Generator_UserColumnName="AlmFrameDirectMissQty" msprop:Generator_ColumnVarNameInTable="columnAlmFrameDirectMissQty" msprop:Generator_ColumnPropNameInRow="AlmFrameDirectMissQty" msprop:Generator_ColumnPropNameInTable="AlmFrameDirectMissQtyColumn" type="xs:short" default="0" minOccurs="0" />
+              <xs:element name="AlmFrameWorkNonQty" msprop:Generator_UserColumnName="AlmFrameWorkNonQty" msprop:Generator_ColumnVarNameInTable="columnAlmFrameWorkNonQty" msprop:Generator_ColumnPropNameInRow="AlmFrameWorkNonQty" msprop:Generator_ColumnPropNameInTable="AlmFrameWorkNonQtyColumn" type="xs:short" default="0" minOccurs="0" />
+              <xs:element name="AlmFramePushMissQty" msprop:Generator_UserColumnName="AlmFramePushMissQty" msprop:Generator_ColumnVarNameInTable="columnAlmFramePushMissQty" msprop:Generator_ColumnPropNameInRow="AlmFramePushMissQty" msprop:Generator_ColumnPropNameInTable="AlmFramePushMissQtyColumn" type="xs:short" default="0" minOccurs="0" />
+              <xs:element name="AlmTransPinMissQty" msprop:Generator_UserColumnName="AlmTransPinMissQty" msprop:Generator_ColumnVarNameInTable="columnAlmTransPinMissQty" msprop:Generator_ColumnPropNameInRow="AlmTransPinMissQty" msprop:Generator_ColumnPropNameInTable="AlmTransPinMissQtyColumn" type="xs:short" default="0" minOccurs="0" />
+              <xs:element name="AlmNoRadiationMissQty" msprop:Generator_UserColumnName="AlmNoRadiationMissQty" msprop:Generator_ColumnVarNameInTable="columnAlmNoRadiationMissQty" msprop:Generator_ColumnPropNameInRow="AlmNoRadiationMissQty" msprop:Generator_ColumnPropNameInTable="AlmNoRadiationMissQtyColumn" type="xs:short" default="0" minOccurs="0" />
+              <xs:element name="AlmOtherName" msprop:Generator_UserColumnName="AlmOtherName" msprop:Generator_ColumnVarNameInTable="columnAlmOtherName" msprop:Generator_ColumnPropNameInRow="AlmOtherName" msprop:Generator_ColumnPropNameInTable="AlmOtherNameColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="AlmOtherQty" msprop:Generator_UserColumnName="AlmOtherQty" msprop:Generator_ColumnVarNameInTable="columnAlmOtherQty" msprop:Generator_ColumnPropNameInRow="AlmOtherQty" msprop:Generator_ColumnPropNameInTable="AlmOtherQtyColumn" type="xs:short" default="0" minOccurs="0" />
+              <xs:element name="Andon" msprop:Generator_UserColumnName="Andon" msprop:Generator_ColumnVarNameInTable="columnAndon" msprop:Generator_ColumnPropNameInRow="Andon" msprop:Generator_ColumnPropNameInTable="AndonColumn" default="N" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="OPJudgement" msprop:Generator_UserColumnName="OPJudgement" msprop:Generator_ColumnVarNameInTable="columnOPJudgement" msprop:Generator_ColumnPropNameInRow="OPJudgement" msprop:Generator_ColumnPropNameInTable="OPJudgementColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="6" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="LotJudgement" msprop:Generator_UserColumnName="LotJudgement" msprop:Generator_ColumnVarNameInTable="columnLotJudgement" msprop:Generator_ColumnPropNameInRow="LotJudgement" msprop:Generator_ColumnPropNameInTable="LotJudgementColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="GLCheck" msprop:Generator_UserColumnName="GLCheck" msprop:Generator_ColumnVarNameInTable="columnGLCheck" msprop:Generator_ColumnPropNameInRow="GLCheck" msprop:Generator_ColumnPropNameInTable="GLCheckColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="6" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Remark" msprop:Generator_UserColumnName="Remark" msprop:Generator_ColumnVarNameInTable="columnRemark" msprop:Generator_ColumnPropNameInRow="Remark" msprop:Generator_ColumnPropNameInTable="RemarkColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SelfConVersion" msprop:Generator_UserColumnName="SelfConVersion" msprop:Generator_ColumnVarNameInTable="columnSelfConVersion" msprop:Generator_ColumnPropNameInRow="SelfConVersion" msprop:Generator_ColumnPropNameInTable="SelfConVersionColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="NetVersion" msprop:Generator_UserColumnName="NetVersion" msprop:Generator_ColumnPropNameInRow="NetVersion" msprop:Generator_ColumnVarNameInTable="columnNetVersion" msprop:Generator_ColumnPropNameInTable="NetVersionColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="TransactionData" msprop:Generator_UserTableName="TransactionData" msprop:Generator_RowDeletedName="TransactionDataRowDeleted" msprop:Generator_RowChangedName="TransactionDataRowChanged" msprop:Generator_RowClassName="TransactionDataRow" msprop:Generator_RowChangingName="TransactionDataRowChanging" msprop:Generator_RowEvArgName="TransactionDataRowChangeEvent" msprop:Generator_RowEvHandlerName="TransactionDataRowChangeEventHandler" msprop:Generator_TableClassName="TransactionDataDataTable" msprop:Generator_TableVarName="tableTransactionData" msprop:Generator_RowDeletingName="TransactionDataRowDeleting" msprop:Generator_TablePropName="TransactionData">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="LotNo" msprop:Generator_UserColumnName="LotNo" msprop:Generator_ColumnPropNameInRow="LotNo" msprop:Generator_ColumnVarNameInTable="columnLotNo" msprop:Generator_ColumnPropNameInTable="LotNoColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Package" msprop:Generator_UserColumnName="Package" msprop:Generator_ColumnPropNameInRow="Package" msprop:Generator_ColumnVarNameInTable="columnPackage" msprop:Generator_ColumnPropNameInTable="PackageColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Device" msprop:Generator_UserColumnName="Device" msprop:Generator_ColumnPropNameInRow="Device" msprop:Generator_ColumnVarNameInTable="columnDevice" msprop:Generator_ColumnPropNameInTable="DeviceColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MarkTextLine1" msprop:Generator_UserColumnName="MarkTextLine1" msprop:Generator_ColumnVarNameInTable="columnMarkTextLine1" msprop:Generator_ColumnPropNameInRow="MarkTextLine1" msprop:Generator_ColumnPropNameInTable="MarkTextLine1Column" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MarkTextLine2" msprop:Generator_UserColumnName="MarkTextLine2" msprop:Generator_ColumnVarNameInTable="columnMarkTextLine2" msprop:Generator_ColumnPropNameInRow="MarkTextLine2" msprop:Generator_ColumnPropNameInTable="MarkTextLine2Column" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MarkTextLine3" msprop:Generator_UserColumnName="MarkTextLine3" msprop:Generator_ColumnVarNameInTable="columnMarkTextLine3" msprop:Generator_ColumnPropNameInRow="MarkTextLine3" msprop:Generator_ColumnPropNameInTable="MarkTextLine3Column" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:MAPLMData" />
+      <xs:field xpath="mstns:MCNo" />
+      <xs:field xpath="mstns:LotNo" />
+      <xs:field xpath="mstns:LotStartTime" />
+    </xs:unique>
+    <xs:unique name="TransactionData_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:TransactionData" />
+      <xs:field xpath="mstns:LotNo" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

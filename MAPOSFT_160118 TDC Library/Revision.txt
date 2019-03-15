@@ -1,0 +1,45 @@
+﻿___________________________________________________________
+
+===        Software Rivision History                    ===
+___________________________________________________________
+
+
+Software Start                                                     |  Ver1.00 20130701 : By Prasarn783
+M/C List Del PassWord Protect                                      |  Ver1.01 20130708 : By Prasarn783
+Add ReMark CompoBox
+Change Input Goods Ng to INT32                                     |  Ver1.01 20130809 : By Prasarn783
+
+FTNG,.. No save to DBx Bug                                         |  Ver1.01 20130904 : By Prasarn783
+Countermeasure
+
+IF "FT" Process MAPOS,YIELD                                        |  Ver1.01 20130905 : By Prasarn783
+is ***  Display (DBNULL VALUE)
+
+Add BM Request 		                                 	   |  Ver 1.02 20131014: By Tharin 5588
+
+FD Less version 	                                           |  Ver2.00 20131028 : By Prasarn783
+ - Load/server MAP Data from Server
+ - Tester Autload
+ 
+ 1 LotCancel When New Load M/C                                     | Ver2.00 20131120 : By Prasarn783
+ not yet Run <Tester Err>
+ 2 Tester Auto Load timing change
+    from at 3rd step to 1st 
+ 3 DWB NG AUTO* No count
+ 4 OSNg = OSNg - DWBNg
+ 
+ 
+ LotCacel when 1st not yet run..<XML is OS>                        | Ver2.00 20131126 : By Prasarn783
+ Just Load M/C Not run Process = Wrong   
+ DBxMapMAapdataSave Will Error 
+
+1.Process AUTO* with Rng is change to input = BeforeLot input      | Ver2.00 20131225 : By Prasarn783
+Before use input = BeforeLot GoodPcs
+ 
+1.LotCancel addition TDC Lotend Type 3 sent <Results reset type>   | Ver2.00 20131227 : By Prasarn783
+2.LotCancel BError addition > Basic Error 
+
+1.Flow change OSFT -> TP to OSFT -> TP and OSFT -> AUTO*  ->TP   | Ver2.00 20140915 : By Prasarn783
+
+
+ 

@@ -1,0 +1,16 @@
+﻿___________________________________________________________
+
+===        Software Rivision History                    ===
+___________________________________________________________
+
+
+Software Start                     |  Ver1.00 20130606 : By Prasar783
+All Mode A Select Addition         |  Ver1.01 20130617 : By Prasar783
+
+Process Header Addition(MAP-XX-XX) |  Ver1.01 20130621 : By Prasar783
+M/C List Del PassWord Protect,     |  Ver1.01 20130708 : By Prasar783
+Add ReMark CompoBox
+Change Input Goods Ng to INT32     |  Ver1.01 20130809 : By Prasar783
+Add BM Request 			   |  Ver1.02 20131014 : By Tharin5588
+
+
