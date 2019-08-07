@@ -165,6 +165,11 @@
     <Compile Include="PassWord.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Service References\iLibraryService\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\RohmService\Reference.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -266,12 +271,65 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\MAPLM2.png" />
+    <None Include="Service References\iLibraryService\MAP_LM.iLibraryService.CancelLotResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\iLibraryService\MAP_LM.iLibraryService.CheckLotApcsProResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\iLibraryService\MAP_LM.iLibraryService.EndLotResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\iLibraryService\MAP_LM.iLibraryService.iReportResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\iLibraryService\MAP_LM.iLibraryService.MachineAlarmResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\iLibraryService\MAP_LM.iLibraryService.MachineOnlineStateResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\iLibraryService\MAP_LM.iLibraryService.OnlineEndResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\iLibraryService\MAP_LM.iLibraryService.OnlineStartResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\iLibraryService\MAP_LM.iLibraryService.ReinputResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\iLibraryService\MAP_LM.iLibraryService.SetupLotResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\iLibraryService\MAP_LM.iLibraryService.StartLotResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\iLibraryService\MAP_LM.iLibraryService.UpdateFinalinspectionResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\iLibraryService\MAP_LM.iLibraryService.UpdateFirstinspectionResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\iLibraryService\MAP_LM.iLibraryService.UpdateMachineStateResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\iLibraryService\ServiceiLibrary.wsdl" />
+    <None Include="Service References\iLibraryService\ServiceiLibrary.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\iLibraryService\ServiceiLibrary1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\iLibraryService\ServiceiLibrary2.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\RohmService\apcswebservice.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Service References\iLibraryService\" />
     <WCFMetadataStorage Include="Service References\RohmService\" />
   </ItemGroup>
   <ItemGroup>
@@ -285,6 +343,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\RohmService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\iLibraryService\ServiceiLibrary.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\iLibraryService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\iLibraryService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\iLibraryService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.vb</LastGenOutput>
     </None>
