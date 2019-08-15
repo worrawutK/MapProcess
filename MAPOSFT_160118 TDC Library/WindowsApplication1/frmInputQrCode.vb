@@ -1,5 +1,5 @@
-﻿Imports Rohm.Apcs.Tdc
-Imports MAP_OSFT.RohmService
+﻿'Imports Rohm.Apcs.Tdc
+'Imports MAP_OSFT.RohmService
 
 
 Public Class frmInputQrCode

@@ -5,7 +5,7 @@ Imports System.Net.Sockets
 Imports System.Threading
 Imports System.Net
 'Imports Rohm.Apcs.Tdc
-Imports MAP_OSFT.RohmService
+'Imports MAP_OSFT.RohmService
 Imports Rohm.Ems
 
 
@@ -1837,8 +1837,8 @@ Public Class frmMain
                                         'TDC -------------------------------------------------------------------------------
                                         '   
 
-                                        If My.Settings.RunOffline = False Then
-                                            Try
+                                        ' If My.Settings.RunOffline = False Then
+                                        Try
                                                 If PermissionGetDataAPCS(strCommand(7), strCommand(4)) = False Then
                                                     strSendCmd = "Error," & strCmd & "," & strMachineNo & "," & strAssyLotNo & "," & "No Permiision "
                                                     GoTo sendLoop
@@ -1854,26 +1854,26 @@ Public Class frmMain
                                                 GoTo RunModeRetest
                                             End If
 
-                                            '<0>,<Selcon IP>,<Cmd >,<M/Cno3>,<LotNo3>, <Package5>,<Devic6e>,<OPNo7>,<Process8>,<TestPro9>,<TestMode10>,<BoxName>
+                                        '<0>,<Selcon IP>,<Cmd >,<M/Cno3>,<LotNo3>, <Package5>,<Devic6e>,<OPNo7>,<Process8>,<TestPro9>,<TestMode10>,<BoxName>
 
-                                            If Not SetupLot(strAssyLotNo, "MAP-" & lbMC.Text, strCommand(7), "MAP", "", strSendCmd) Then
-                                                strSendCmd = "Error," & strCmd & "," & strMachineNo & "," & strAssyLotNo & "," & "TDC Error "
-                                                GoTo sendLoop
-                                            End If
-
-                                            'If LotRequestTDC(strAssyLotNo, RunModeType.Normal, "MAP-" & lbMC.Text) = False Then
-                                            '    'TbQRInput.Text = ""
-                                            '    ' TbQRInput.Select()
-                                            '    ' GoTo FailTDC
-                                            '    strSendCmd = "Error," & strCmd & "," & strMachineNo & "," & strAssyLotNo & "," & "TDC Error "
-
-                                            '    GoTo sendLoop
-                                            'End If
-RunModeRetest:
-
+                                        If Not SetupLot(strAssyLotNo, "MAP-" & lbMC.Text, strCommand(7), "MAP", "", strCommand(8), strSendCmd) Then
+                                            strSendCmd = "Error," & strCmd & "," & strMachineNo & "," & strAssyLotNo & "," & "TDC Error "
+                                            GoTo sendLoop
                                         End If
 
-                                        Dim lotexist As New DBxDataSet.MAPOSFTDataDataTable
+                                        'If LotRequestTDC(strAssyLotNo, RunModeType.Normal, "MAP-" & lbMC.Text) = False Then
+                                        '    'TbQRInput.Text = ""
+                                        '    ' TbQRInput.Select()
+                                        '    ' GoTo FailTDC
+                                        '    strSendCmd = "Error," & strCmd & "," & strMachineNo & "," & strAssyLotNo & "," & "TDC Error "
+
+                                        '    GoTo sendLoop
+                                        'End If
+RunModeRetest:
+
+                                            ' End If
+
+                                            Dim lotexist As New DBxDataSet.MAPOSFTDataDataTable
 
                                         lotexist = MAPOSFTDataTableAdapter.GetDataLotExist(strAssyLotNo)
 
@@ -2890,10 +2890,10 @@ nextstep:
         BuildMCList()
     End Sub
 
-    Private Sub TDCToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles TDCToolStripMenuItem1.Click
-        Dim frmTDC As SettingTDC = New SettingTDC
-        frmTDC.ShowDialog()
-    End Sub
+    'Private Sub TDCToolStripMenuItem1_Click(sender As Object, e As EventArgs) 
+    '    Dim frmTDC As SettingTDC = New SettingTDC
+    '    frmTDC.ShowDialog()
+    'End Sub
 
     Private Sub lbRevision_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lbRevision.Click
         On Error Resume Next
@@ -3115,6 +3115,10 @@ nextstep:
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        OnPrint("True,10.28.32.70,LOTSTART,IPB-00,011319A6223V,VSON008X20,BR24T08NUX-WG(8G9)  ,000783,OS,R4T08NUXOA ,2013-10-08 15:07:55")
+        ' OnPrint("True,10.28.32.70,LOTSTART,IPB-00,1933F2009V,VSON008X20,BR24T08NUX-WG(8G9)  ,000783,OS,R4T08NUXOA ,2013-10-08 15:07:55")
+        If IsNothing(f2) OrElse f2.IsDisposed Then
+            f2 = New Form2
+        End If
+        f2.Show()
     End Sub
 End Class

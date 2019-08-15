@@ -123,7 +123,6 @@ Partial Class frmMain
         Me.OnLineModeToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.OffLineModeToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.MCSettingToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.TDCToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.AuthenticationUserToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ONToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OFFToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -375,7 +374,7 @@ Partial Class frmMain
         Me.lbRevision.Name = "lbRevision"
         Me.lbRevision.Size = New System.Drawing.Size(191, 13)
         Me.lbRevision.TabIndex = 108
-        Me.lbRevision.Text = "SelCon MAP OS/FT Software Ver 2.06"
+        Me.lbRevision.Text = "SelCon MAP OS/FT Software Ver 2.07"
         '
         'lbAndonJudge
         '
@@ -1044,7 +1043,7 @@ Partial Class frmMain
         '
         'SettingToolStripMenuItem
         '
-        Me.SettingToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SelfConModeToolStripMenuItem1, Me.MCSettingToolStripMenuItem1, Me.TDCToolStripMenuItem1, Me.AuthenticationUserToolStripMenuItem, Me.SetUpCheckToolStripMenuItem, Me.RetestModeToolStripMenuItem})
+        Me.SettingToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SelfConModeToolStripMenuItem1, Me.MCSettingToolStripMenuItem1, Me.AuthenticationUserToolStripMenuItem, Me.SetUpCheckToolStripMenuItem, Me.RetestModeToolStripMenuItem})
         Me.SettingToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.SettingToolStripMenuItem.Name = "SettingToolStripMenuItem"
         Me.SettingToolStripMenuItem.Size = New System.Drawing.Size(83, 29)
@@ -1075,12 +1074,6 @@ Partial Class frmMain
         Me.MCSettingToolStripMenuItem1.Name = "MCSettingToolStripMenuItem1"
         Me.MCSettingToolStripMenuItem1.Size = New System.Drawing.Size(246, 30)
         Me.MCSettingToolStripMenuItem1.Text = "M/C Setting"
-        '
-        'TDCToolStripMenuItem1
-        '
-        Me.TDCToolStripMenuItem1.Name = "TDCToolStripMenuItem1"
-        Me.TDCToolStripMenuItem1.Size = New System.Drawing.Size(246, 30)
-        Me.TDCToolStripMenuItem1.Text = "TDC"
         '
         'AuthenticationUserToolStripMenuItem
         '
@@ -1113,6 +1106,7 @@ Partial Class frmMain
         Me.RetestModeToolStripMenuItem.Name = "RetestModeToolStripMenuItem"
         Me.RetestModeToolStripMenuItem.Size = New System.Drawing.Size(246, 30)
         Me.RetestModeToolStripMenuItem.Text = "Retest Mode"
+        Me.RetestModeToolStripMenuItem.Visible = False
         '
         'ONToolStripMenuItemRetest
         '
@@ -1177,12 +1171,13 @@ Partial Class frmMain
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(58, 260)
+        Me.Button1.Location = New System.Drawing.Point(836, 190)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.Size = New System.Drawing.Size(112, 23)
         Me.Button1.TabIndex = 260
-        Me.Button1.Text = "Button1"
+        Me.Button1.Text = "TestSendMessage"
         Me.Button1.UseVisualStyleBackColor = True
+        Me.Button1.Visible = False
         '
         'frmMain
         '
@@ -1363,7 +1358,6 @@ Partial Class frmMain
     Friend WithEvents OnLineModeToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents OffLineModeToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents MCSettingToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents TDCToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents LcqW_UNION_WORK_DENPYO_PRINTTableAdapter1 As DBxDataSetTableAdapters.LCQW_UNION_WORK_DENPYO_PRINTTableAdapter
     Friend WithEvents AuthenticationUserToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ONToolStripMenuItem As ToolStripMenuItem

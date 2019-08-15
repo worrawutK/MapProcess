@@ -41,8 +41,25 @@ Module Module1
         Return TarObj
     End Function
     Friend m_Recipe As String
-    Friend Function SetupLot(lotNo As String, mcNo As String, opNo As String, process As String, layerNo As String, ByRef cmd As String) As Boolean
+    Friend Function SetupLot(lotNo As String, mcNo As String, opNo As String, process As String, layerNo As String, mcProgram As String, ByRef cmd As String) As Boolean
         Try
+
+            'mcProgram AUTO(1),AUTO(2), OS ,OSFT
+            Dim flow As String = GetFlowLot(lotNo).Replace(" ", "").ToUpper()
+            SaveLog(MethodInfo.GetCurrentMethod().ToString(), "MachineProgram:" & mcProgram & ",LotFlow:" & flow)
+            Select Case mcProgram.Replace(" ", "").ToUpper()
+                Case "OSFT", "AUTO1"
+                    mcProgram = "AUTO(1)"
+                Case "AUTO2"
+                    mcProgram = "AUTO(2)"
+
+            End Select
+            If mcProgram <> flow Then
+                cmd = "Error," & "Program not match (Machine:" & mcProgram & ",Lot:" & flow & "," & mcNo & "," & lotNo & ","
+                SaveLog(MethodInfo.GetCurrentMethod().ToString(), "CheckProgram" & ">> Not Pass" & "Program not match (Machine:" & mcProgram & ",Lot:" & flow & "," & mcNo & "," & lotNo)
+                MessageBoxDialog.ShowMessageDialog("SetupLot(CheckProgram)", " Error," & "Program not match " & vbCrLf & "(Machine:" & mcProgram & ",Lot:" & flow & "," & vbCrLf & mcNo & "," & lotNo, "")
+                Return False
+            End If
             Dim result = m_iLibraryService.SetupLot(lotNo, mcNo, opNo, process, layerNo)
             Select Case Not result.IsPass
                 Case SetupLotResult.Status.NotPass
@@ -61,6 +78,33 @@ Module Module1
             Return False
         End Try
 
+    End Function
+    Private Function GetFlowLot(lotNo As String) As String
+        Dim data As DataTable = New DataTable()
+        Using cmd As New SqlClient.SqlCommand
+            cmd.Connection = New SqlClient.SqlConnection("Data Source=172.16.0.102;Initial Catalog=APCSDB;Persist Security Info=True;User ID=system;Password=p@$$w0rd")
+            cmd.CommandType = CommandType.Text
+            cmd.CommandText = "SELECT LAYER_TABLE.OPE_NAME AS Process, LOT1_DATA.PLAN_DAY AS Plan_Date, LOT2_DATA.REAL_START AS StartTime, LOT2_DATA.REAL_DAY AS EndTime, 
+                                                          LOT2_DATA.MACHINE, LOT2_DATA.OPERATOR1 AS OpNo_In, LOT2_DATA.OPERATOR2 AS OpNo_Out, LOT2_DATA.GOOD_PIECES AS GoodPcs, 
+                                                          LOT2_DATA.BAD_PIECES AS NgPcs,LOT2_TABLE.OPE_SEQ as current_process,LOT1_DATA.OPE_SEQ,LOT2_TABLE.STATUS1
+                                                          FROM LOT1_DATA INNER JOIN
+                                                          LAYER_TABLE ON LOT1_DATA.LAY_NO = LAYER_TABLE.LAY_NO LEFT OUTER JOIN
+                                                          LOT2_DATA ON LOT1_DATA.LOT_NO = LOT2_DATA.LOT_NO AND LOT2_DATA.OPE_SEQ = LOT1_DATA.OPE_SEQ
+					                                      inner join LOT2_TABLE on LOT2_TABLE.LOT_NO = LOT1_DATA.LOT_NO
+                                                          WHERE (LOT1_DATA.LOT_NO = @LotNo) AND (LOT1_DATA.N_OPE_SEQ <> 0) and LOT2_TABLE.OPE_SEQ = LOT1_DATA.OPE_SEQ"
+            cmd.Parameters.Add("@LotNo", SqlDbType.VarChar).Value = lotNo
+            cmd.Connection.Open()
+            Using rd = cmd.ExecuteReader()
+                If rd.HasRows Then
+                    data.Load(rd)
+                End If
+            End Using
+
+        End Using
+        For Each row As DataRow In data.Rows
+            Return row("Process").ToString()
+        Next
+        Return ""
     End Function
     Friend Function StartLot(lotNo As String, mcNo As String, opNo As String, recipe As String) As Boolean
         Try
