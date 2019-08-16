@@ -1,6 +1,7 @@
 ﻿Imports System.IO
 Imports System.Runtime.InteropServices
 Imports System.Text
+Imports Rohm
 'Imports Rohm.Apcs.Tdc
 Imports Rohm.Ems
 
@@ -1067,15 +1068,39 @@ fin:
 
                 End If
             Next
-
+inputQr:
             Dim QRInput As New frmInputQrCode
             QRInput.lbCaption.Text = "Input QR Code"
             QRInput.ShowDialog()
-            If Not lbLotNo.Text = "" Then
+            If Not QRInput.LotNo = "" Then
                 '  SendPostMessage("@LOTREQ" & "|" & ProcessHeader & lbMC.Text & "|" & lbLotNo.Text & "," & lbOp.Text & ",00")   'Normal
-                If Not SetupLot(lbLotNo.Text, ProcessHeader & lbMC.Text, lbOp.Text, "MAP", "0250") Then
-                    Return
+                If Not SetupLot(QRInput.LotNo, ProcessHeader & lbMC.Text, QRInput.OpNo, "MAP", "0250") Then
+                    GoTo inputQr
                 End If
+
+
+                Dim trans As TransactionData = New TransactionData(QRInput.QrCode)
+                If My.Computer.Network.IsAvailable Then
+                    If My.Computer.Network.Ping(_ipDbxUser) Then                                                        ' Save QR Code to transsaction table                                On Error GoTo ErrHander
+                        trans.Save()
+
+                    End If
+                Else
+
+                End If
+                'Save data to MAPLMdatatable
+                Dim dr As DBxDataSet.MAPLMDataRow = DBxDataSet.MAPLMData.NewRow
+                dr.MCNo = ProcessHeader & lbMC.Text
+                dr.LotNo = QRInput.LotNo
+                dr.InputQty = QRInput.InputQty
+                dr.OPNo = QRInput.OpNo
+                dr.LotStartTime = Format(Now, "yyyy/MM/dd HH:mm:ss")
+                DBxDataSet.MAPLMData.Rows.InsertAt(dr, 0)
+
+                MAPLMDataBindingSource.Position = 0          'Update new data 
+                lbGood.Enabled = False
+
+
                 StartLot(lbLotNo.Text, ProcessHeader & lbMC.Text, lbOp.Text)
                 'Dim resSet As TdcResponse = m_TdcService.LotSet(ProcessHeader & lbMC.Text, lbLotNo.Text, CDate(lbStart.Text), lbOp.Text, RunModeType.Normal)
 

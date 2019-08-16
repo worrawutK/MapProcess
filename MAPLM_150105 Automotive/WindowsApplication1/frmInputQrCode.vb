@@ -6,14 +6,49 @@ Imports Rohm
 
 Public Class frmInputQrCode
 
-    Dim lotNo As String
+    'Dim lotNo As String
     'Dim assyDevice As String
     'Dim package As String
-    Dim opNo As String
-    Dim inputQty As String
-    Dim WorkSlipData As String
+    'Dim opNo As String
+    'Dim inputQty As String
+    ' Dim WorkSlipData As String
 
-
+    Private c_LotNo As String
+    Public Property LotNo() As String
+        Get
+            Return c_LotNo
+        End Get
+        Set(ByVal value As String)
+            c_LotNo = value
+        End Set
+    End Property
+    Private c_OpNo As String
+    Public Property OpNo() As String
+        Get
+            Return c_OpNo
+        End Get
+        Set(ByVal value As String)
+            c_OpNo = value
+        End Set
+    End Property
+    Private c_InputQty As String
+    Public Property InputQty() As String
+        Get
+            Return c_InputQty
+        End Get
+        Set(ByVal value As String)
+            c_InputQty = value
+        End Set
+    End Property
+    Private c_QrCode As String
+    Public Property QrCode() As String
+        Get
+            Return c_QrCode
+        End Get
+        Set(ByVal value As String)
+            c_QrCode = value
+        End Set
+    End Property
     Private Sub frmInputQrCode_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Load()
         'Me.Location = New System.Drawing.Point(150, 300)
@@ -275,7 +310,7 @@ Public Class frmInputQrCode
                         'End If
 
 
-                        WorkSlipData = TbQRInput.Text
+                        QrCode = TbQRInput.Text
                         Dim trans As TransactionData = New TransactionData(TbQRInput.Text)
                         'If My.Computer.Network.IsAvailable Then
                         '    If My.Computer.Network.Ping(_ipDbxUser) Then                                                        ' Save QR Code to transsaction table                                On Error GoTo ErrHander
@@ -318,9 +353,9 @@ FailTDC:
 
                     If TbQRInput.Text.Length = 6 And IsNumeric(TbQRInput.Text.Remove(0, 1)) Then
 
-                        Dim ETC2 As String = Trim(WorkSlipData.Substring(232, 20))
+                        Dim ETC2 As String = Trim(QrCode.Substring(232, 20))
                         Dim QROpNo As String = TbQRInput.Text
-                        If My.Settings.AuthenticationUser = True Then
+                        If My.Settings.AuthenticationUser = False Then
                             If PermiisionCheck(ETC2, QROpNo, My.Settings.MC_MAPGroup, My.Settings.GL_MAPGroup, "MAP", Form1.lbMC.Text) = False Then
                                 MsgBox(ErrMesETG)
                                 TbQRInput.Text = ""
@@ -330,7 +365,7 @@ FailTDC:
                         End If
 
                         'OP No. input OK ---------------------------------------------------------------------------------------
-                        opNo = TbQRInput.Text
+                        OpNo = TbQRInput.Text
                         LbOPNo.Text = "OP No.    :  " & TbQRInput.Text
                         TbQRInput.Text = ""
                         lbCaption.Text = "Input  Qty"
@@ -464,39 +499,39 @@ FailTDC:
             Exit Sub
         End If
 
-        'WCF Service
-        If Not SetupLot(lotNo, "MAP-" & Form1.lbMC.Text, opNo, "MAP", "0250") Then
-            TbQRInput.Text = ""
-            lbCaption.Text = "Input QR Code"
-            tbxInput.Enabled = False
-            KYB.Close()
-            Load()
-            Return
-        End If
+        ''WCF Service
+        'If Not SetupLot(lotNo, "MAP-" & Form1.lbMC.Text, opNo, "MAP", "0250") Then
+        '    TbQRInput.Text = ""
+        '    lbCaption.Text = "Input QR Code"
+        '    tbxInput.Enabled = False
+        '    KYB.Close()
+        '    Load()
+        '    Return
+        'End If
 
 
-        Dim trans As TransactionData = New TransactionData(TbQRInput.Text)
-        If My.Computer.Network.IsAvailable Then
-            If My.Computer.Network.Ping(_ipDbxUser) Then                                                        ' Save QR Code to transsaction table                                On Error GoTo ErrHander
-                trans.Save()
+        'Dim trans As TransactionData = New TransactionData(TbQRInput.Text)
+        'If My.Computer.Network.IsAvailable Then
+        '    If My.Computer.Network.Ping(_ipDbxUser) Then                                                        ' Save QR Code to transsaction table                                On Error GoTo ErrHander
+        '        trans.Save()
 
-            End If
-        Else
+        '    End If
+        'Else
 
-        End If
-        'Save data to MAPLMdatatable
-        Dim dr As DBxDataSet.MAPLMDataRow = Form1.DBxDataSet.MAPLMData.NewRow
-        dr.MCNo = ProcessHeader & Form1.lbMC.Text
-        dr.LotNo = lotNo
-        dr.InputQty = inputQty
-        dr.OPNo = opNo
-        dr.LotStartTime = Format(Now, "yyyy/MM/dd HH:mm:ss")
-        Form1.DBxDataSet.MAPLMData.Rows.InsertAt(dr, 0)
+        'End If
+        ''Save data to MAPLMdatatable
+        'Dim dr As DBxDataSet.MAPLMDataRow = Form1.DBxDataSet.MAPLMData.NewRow
+        'dr.MCNo = ProcessHeader & Form1.lbMC.Text
+        'dr.LotNo = lotNo
+        'dr.InputQty = inputQty
+        'dr.OPNo = opNo
+        'dr.LotStartTime = Format(Now, "yyyy/MM/dd HH:mm:ss")
+        'Form1.DBxDataSet.MAPLMData.Rows.InsertAt(dr, 0)
 
-        With Form1
-            .MAPLMDataBindingSource.Position = 0          'Update new data 
-            .lbGood.Enabled = False
-        End With
+        'With Form1
+        '    .MAPLMDataBindingSource.Position = 0          'Update new data 
+        '    .lbGood.Enabled = False
+        'End With
         tbxInput.Text = ""
         tbxInput.Enabled = False
 
