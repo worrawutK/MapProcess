@@ -1,7 +1,7 @@
 ﻿Imports System.IO
 Imports System.Runtime.InteropServices
 Imports System.Text
-Imports Rohm.Apcs.Tdc
+'Imports Rohm.Apcs.Tdc
 Imports Rohm.Ems
 
 Public Class Form1
@@ -16,11 +16,6 @@ Public Class Form1
         g.DrawString(str, F1, sbrush, lbMinimize.Left, lbMinimize.Bottom + 15)
     End Sub
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-
-
-
-        m_TdcService = TdcService.GetInstance()
-        m_TdcService.ConnectionString = My.Settings.APCSDBConnectionString
 
         '!! Check Comment at [On Error Resume Next] of [ Protected Overrides Sub WndProc] for test this Sub afer new edit
 
@@ -654,7 +649,8 @@ Public Class Form1
         'SendPostMessage("@LOTEND|" & ProcessHeader & lbMC.Text & "|" & lbLotNo.Text & "," & _
         ' lbEnd.Text & "," & lbGood.Text & "," & CInt(lbInput.Text) - CInt(lbGood.Text) & ",01") 'Lot End       'Normal
         'CDate(lbEnd.Text),Format(Now, "yyyy-MM-dd HH:mm:ss")
-        Dim resEnd As TdcResponse = m_TdcService.LotEnd(ProcessHeader & lbMC.Text, lbLotNo.Text, CDate(lbEnd.Text), CInt(lbGood.Text), CInt(lbInput.Text) - CInt(lbGood.Text), EndModeType.Normal, lbOp.Text)
+        'Dim resEnd As TdcResponse = m_TdcService.LotEnd(ProcessHeader & lbMC.Text, lbLotNo.Text, CDate(lbEnd.Text), CInt(lbGood.Text), CInt(lbInput.Text) - CInt(lbGood.Text), EndModeType.Normal, lbOp.Text)
+        EndLot(lbLotNo.Text, ProcessHeader & lbMC.Text, lbOp.Text, CInt(lbGood.Text), CInt(lbInput.Text) - CInt(lbGood.Text))
         'EMS end
         Try
             m_EmsClient.SetOutput(lbMC.Text, CInt(lbGood.Text), CInt(lbInput.Text) - CInt(lbGood.Text))
@@ -1077,8 +1073,11 @@ fin:
             QRInput.ShowDialog()
             If Not lbLotNo.Text = "" Then
                 '  SendPostMessage("@LOTREQ" & "|" & ProcessHeader & lbMC.Text & "|" & lbLotNo.Text & "," & lbOp.Text & ",00")   'Normal
-
-                Dim resSet As TdcResponse = m_TdcService.LotSet(ProcessHeader & lbMC.Text, lbLotNo.Text, CDate(lbStart.Text), lbOp.Text, RunModeType.Normal)
+                If Not SetupLot(lbLotNo.Text, ProcessHeader & lbMC.Text, lbOp.Text, "MAP", "0250") Then
+                    Return
+                End If
+                StartLot(lbLotNo.Text, ProcessHeader & lbMC.Text, lbOp.Text)
+                'Dim resSet As TdcResponse = m_TdcService.LotSet(ProcessHeader & lbMC.Text, lbLotNo.Text, CDate(lbStart.Text), lbOp.Text, RunModeType.Normal)
 
                 'EMS monitor
                 Try

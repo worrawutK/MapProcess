@@ -308,11 +308,11 @@ Partial Class Form1
         '
         Me.lbRevision.AutoSize = True
         Me.lbRevision.BackColor = System.Drawing.Color.White
-        Me.lbRevision.Location = New System.Drawing.Point(771, 708)
+        Me.lbRevision.Location = New System.Drawing.Point(735, 708)
         Me.lbRevision.Name = "lbRevision"
-        Me.lbRevision.Size = New System.Drawing.Size(214, 13)
+        Me.lbRevision.Size = New System.Drawing.Size(260, 13)
         Me.lbRevision.TabIndex = 108
-        Me.lbRevision.Text = "SelCon MAP Laser Mark  Software Ver 1.03"
+        Me.lbRevision.Text = "SelCon MAP Laser Mark  Software Ver 1.10 Apcs Pro"
         '
         'lbMspec
         '
@@ -724,7 +724,7 @@ Partial Class Form1
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AndonToolStripMenuItem, Me.APCSStaffToolStripMenuItem, Me.BMRequestToolStripMenuItem, Me.PMRepairToolStripMenuItem, Me.WorkRecordToolStripMenuItem, Me.HelpToolStripMenuItem, Me.SettingToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(34, 107)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(739, 33)
+        Me.MenuStrip1.Size = New System.Drawing.Size(734, 33)
         Me.MenuStrip1.TabIndex = 250
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -752,28 +752,28 @@ Partial Class Form1
         '
         Me.APCSStaffToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.APCSStaffToolStripMenuItem.Name = "APCSStaffToolStripMenuItem"
-        Me.APCSStaffToolStripMenuItem.Size = New System.Drawing.Size(115, 29)
+        Me.APCSStaffToolStripMenuItem.Size = New System.Drawing.Size(114, 29)
         Me.APCSStaffToolStripMenuItem.Text = "APCS_Staff"
         '
         'BMRequestToolStripMenuItem
         '
         Me.BMRequestToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BMRequestToolStripMenuItem.Name = "BMRequestToolStripMenuItem"
-        Me.BMRequestToolStripMenuItem.Size = New System.Drawing.Size(124, 29)
+        Me.BMRequestToolStripMenuItem.Size = New System.Drawing.Size(123, 29)
         Me.BMRequestToolStripMenuItem.Text = "BM Request"
         '
         'PMRepairToolStripMenuItem
         '
         Me.PMRepairToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.PMRepairToolStripMenuItem.Name = "PMRepairToolStripMenuItem"
-        Me.PMRepairToolStripMenuItem.Size = New System.Drawing.Size(138, 29)
+        Me.PMRepairToolStripMenuItem.Size = New System.Drawing.Size(137, 29)
         Me.PMRepairToolStripMenuItem.Text = "PM Repairing"
         '
         'WorkRecordToolStripMenuItem
         '
         Me.WorkRecordToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.WorkRecordToolStripMenuItem.Name = "WorkRecordToolStripMenuItem"
-        Me.WorkRecordToolStripMenuItem.Size = New System.Drawing.Size(128, 29)
+        Me.WorkRecordToolStripMenuItem.Size = New System.Drawing.Size(126, 29)
         Me.WorkRecordToolStripMenuItem.Text = "WorkRecord"
         '
         'HelpToolStripMenuItem

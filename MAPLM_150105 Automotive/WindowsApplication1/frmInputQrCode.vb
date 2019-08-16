@@ -1,7 +1,7 @@
 ﻿'Imports Rohm
-Imports Rohm.Apcs.Tdc
+'Imports Rohm.Apcs.Tdc
 Imports Rohm
-Imports MAP_LM.RohmService
+'Imports MAP_LM.RohmService
 
 
 Public Class frmInputQrCode
@@ -15,7 +15,32 @@ Public Class frmInputQrCode
 
 
     Private Sub frmInputQrCode_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        Load()
+        'Me.Location = New System.Drawing.Point(150, 300)
+        'LbPKG.Text = "Package "
+        'LbDevice.Text = "Device "
+        'LbLotNo.Text = "Lot No. "
 
+        'If lbCaption.Text = "Input QR Code" Then
+        '    TbQRInput.Text = ""
+        '    TbQRInput.Select()
+        '    ProgressBar1.Maximum = 2528
+        'ElseIf lbCaption.Text = "Input GL No." Then                                                                                                                                                           'Case Input Edit Or Magzine Edit
+        '    TbQRInput.Text = ""
+        '    TbQRInput.Select()
+
+        'Else
+        '    'tbxInput.Enabled = True
+        '    'tbxInput.Select()
+
+        'End If
+        ''If Form1.lbLotNo.Text = "" Then
+        ''    lbMag.Enabled = False
+        ''End If
+        'TbQRInput.Location = New Point(250, Me.ProgressBar1.Top)
+        'btnConfirm.Enabled = False
+    End Sub
+    Private Shadows Sub Load()
         Me.Location = New System.Drawing.Point(150, 300)
         LbPKG.Text = "Package "
         LbDevice.Text = "Device "
@@ -40,7 +65,6 @@ Public Class frmInputQrCode
         TbQRInput.Location = New Point(250, Me.ProgressBar1.Top)
         btnConfirm.Enabled = False
     End Sub
-
     Private Sub Timer1_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer1.Tick
         If ProgressBar1.Maximum > TbQRInput.Text.Length Then
             ProgressBar1.Value = TbQRInput.Text.Length
@@ -197,32 +221,35 @@ Public Class frmInputQrCode
     ' Data input recieve after Cr key Check Case , "Input QR , Input OP No , Input  Qty  , -------------------------------
     ' Input Edit
     '
-    Function LotRequestTDC(ByVal LotNo As String, ByVal rm As RunModeType, ByVal MCNo As String) As Boolean
-        ' Dim mc As String = "MAP-" & MCNo
-        Dim strMess As String = ""
-        Dim res As TdcLotRequestResponse = m_TdcService.LotRequest(MCNo, LotNo, rm)
+    'Function LotRequestTDC(ByVal LotNo As String, ByVal rm As RunModeType, ByVal MCNo As String) As Boolean
+    '    ' Dim mc As String = "MAP-" & MCNo
+    '    'SetupLot(LotNo, MCNo, lbOp.Text, "MAP", "0250")
 
-        If res.HasError Then
+    '    Dim strMess As String = ""
 
-            Using svError As ApcsWebServiceSoapClient = New ApcsWebServiceSoapClient
-                If svError.LotRptIgnoreError(MCNo, res.ErrorCode) = False Then
-                    Dim li As LotInfo = Nothing
+    '    Dim res As TdcLotRequestResponse = m_TdcService.LotRequest(MCNo, LotNo, rm)
 
-                    li = m_TdcService.GetLotInfo(LotNo, MCNo)
-                    Using dlg As TdcAlarmMessageForm = New TdcAlarmMessageForm(res.ErrorCode, res.ErrorMessage, LotNo, li)
-                        dlg.TopMost = True
-                        dlg.ShowDialog()
-                        Return False
-                    End Using
-                End If
-            End Using
-            strMess = res.ErrorCode & " : " & res.ErrorMessage
-            Return True
-        Else
-            strMess = "00 : Run Normal"
-            Return True
-        End If
-    End Function
+    '    If res.HasError Then
+
+    '        Using svError As ApcsWebServiceSoapClient = New ApcsWebServiceSoapClient
+    '            If svError.LotRptIgnoreError(MCNo, res.ErrorCode) = False Then
+    '                Dim li As LotInfo = Nothing
+
+    '                li = m_TdcService.GetLotInfo(LotNo, MCNo)
+    '                Using dlg As TdcAlarmMessageForm = New TdcAlarmMessageForm(res.ErrorCode, res.ErrorMessage, LotNo, li)
+    '                    dlg.TopMost = True
+    '                    dlg.ShowDialog()
+    '                    Return False
+    '                End Using
+    '            End If
+    '        End Using
+    '        strMess = res.ErrorCode & " : " & res.ErrorMessage
+    '        Return True
+    '    Else
+    '        strMess = "00 : Run Normal"
+    '        Return True
+    '    End If
+    'End Function
 
 
     Private Sub TbQRInput_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles TbQRInput.KeyPress, tbxInput.KeyPress
@@ -239,26 +266,25 @@ Public Class frmInputQrCode
                         'TDC -------------------------------------------------------------------------------
                         '   
 
-                        If My.Settings.RunOffline = False Then
-                            If LotRequestTDC(TbQRInput.Text.Substring(30, 10), RunModeType.Normal, "MAP-" & Form1.lbMC.Text) = False Then
-                                'TbQRInput.Text = ""
-                                ' TbQRInput.Select()
-                                GoTo FailTDC
-                            End If
-                        End If
+                        'If My.Settings.RunOffline = False Then
+                        '    If LotRequestTDC(TbQRInput.Text.Substring(30, 10), RunModeType.Normal, "MAP-" & Form1.lbMC.Text) = False Then
+                        '        'TbQRInput.Text = ""
+                        '        ' TbQRInput.Select()
+                        '        GoTo FailTDC
+                        '    End If
+                        'End If
 
 
                         WorkSlipData = TbQRInput.Text
                         Dim trans As TransactionData = New TransactionData(TbQRInput.Text)
-                        If My.Computer.Network.IsAvailable Then
-                            If My.Computer.Network.Ping(_ipDbxUser) Then                                                        ' Save QR Code to transsaction table                                On Error GoTo ErrHander
-                                trans.Save()
+                        'If My.Computer.Network.IsAvailable Then
+                        '    If My.Computer.Network.Ping(_ipDbxUser) Then                                                        ' Save QR Code to transsaction table                                On Error GoTo ErrHander
+                        '        trans.Save()
 
-ErrHander:
-                            End If
-                        Else
+                        '    End If
+                        'Else
 
-                        End If
+                        'End If
                         '
                         'QR OK Data Save -----------------------------------------------------------------------------------
                         '
@@ -337,6 +363,10 @@ FailTDC:
                         MsgBox("กรุณาใส่ค่าตัวเลข", 48, "ขั้นตอน input data")
                         tbxInput.Text = ""
                     End If
+
+
+
+
                     'Save data to MAPLMdatatable
                     Dim dr As DBxDataSet.MAPLMDataRow = Form1.DBxDataSet.MAPLMData.NewRow
                     dr.MCNo = ProcessHeader & Form1.lbMC.Text
@@ -432,6 +462,27 @@ FailTDC:
             MsgBox("กรุณาใส่ค่าตัวเลข", 48, "ขั้นตอน input data")
             tbxInput.Text = ""
             Exit Sub
+        End If
+
+        'WCF Service
+        If Not SetupLot(lotNo, "MAP-" & Form1.lbMC.Text, opNo, "MAP", "0250") Then
+            TbQRInput.Text = ""
+            lbCaption.Text = "Input QR Code"
+            tbxInput.Enabled = False
+            KYB.Close()
+            Load()
+            Return
+        End If
+
+
+        Dim trans As TransactionData = New TransactionData(TbQRInput.Text)
+        If My.Computer.Network.IsAvailable Then
+            If My.Computer.Network.Ping(_ipDbxUser) Then                                                        ' Save QR Code to transsaction table                                On Error GoTo ErrHander
+                trans.Save()
+
+            End If
+        Else
+
         End If
         'Save data to MAPLMdatatable
         Dim dr As DBxDataSet.MAPLMDataRow = Form1.DBxDataSet.MAPLMData.NewRow

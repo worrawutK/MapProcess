@@ -61,13 +61,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\AuthenticationUser.dll</HintPath>
     </Reference>
+    <Reference Include="MessageDialog">
+      <HintPath>\\172.16.0.115\_PublicShare\Apcs Pro\MessageDialog.dll</HintPath>
+    </Reference>
     <Reference Include="Rohm, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\Rohm.dll</HintPath>
-    </Reference>
-    <Reference Include="Rohm.Apcs.Tdc, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\Rohm.Apcs.Tdc.dll</HintPath>
     </Reference>
     <Reference Include="Rohm.Ems">
       <HintPath>..\..\MAPLabel_150612\WindowsApplication1\bin\Debug\Rohm.Ems.dll</HintPath>
@@ -166,11 +165,6 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Service References\iLibraryService\Reference.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Service References\RohmService\Reference.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -323,29 +317,12 @@
     <None Include="Service References\iLibraryService\ServiceiLibrary2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\RohmService\apcswebservice.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\iLibraryService\" />
-    <WCFMetadataStorage Include="Service References\RohmService\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\RohmService\apcswebservice.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\RohmService\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\RohmService\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\RohmService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.vb</LastGenOutput>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\iLibraryService\ServiceiLibrary.disco" />
