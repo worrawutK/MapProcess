@@ -732,11 +732,11 @@ Partial Class Form1
         '
         Me.lbRevision.AutoSize = True
         Me.lbRevision.BackColor = System.Drawing.Color.White
-        Me.lbRevision.Location = New System.Drawing.Point(822, 745)
+        Me.lbRevision.Location = New System.Drawing.Point(753, 745)
         Me.lbRevision.Name = "lbRevision"
-        Me.lbRevision.Size = New System.Drawing.Size(186, 13)
+        Me.lbRevision.Size = New System.Drawing.Size(235, 13)
         Me.lbRevision.TabIndex = 108
-        Me.lbRevision.Text = "SelCon MAP Dicer  Software Ver 1.06"
+        Me.lbRevision.Text = "SelCon MAP Dicer  Software Ver 1.10 Apcs Pro."
         '
         'lbAndonJudge
         '
