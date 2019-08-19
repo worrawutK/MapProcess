@@ -1478,6 +1478,7 @@ Public Class Form1
         tbxRemark.Text = ""
 
         lbMC.Text = sender.text            'Set Click MC No.
+        MachineOnline(ProcessHeader & lbMC.Text, iLibraryService.MachineOnline.Online)
         '=== Query 
         'EMS
         Try
@@ -2025,6 +2026,10 @@ inputQr:
         Me.WindowState = FormWindowState.Minimized
     End Sub
     Private Sub btnClose_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnClose.Click
+        If lbMC.Text <> "lbMC" Then
+            MachineOnline(ProcessHeader & lbMC.Text, iLibraryService.MachineOnline.Offline)
+        End If
+
         Me.Close()
     End Sub
 
