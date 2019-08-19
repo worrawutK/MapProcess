@@ -87,8 +87,31 @@ Module Module1
         End Try
     End Function
 
-    Friend Sub MachineOnline()
-
-    End Sub
+    Friend Function MachineOnline(mcNo As String, state As MachineOnline) As Boolean
+        Try
+            Dim result = m_iLibraryService.MachineOnlineState(mcNo, state)
+            If Not result.IsPass Then
+                MessageBoxDialog.ShowMessageDialog(result.FunctionName, result.Cause, result.Type.ToString())
+                Return False
+            End If
+            Return True
+        Catch ex As Exception
+            MessageBoxDialog.ShowMessageDialog(MethodInfo.GetCurrentMethod().ToString(), ex.Message.ToString(), "Exception")
+            Return False
+        End Try
+    End Function
+    Friend Function CancelLot(lotNo As String, mcNo As String, opNo As String) As Boolean
+        Try
+            Dim result = m_iLibraryService.Reinput(lotNo, mcNo, opNo, 0, 0, EndMode.AbnormalEndReset)
+            If Not result.IsPass Then
+                MessageBoxDialog.ShowMessageDialog(result.FunctionName, result.Cause, result.Type.ToString())
+                Return False
+            End If
+            Return True
+        Catch ex As Exception
+            MessageBoxDialog.ShowMessageDialog(MethodInfo.GetCurrentMethod().ToString(), ex.Message.ToString(), "Exception")
+            Return False
+        End Try
+    End Function
 
 End Module
