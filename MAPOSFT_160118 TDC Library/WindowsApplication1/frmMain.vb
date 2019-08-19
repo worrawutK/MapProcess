@@ -1283,7 +1283,7 @@ Public Class frmMain
         tbxRemark.Text = ""
         cbTestBoardNo.Text = ""
         lbMC.Text = sender.text            'Set Click MC No.
-
+        MachineOnline("MAP-" & lbMC.Text, iLibraryService.MachineOnline.Online)
         'EMS
         Try
             If RegisterEMS = False Then
@@ -2904,6 +2904,9 @@ nextstep:
         Me.WindowState = FormWindowState.Minimized
     End Sub
     Private Sub btnClose_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnClose.Click
+        If lbMC.Text <> "lbMC" Then
+            MachineOnline("MAP-" & lbMC.Text, iLibraryService.MachineOnline.Offline)
+        End If
         Me.Close()
     End Sub
 

@@ -154,6 +154,19 @@ Module Module1
         End Try
 
     End Function
+    Friend Function MachineOnline(mcNo As String, state As MachineOnline) As Boolean
+        Try
+            Dim result = m_iLibraryService.MachineOnlineState(mcNo, state)
+            If Not result.IsPass Then
+                MessageBoxDialog.ShowMessageDialog(result.FunctionName, result.Cause, result.Type.ToString())
+                Return False
+            End If
+            Return True
+        Catch ex As Exception
+            MessageBoxDialog.ShowMessageDialog(MethodInfo.GetCurrentMethod().ToString(), ex.Message.ToString(), "Exception")
+            Return False
+        End Try
+    End Function
     Public Sub SaveLog(functionName As String, ByVal txt As String)
         Dim file_Log As System.IO.StreamWriter = My.Computer.FileSystem.OpenTextFileWriter(My.Application.Info.DirectoryPath & "\Log.txt", True)
 
