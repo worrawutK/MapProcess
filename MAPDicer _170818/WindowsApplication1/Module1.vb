@@ -50,8 +50,10 @@ Module Module1
                     MessageBoxDialog.ShowMessageDialog(result.FunctionName, result.Cause, result.Type.ToString())
             End Select
             m_Recipe = result.Recipe
+            SaveLog(MethodInfo.GetCurrentMethod().ToString(), result.Type.ToString() & ">> Pass")
             Return True
         Catch ex As Exception
+            SaveLog(MethodInfo.GetCurrentMethod().ToString(), ex.Message.ToString())
             MessageBoxDialog.ShowMessageDialog(MethodInfo.GetCurrentMethod().ToString(), ex.Message.ToString(), "Exception")
             Return False
         End Try
@@ -65,8 +67,10 @@ Module Module1
                 MessageBoxDialog.ShowMessageDialog(result.FunctionName, result.Cause, result.Type.ToString())
                 Return False
             End If
+            SaveLog(MethodInfo.GetCurrentMethod().ToString(), result.Type.ToString() & ">> Pass")
             Return True
         Catch ex As Exception
+            SaveLog(MethodInfo.GetCurrentMethod().ToString(), ex.Message.ToString())
             MessageBoxDialog.ShowMessageDialog(MethodInfo.GetCurrentMethod().ToString(), ex.Message.ToString(), "Exception")
             Return False
         End Try
@@ -80,8 +84,10 @@ Module Module1
                 MessageBoxDialog.ShowMessageDialog(result.FunctionName, result.Cause, result.Type.ToString())
                 Return False
             End If
+            SaveLog(MethodInfo.GetCurrentMethod().ToString(), result.Type.ToString() & ">> Pass")
             Return True
         Catch ex As Exception
+            SaveLog(MethodInfo.GetCurrentMethod().ToString(), ex.Message.ToString())
             MessageBoxDialog.ShowMessageDialog(MethodInfo.GetCurrentMethod().ToString(), ex.Message.ToString(), "Exception")
             Return False
         End Try
@@ -93,8 +99,10 @@ Module Module1
                 MessageBoxDialog.ShowMessageDialog(result.FunctionName, result.Cause, result.Type.ToString())
                 Return False
             End If
+            SaveLog(MethodInfo.GetCurrentMethod().ToString(), result.Type.ToString() & ">> Pass")
             Return True
         Catch ex As Exception
+            SaveLog(MethodInfo.GetCurrentMethod().ToString(), ex.Message.ToString())
             MessageBoxDialog.ShowMessageDialog(MethodInfo.GetCurrentMethod().ToString(), ex.Message.ToString(), "Exception")
             Return False
         End Try
@@ -106,10 +114,18 @@ Module Module1
                 MessageBoxDialog.ShowMessageDialog(result.FunctionName, result.Cause, result.Type.ToString())
                 Return False
             End If
+            SaveLog(MethodInfo.GetCurrentMethod().ToString(), result.Type.ToString() & ">> Pass")
             Return True
         Catch ex As Exception
+            SaveLog(MethodInfo.GetCurrentMethod().ToString(), ex.Message.ToString())
             MessageBoxDialog.ShowMessageDialog(MethodInfo.GetCurrentMethod().ToString(), ex.Message.ToString(), "Exception")
             Return False
         End Try
     End Function
+    Public Sub SaveLog(functionName As String, ByVal txt As String)
+        Dim file_Log As System.IO.StreamWriter = My.Computer.FileSystem.OpenTextFileWriter(My.Application.Info.DirectoryPath & "\Log.txt", True)
+
+        file_Log.WriteLine(Format(Now, "yyyy-MM-dd HH:mm:ss") & ">> " & functionName & " >> " & txt)
+        file_Log.Close()
+    End Sub
 End Module
