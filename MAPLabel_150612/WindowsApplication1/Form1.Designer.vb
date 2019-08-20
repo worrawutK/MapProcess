@@ -443,11 +443,11 @@ Partial Class Form1
         Me.lbRevision.AutoSize = True
         Me.lbRevision.BackColor = System.Drawing.Color.Transparent
         Me.lbRevision.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.lbRevision.Location = New System.Drawing.Point(1555, 1040)
+        Me.lbRevision.Location = New System.Drawing.Point(1480, 1040)
         Me.lbRevision.Name = "lbRevision"
-        Me.lbRevision.Size = New System.Drawing.Size(335, 20)
+        Me.lbRevision.Size = New System.Drawing.Size(407, 20)
         Me.lbRevision.TabIndex = 108
-        Me.lbRevision.Text = "SelCon MAP Labeler  Mark  Software Ver 2.15"
+        Me.lbRevision.Text = "SelCon MAP Labeler  Mark  Software Ver 2.20 Apcs Pro."
         '
         'lbAndonJudge
         '
