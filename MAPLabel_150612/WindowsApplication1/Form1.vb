@@ -3,7 +3,7 @@
 Imports System.IO
 Imports System.Runtime.InteropServices
 Imports System.Text
-Imports Rohm.Apcs.Tdc
+'Imports Rohm.Apcs.Tdc
 
 Imports System.IO.Ports
 'Imports Rohm.Database

@@ -1,5 +1,5 @@
-﻿Imports Rohm.Apcs.Tdc
-Imports MAP_Label.RohmService
+﻿'Imports Rohm.Apcs.Tdc
+'Imports MAP_Label.RohmService
 Imports System.IO
 
 Public Class frmInputQrCode
@@ -550,7 +550,7 @@ FailTDC:
             tbxInput.Text = ""
             Exit Sub
         End If
-        '''Save data to MAPALDatatable
+        ''Save data to MAPALDatatable
         'Form1.DBxDataSet.MAPALData.Clear()
         'Dim dr As DBxDataSet.MAPALDataRow = Form1.DBxDataSet.MAPALData.NewRow
         'dr.MCNo = ProcessHeader & Form1.lbMC.Text

@@ -215,11 +215,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Service References\RohmService\Reference.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="Setting.vb" />
     <Compile Include="SettingComport.Designer.vb">
       <DependentUpon>SettingComport.vb</DependentUpon>
@@ -401,29 +396,12 @@
     <None Include="Service References\iLibraryService\ServiceiLibrary2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\RohmService\apcswebservice.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\iLibraryService\" />
-    <WCFMetadataStorage Include="Service References\RohmService\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\RohmService\apcswebservice.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\RohmService\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\RohmService\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\RohmService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.vb</LastGenOutput>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Logo_ROHM.svg.png" />
