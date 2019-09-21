@@ -374,7 +374,7 @@ Partial Class frmMain
         Me.lbRevision.Name = "lbRevision"
         Me.lbRevision.Size = New System.Drawing.Size(191, 13)
         Me.lbRevision.TabIndex = 108
-        Me.lbRevision.Text = "SelCon MAP OS/FT Software Ver 2.08"
+        Me.lbRevision.Text = "SelCon MAP OS/FT Software Ver 2.09"
         '
         'lbAndonJudge
         '

@@ -41,25 +41,49 @@ Module Module1
         Return TarObj
     End Function
     Friend m_Recipe As String
-    Friend Function SetupLot(lotNo As String, mcNo As String, opNo As String, process As String, layerNo As String, mcProgram As String, ByRef cmd As String) As Boolean
+    Friend Function SetupLot(lotNo As String, mcNo As String, opNo As String, process As String, layerNo As String, strCommand As String(), ByRef cmd As String) As Boolean
         Try
 
+            Dim mcProgram As String = strCommand(8)
+            Dim device As String = strCommand(6)
             'mcProgram AUTO(1),AUTO(2), OS ,OSFT
-            Dim flow As String = GetFlowLot(lotNo).Replace(" ", "").ToUpper()
-            SaveLog(MethodInfo.GetCurrentMethod().ToString(), "MachineProgram:" & mcProgram & ",LotFlow:" & flow)
+            'Check flow lot and mcProgram
+            Dim flowLot As String = GetFlowLot(lotNo).Replace(" ", "").ToUpper()
+            'Dim ftSetup As FTSetupData = GetFTSetup(mcNo)
+            'SaveLog(MethodInfo.GetCurrentMethod().ToString(), "MachineProgram:" & mcProgram & ",LotFlow:" & flowLot & ":" & device & ",FTSetup:" & ftSetup.SetupFlow & ":" & ftSetup.Device)
             Select Case mcProgram.Replace(" ", "").ToUpper()
-                Case "OSFT", "AUTO1"
+                Case "OSFT"
+                    mcProgram = "OS+AUTO(1)"
+                Case "AUTO1"
                     mcProgram = "AUTO(1)"
                 Case "AUTO2"
                     mcProgram = "AUTO(2)"
 
             End Select
-            If mcProgram <> flow Then
-                cmd = "Error," & "Program not match (Machine:" & mcProgram & ",Lot:" & flow & "," & mcNo & "," & lotNo & ","
-                SaveLog(MethodInfo.GetCurrentMethod().ToString(), "CheckProgram" & ">> Not Pass" & "Program not match (Machine:" & mcProgram & ",Lot:" & flow & "," & mcNo & "," & lotNo)
-                MessageBoxDialog.ShowMessageDialog("SetupLot(CheckProgram)", " Error," & "Program not match " & vbCrLf & "(Machine:" & mcProgram & ",Lot:" & flow & "," & vbCrLf & mcNo & "," & lotNo, "")
+            If mcProgram <> flowLot Then
+                cmd = "Error," & "Program not match (Machine:" & strCommand(8) & ",Lot:" & flowLot & "," & mcNo & "," & lotNo & ","
+                SaveLog(MethodInfo.GetCurrentMethod().ToString(), "CheckProgram" & ">> Not Pass" & "Program not match (Machine:" & mcProgram & ",Lot:" & flowLot & "," & mcNo & "," & lotNo)
+                MessageBoxDialog.ShowMessageDialog("SetupLot(CheckProgram)", " Error," & "Program not match " & vbCrLf & "(Machine:" & mcProgram & ",Lot:" & flowLot & "," & vbCrLf & mcNo & "," & lotNo, "")
                 Return False
             End If
+
+
+            'Check FT Setup
+            'Dim ftFlow As String = ""
+            'Select Case ftSetup.SetupFlow.Replace(" ", "").ToUpper()
+            '    Case "OSFT", "AUTO1"
+            '        ftFlow = "AUTO(1)"
+            '    Case "AUTO2"
+            '        ftFlow = "AUTO(2)"
+
+            'End Select
+            'If ftSetup.Device <> device OrElse ftFlow <> flowLot Then
+            '    cmd = "Error," & "Flow not match (MachineSetup:" & ftSetup.SetupFlow & "," & ftSetup.Device & ",Lot:" & flowLot & "," & mcNo & "," & lotNo & ","
+            '    SaveLog(MethodInfo.GetCurrentMethod().ToString(), "CheckFTSetupFlow" & ">> Not Pass" & "Flow not match (Machine:" & ftSetup.SetupFlow & "," & ftSetup.Device & ",Lot:" & flowLot & "," & mcNo & "," & lotNo)
+            '    MessageBoxDialog.ShowMessageDialog("SetupLot(CheckFTSetupFlow)", " Error," & "Flow not match " & vbCrLf & "(Machine:" & ftSetup.SetupFlow & "," & ftSetup.Device & ",Lot:" & flowLot & "," & vbCrLf & mcNo & "," & lotNo, "")
+            '    Return False
+            'End If
+
             Dim result = m_iLibraryService.SetupLot(lotNo, mcNo, opNo, process, layerNo)
             Select Case Not result.IsPass
                 Case SetupLotResult.Status.NotPass
@@ -105,6 +129,32 @@ Module Module1
             Return row("Process").ToString()
         Next
         Return ""
+    End Function
+    Private Function GetFTSetup(mcNo As String) As FTSetupData
+        Dim data As DataTable = New DataTable()
+        Using cmd As New SqlClient.SqlCommand
+            cmd.Connection = New SqlClient.SqlConnection("Data Source=172.16.0.102;Initial Catalog=DBx;Persist Security Info=True;User ID=system;Password=p@$$w0rd")
+            cmd.CommandType = CommandType.Text
+            cmd.CommandText = "SELECT [MCNo],[LotNo],[PackageName],[DeviceName],[ProgramName],[TestFlow],[SetupConfirmDate]" &
+                              " FROM [DBx].[dbo].[FTSetupReport]" &
+                              " where MCNo = @mcNo"
+            cmd.Parameters.Add("@mcNo", SqlDbType.VarChar).Value = mcNo
+            cmd.Connection.Open()
+            Using rd = cmd.ExecuteReader()
+                If rd.HasRows Then
+                    data.Load(rd)
+                End If
+            End Using
+        End Using
+        For Each row As DataRow In data.Rows
+            Dim ftSetup As FTSetupData = New FTSetupData()
+            ftSetup.Device = row("DeviceName").ToString()
+            ftSetup.Package = row("PackageName").ToString()
+            ftSetup.McNo = mcNo
+            ftSetup.SetupFlow = row("TestFlow").ToString()
+            Return ftSetup
+        Next
+        Return Nothing
     End Function
     Friend Function StartLot(lotNo As String, mcNo As String, opNo As String, recipe As String) As Boolean
         Try

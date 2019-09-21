@@ -42,6 +42,7 @@ Module Module1
             Dim result = m_iLibraryService.SetupLot(lotNo, mcNo, opNo, processName, layerNo)
             Select Case result.IsPass
                 Case SetupLotResult.Status.NotPass
+                    SaveLog(MethodInfo.GetCurrentMethod().ToString(), result.Type.ToString() & ">> Not Pass," & result.FunctionName & "," & result.Cause & "," & result.Type.ToString())
                     MessageBoxDialog.ShowMessageDialog(result.FunctionName, result.Cause, result.Type.ToString())
                     Return False
                 Case SetupLotResult.Status.Pass
@@ -64,6 +65,7 @@ Module Module1
         Try
             Dim result = m_iLibraryService.StartLot(lotNo, mcNo, opNo, m_Recipe)
             If Not result.IsPass Then
+                SaveLog(MethodInfo.GetCurrentMethod().ToString(), result.Type.ToString() & ">> Not Pass," & result.FunctionName & "," & result.Cause & "," & result.Type.ToString())
                 MessageBoxDialog.ShowMessageDialog(result.FunctionName, result.Cause, result.Type.ToString())
                 Return False
             End If
@@ -81,6 +83,7 @@ Module Module1
         Try
             Dim result = m_iLibraryService.EndLot(lotNo, mcNo, opNo, good, ng)
             If Not result.IsPass Then
+                SaveLog(MethodInfo.GetCurrentMethod().ToString(), result.Type.ToString() & ">> Not Pass," & result.FunctionName & "," & result.Cause & "," & result.Type.ToString())
                 MessageBoxDialog.ShowMessageDialog(result.FunctionName, result.Cause, result.Type.ToString())
                 Return False
             End If
@@ -96,6 +99,7 @@ Module Module1
         Try
             Dim result = m_iLibraryService.MachineOnlineState(mcNo, state)
             If Not result.IsPass Then
+                SaveLog(MethodInfo.GetCurrentMethod().ToString(), result.Type.ToString() & ">> Not Pass," & result.FunctionName & "," & result.Cause & "," & result.Type.ToString())
                 MessageBoxDialog.ShowMessageDialog(result.FunctionName, result.Cause, result.Type.ToString())
                 Return False
             End If
@@ -111,6 +115,7 @@ Module Module1
         Try
             Dim result = m_iLibraryService.Reinput(lotNo, mcNo, opNo, 0, 0, EndMode.AbnormalEndReset)
             If Not result.IsPass Then
+                SaveLog(MethodInfo.GetCurrentMethod().ToString(), result.Type.ToString() & ">> Not Pass," & result.FunctionName & "," & result.Cause & "," & result.Type.ToString())
                 MessageBoxDialog.ShowMessageDialog(result.FunctionName, result.Cause, result.Type.ToString())
                 Return False
             End If

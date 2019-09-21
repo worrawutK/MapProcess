@@ -156,6 +156,7 @@
     <Compile Include="frmInputQrCode.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FTSetupData.vb" />
     <Compile Include="KeyBoard.Designer.vb">
       <DependentUpon>KeyBoard.vb</DependentUpon>
     </Compile>

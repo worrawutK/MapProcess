@@ -1856,7 +1856,7 @@ Public Class frmMain
 
                                         '<0>,<Selcon IP>,<Cmd >,<M/Cno3>,<LotNo3>, <Package5>,<Devic6e>,<OPNo7>,<Process8>,<TestPro9>,<TestMode10>,<BoxName>
 
-                                        If Not SetupLot(strAssyLotNo, "MAP-" & lbMC.Text, strCommand(7), "MAP", "", strCommand(8), strSendCmd) Then
+                                        If Not SetupLot(strAssyLotNo, "MAP-" & lbMC.Text, strCommand(7), "MAP", "", strCommand, strSendCmd) Then
                                             strSendCmd = "Error," & strCmd & "," & strMachineNo & "," & strAssyLotNo & "," & "TDC Error "
                                             GoTo sendLoop
                                         End If
@@ -3118,10 +3118,10 @@ nextstep:
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        ' OnPrint("True,10.28.32.70,LOTSTART,IPB-00,1933F2009V,VSON008X20,BR24T08NUX-WG(8G9)  ,000783,OS,R4T08NUXOA ,2013-10-08 15:07:55")
-        If IsNothing(f2) OrElse f2.IsDisposed Then
-            f2 = New Form2
-        End If
-        f2.Show()
+        OnPrint("True,10.28.32.70,LOTSTART,IPB-22,1934A4226V,VSON008X20,BR34E02NUX-W(8A9U),003114,OSFT,F34E02ND,new,F8 BR34E02N,2019-08-27 16:08:36")
+        'If IsNothing(f2) OrElse f2.IsDisposed Then
+        '    f2 = New Form2
+        'End If
+        'f2.Show()
     End Sub
 End Class
