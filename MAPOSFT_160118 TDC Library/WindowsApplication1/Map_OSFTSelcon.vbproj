@@ -58,17 +58,17 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AuthenticationUser">
-      <HintPath>..\..\MAPLM_150105 Automotive\WindowsApplication1\bin\Debug\AuthenticationUser.dll</HintPath>
+      <HintPath>Dll\AuthenticationUser.dll</HintPath>
     </Reference>
     <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\FDLess\IPBC\netfdd40_Convert\netfdd\ICSharpCode.SharpZipLib.dll</HintPath>
+      <HintPath>Dll\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
     <Reference Include="MessageDialog">
       <HintPath>\\172.16.0.115\_PublicShare\Apcs Pro\MessageDialog.dll</HintPath>
     </Reference>
     <Reference Include="Rohm.Ems">
-      <HintPath>..\..\MAPLabel_150612\WindowsApplication1\bin\Debug\Rohm.Ems.dll</HintPath>
+      <HintPath>Dll\Rohm.Ems.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -395,6 +395,9 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.vb</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Dll\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
