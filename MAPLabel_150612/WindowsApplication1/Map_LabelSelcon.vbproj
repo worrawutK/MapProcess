@@ -433,6 +433,15 @@
       <LastGenOutput>Reference.vb</LastGenOutput>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Dll\AuthenticationUser.dll" />
+    <Content Include="Dll\ICSharpCode.SharpZipLib.dll" />
+    <Content Include="Dll\MapConvert.dll" />
+    <Content Include="Dll\MessageDialog.dll" />
+    <Content Include="Dll\Rohm.Apcs.Tdc.dll" />
+    <Content Include="Dll\Rohm.dll" />
+    <Content Include="Dll\Rohm.Ems.dll" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
