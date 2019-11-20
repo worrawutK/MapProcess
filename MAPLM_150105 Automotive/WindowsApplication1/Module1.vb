@@ -39,7 +39,33 @@ Module Module1
     Private m_Recipe As String
     Friend Function SetupLot(lotNo As String, mcNo As String, opNo As String, processName As String, layerNo As String) As Boolean
         Try
-            Dim result = m_iLibraryService.SetupLot(lotNo, mcNo, opNo, processName, layerNo)
+
+            Dim carrierInfo = m_iLibraryService.GetCarrierInfo(mcNo, lotNo, opNo)
+            If Not carrierInfo.IsPass Then
+                MessageBoxDialog.ShowMessageDialog("GetCarrierInfo", carrierInfo.Reason, "Carrier")
+                Return False
+            End If
+            If carrierInfo.InControlCarrier = CarrierInfo.CarrierStatus.Use AndAlso carrierInfo.EnabledControlCarrier = CarrierInfo.CarrierStatus.Use Then
+                If carrierInfo.LoadCarrier = CarrierInfo.CarrierStatus.Use Then
+                    frmInputCarrierLoad.ShowDialog()
+                    Dim carrierLoad As frmInputCarrierLoad
+                    carrierInfo.LoadCarrierNo = carrierLoad.CarrierLoad
+                End If
+                If carrierInfo.RegisterCarrier = CarrierInfo.CarrierStatus.Use Then
+                    FrmInputCarrierRegis.ShowDialog()
+                    Dim carrierRegis As FrmInputCarrierRegis
+                    carrierInfo.RegisterCarrierNo = carrierRegis.CarrierRegis
+                End If
+                If carrierInfo.TransferCarrier = CarrierInfo.CarrierStatus.Use Then
+                    FrmInputCarrierTranfer.ShowDialog()
+                    Dim carrierTran As FrmInputCarrierTranfer
+                    carrierInfo.TransferCarrierNo = carrierTran.CarrierTranfer
+                End If
+            End If
+            Dim SetupParameter As SetupLotSpecialParametersEventArgs = New SetupLotSpecialParametersEventArgs
+            SetupParameter.LayerNoApcs = ""
+
+            Dim result = m_iLibraryService.SetupLotPhase2(lotNo, mcNo, opNo, processName, layerNo, carrierInfo, SetupParameter)
             Select Case result.IsPass
                 Case SetupLotResult.Status.NotPass
                     MessageBoxDialog.ShowMessageDialog(result.FunctionName, result.Cause, result.Type.ToString())
