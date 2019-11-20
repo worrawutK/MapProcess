@@ -47,6 +47,7 @@ Partial Class FrmInputCarrierTranfer
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = Global.MAP_LM.My.Resources.Resources.TranGIF
         Me.ClientSize = New System.Drawing.Size(584, 261)
+        Me.ControlBox = False
         Me.Controls.Add(Me.TextBoxCarrierTranfer)
         Me.Controls.Add(Me.lbClose)
         Me.Name = "FrmInputCarrierTranfer"

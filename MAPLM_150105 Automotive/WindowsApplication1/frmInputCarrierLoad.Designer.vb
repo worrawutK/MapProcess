@@ -46,7 +46,9 @@ Partial Class frmInputCarrierLoad
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = Global.MAP_LM.My.Resources.Resources.LoadGIF
+        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.ClientSize = New System.Drawing.Size(584, 261)
+        Me.ControlBox = False
         Me.Controls.Add(Me.lbClose)
         Me.Controls.Add(Me.TextBoxCarrierLoad)
         Me.Name = "frmInputCarrierLoad"

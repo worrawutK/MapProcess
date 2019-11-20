@@ -47,6 +47,7 @@ Partial Class FrmInputCarrierRegis
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = Global.MAP_LM.My.Resources.Resources.RegisGIF
         Me.ClientSize = New System.Drawing.Size(584, 261)
+        Me.ControlBox = False
         Me.Controls.Add(Me.TextBoxCarrierRegis)
         Me.Controls.Add(Me.lbClose)
         Me.Name = "FrmInputCarrierRegis"
