@@ -130,6 +130,12 @@
     <Compile Include="frmInputCarrierLoad.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FrmInputCarrierRegis.Designer.vb">
+      <DependentUpon>FrmInputCarrierRegis.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmInputCarrierRegis.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmInputQrCode.Designer.vb">
       <DependentUpon>frmInputQrCode.vb</DependentUpon>
     </Compile>
@@ -189,6 +195,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmInputCarrierLoad.resx">
       <DependentUpon>frmInputCarrierLoad.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmInputCarrierRegis.resx">
+      <DependentUpon>FrmInputCarrierRegis.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmInputQrCode.resx">
       <DependentUpon>frmInputQrCode.vb</DependentUpon>
@@ -357,6 +366,7 @@
     <Content Include="Dll\MessageDialog.dll" />
     <Content Include="Dll\Rohm.dll" />
     <Content Include="Dll\Rohm.Ems.dll" />
+    <None Include="Resources\RegisGIF.gif" />
     <None Include="Resources\LoadGIF.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />

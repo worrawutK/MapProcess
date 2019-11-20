@@ -50,12 +50,11 @@ Module Module1
                     frmInputCarrierLoad.ShowDialog()
                     Dim carrierLoad As frmInputCarrierLoad
                     carrierInfo.LoadCarrierNo = carrierLoad.CarrierLoad
-
                 End If
                 If carrierInfo.RegisterCarrier = CarrierInfo.CarrierStatus.Use Then
-                    'frmInputCarrierRegis.ShowDialog()
-                    'Dim carrierRegis As frmInputCarrierRegis
-                    'carrierInfo.RegisterCarrierNo = carrierRegis.CarrierRegis
+                    FrmInputCarrierRegis.ShowDialog()
+                    Dim carrierRegis As FrmInputCarrierRegis
+                    carrierInfo.RegisterCarrierNo = carrierRegis.CarrierRegis
                 End If
                 If carrierInfo.TransferCarrier = CarrierInfo.CarrierStatus.Use Then
                     'frmInputCarrierTranfer.ShowDialog()
