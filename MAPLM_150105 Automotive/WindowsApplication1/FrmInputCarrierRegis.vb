@@ -18,6 +18,13 @@
     End Sub
 
     Private Sub TextBoxCarrierRegis_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TextBoxCarrierRegis.KeyPress
+
+        If TextBoxCarrierRegis.TextLength * 5 <= 100 Then
+            ProgressBar1.Value = (TextBoxCarrierRegis.TextLength) * 5
+        Else
+            ProgressBar1.Value = 100
+        End If
+
         If e.KeyChar = vbCr Then
             TextBoxCarrierRegis.Text = TextBoxCarrierRegis.Text.ToUpper()
             If TextBoxCarrierRegis.Text.Length = 11 Then
@@ -31,4 +38,5 @@
             End If
         End If
     End Sub
+
 End Class

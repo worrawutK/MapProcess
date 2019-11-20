@@ -24,6 +24,7 @@ Partial Class FrmInputCarrierTranfer
     Private Sub InitializeComponent()
         Me.lbClose = New System.Windows.Forms.Label()
         Me.TextBoxCarrierTranfer = New System.Windows.Forms.TextBox()
+        Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
         Me.SuspendLayout()
         '
         'lbClose
@@ -41,6 +42,13 @@ Partial Class FrmInputCarrierTranfer
         Me.TextBoxCarrierTranfer.Size = New System.Drawing.Size(100, 20)
         Me.TextBoxCarrierTranfer.TabIndex = 105
         '
+        'ProgressBar1
+        '
+        Me.ProgressBar1.Location = New System.Drawing.Point(134, 194)
+        Me.ProgressBar1.Name = "ProgressBar1"
+        Me.ProgressBar1.Size = New System.Drawing.Size(380, 40)
+        Me.ProgressBar1.TabIndex = 107
+        '
         'FrmInputCarrierTranfer
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -48,6 +56,7 @@ Partial Class FrmInputCarrierTranfer
         Me.BackgroundImage = Global.MAP_LM.My.Resources.Resources.TranGIF
         Me.ClientSize = New System.Drawing.Size(584, 261)
         Me.ControlBox = False
+        Me.Controls.Add(Me.ProgressBar1)
         Me.Controls.Add(Me.TextBoxCarrierTranfer)
         Me.Controls.Add(Me.lbClose)
         Me.Name = "FrmInputCarrierTranfer"
@@ -59,4 +68,5 @@ Partial Class FrmInputCarrierTranfer
 
     Friend WithEvents lbClose As Label
     Friend WithEvents TextBoxCarrierTranfer As TextBox
+    Friend WithEvents ProgressBar1 As ProgressBar
 End Class

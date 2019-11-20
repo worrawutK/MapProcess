@@ -1496,5 +1496,7 @@ inputQr:
         file_Log.Close()
     End Sub
 
-
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        FrmInputCarrierRegis.ShowDialog()
+    End Sub
 End Class

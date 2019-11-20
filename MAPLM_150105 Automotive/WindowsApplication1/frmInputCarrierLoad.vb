@@ -14,6 +14,12 @@
     End Sub
 
     Private Sub TextBoxCarrierLoad_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TextBoxCarrierLoad.KeyPress
+
+        If TextBoxCarrierLoad.TextLength * 5 <= 100 Then
+            ProgressBar1.Value = (TextBoxCarrierLoad.TextLength) * 5
+        Else
+            ProgressBar1.Value = 100
+        End If
         If e.KeyChar = vbCr Then
             TextBoxCarrierLoad.Text = TextBoxCarrierLoad.Text.ToUpper()
             If TextBoxCarrierLoad.Text.Length = 11 Then
