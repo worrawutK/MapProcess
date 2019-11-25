@@ -119,6 +119,12 @@
       <DependentUpon>Form1.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmInputCarrierLoad.Designer.vb">
+      <DependentUpon>frmInputCarrierLoad.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmInputCarrierLoad.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmInputCarrierRegis.Designer.vb">
       <DependentUpon>frmInputCarrierRegis.vb</DependentUpon>
     </Compile>
@@ -182,6 +188,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmInputCarrierLoad.resx">
+      <DependentUpon>frmInputCarrierLoad.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmInputCarrierRegis.resx">
       <DependentUpon>frmInputCarrierRegis.vb</DependentUpon>
@@ -353,6 +362,7 @@
     <Content Include="Dll\MessageDialog.dll" />
     <Content Include="Dll\Rohm.dll" />
     <Content Include="Dll\Rohm.Ems.dll" />
+    <None Include="Resources\LoadGIF.gif" />
     <None Include="Resources\RegisGIF.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />

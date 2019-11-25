@@ -46,9 +46,9 @@ Module Module1
             End If
             If carrierInfo.InControlCarrier = carrierInfo.CarrierStatus.Use AndAlso carrierInfo.EnabledControlCarrier = carrierInfo.CarrierStatus.Use Then
                 If carrierInfo.LoadCarrier = carrierInfo.CarrierStatus.Use Then
-                    'frmInputCarrierLoad.ShowDialog()
-                    'Dim carrierLoad As frmInputCarrierLoad
-                    'carrierInfo.LoadCarrierNo = carrierLoad.CarrierLoad
+                    frmInputCarrierLoad.ShowDialog()
+                    Dim carrierLoad As frmInputCarrierLoad
+                    carrierInfo.LoadCarrierNo = carrierLoad.CarrierLoad
                 End If
                 If carrierInfo.RegisterCarrier = carrierInfo.CarrierStatus.Use Then
                     frmInputCarrierRegis.ShowDialog()
