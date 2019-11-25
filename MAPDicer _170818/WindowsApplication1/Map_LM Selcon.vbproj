@@ -131,6 +131,12 @@
     <Compile Include="frmInputCarrierRegis.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FrmInputCarrierTranfer.Designer.vb">
+      <DependentUpon>FrmInputCarrierTranfer.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmInputCarrierTranfer.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmInputQrCode.Designer.vb">
       <DependentUpon>frmInputQrCode.vb</DependentUpon>
     </Compile>
@@ -194,6 +200,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmInputCarrierRegis.resx">
       <DependentUpon>frmInputCarrierRegis.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmInputCarrierTranfer.resx">
+      <DependentUpon>FrmInputCarrierTranfer.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmInputQrCode.resx">
       <DependentUpon>frmInputQrCode.vb</DependentUpon>
@@ -362,6 +371,7 @@
     <Content Include="Dll\MessageDialog.dll" />
     <Content Include="Dll\Rohm.dll" />
     <Content Include="Dll\Rohm.Ems.dll" />
+    <None Include="Resources\TranGIF.gif" />
     <None Include="Resources\LoadGIF.gif" />
     <None Include="Resources\RegisGIF.gif" />
   </ItemGroup>
