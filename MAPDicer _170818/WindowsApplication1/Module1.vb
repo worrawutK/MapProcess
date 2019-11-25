@@ -56,9 +56,9 @@ Module Module1
                     carrierInfo.RegisterCarrierNo = carrierRegis.CarrierRegis
                 End If
                 If carrierInfo.TransferCarrier = carrierInfo.CarrierStatus.Use Then
-                    'FrmInputCarrierTranfer.ShowDialog()
-                    'Dim carrierTran As FrmInputCarrierTranfer
-                    'carrierInfo.TransferCarrierNo = carrierTran.CarrierTranfer
+                    FrmInputCarrierTranfer.ShowDialog()
+                    Dim carrierTran As FrmInputCarrierTranfer
+                    carrierInfo.TransferCarrierNo = carrierTran.CarrierTranfer
                 End If
             End If
             Dim SetupParameter As SetupLotSpecialParametersEventArgs = New SetupLotSpecialParametersEventArgs

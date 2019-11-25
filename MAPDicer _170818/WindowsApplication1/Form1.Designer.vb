@@ -163,6 +163,7 @@ Partial Class Form1
         Me.TableAdapterManager = New MAP_Dicer.DBxDataSetTableAdapters.TableAdapterManager()
         Me.TransactionDataTableAdapter1 = New MAP_Dicer.DBxDataSetTableAdapters.TransactionDataTableAdapter()
         Me.MAPPKGDCDataTableAdapter = New MAP_Dicer.DBxDataSetTableAdapters.MAPPKGDCDataTableAdapter()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.ContextMenuStrip1.SuspendLayout()
         CType(Me.MAPPKGDCDataBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DBxDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1500,6 +1501,15 @@ Partial Class Form1
         '
         Me.MAPPKGDCDataTableAdapter.ClearBeforeFill = True
         '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(181, 617)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.TabIndex = 257
+        Me.Button1.Text = "Button1"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1507,6 +1517,7 @@ Partial Class Form1
         Me.AutoScroll = True
         Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
         Me.ClientSize = New System.Drawing.Size(1024, 768)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.MenuStrip1)
         Me.Controls.Add(Me.tbICOff)
         Me.Controls.Add(Me.tbMakerQty)
@@ -1721,4 +1732,5 @@ Partial Class Form1
     Friend WithEvents AuthenticationUserToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ONToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents OFFToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents Button1 As Button
 End Class

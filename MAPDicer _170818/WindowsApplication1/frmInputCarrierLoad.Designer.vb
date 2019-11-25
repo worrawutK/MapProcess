@@ -25,6 +25,8 @@ Partial Class frmInputCarrierLoad
         Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
         Me.lbClose = New System.Windows.Forms.Label()
         Me.TextBoxCarrierInput = New System.Windows.Forms.TextBox()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ProgressBar1
@@ -49,18 +51,29 @@ Partial Class frmInputCarrierLoad
         Me.TextBoxCarrierInput.Size = New System.Drawing.Size(100, 20)
         Me.TextBoxCarrierInput.TabIndex = 3
         '
+        'PictureBox1
+        '
+        Me.PictureBox1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.PictureBox1.Image = Global.MAP_Dicer.My.Resources.Resources.LoadGIF
+        Me.PictureBox1.Location = New System.Drawing.Point(0, 0)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(584, 261)
+        Me.PictureBox1.TabIndex = 6
+        Me.PictureBox1.TabStop = False
+        '
         'frmInputCarrierLoad
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackgroundImage = Global.MAP_Dicer.My.Resources.Resources.LoadGIF
         Me.ClientSize = New System.Drawing.Size(584, 261)
         Me.ControlBox = False
         Me.Controls.Add(Me.ProgressBar1)
         Me.Controls.Add(Me.lbClose)
         Me.Controls.Add(Me.TextBoxCarrierInput)
+        Me.Controls.Add(Me.PictureBox1)
         Me.Name = "frmInputCarrierLoad"
         Me.Text = "frmInputCarrierLoad"
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -69,4 +82,5 @@ Partial Class frmInputCarrierLoad
     Friend WithEvents ProgressBar1 As ProgressBar
     Friend WithEvents lbClose As Label
     Friend WithEvents TextBoxCarrierInput As TextBox
+    Friend WithEvents PictureBox1 As PictureBox
 End Class
