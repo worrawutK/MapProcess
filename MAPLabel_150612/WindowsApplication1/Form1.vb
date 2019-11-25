@@ -28,6 +28,12 @@ Public Class Form1
     End Sub
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         MachineOnline("MAP-" & My.Settings.MCNo, iLibraryService.MachineOnline.Online)
+
+        m_LotData = ReadXml(Of LotData)(m_PathFileLotData)
+        If m_LotData Is Nothing Then
+            m_LotData = New LotData
+        End If
+
         Try
             Dim reg As EmsMachineRegisterInfo = New EmsMachineRegisterInfo(My.Settings.MCNo, "MAP-" & My.Settings.MCNo, "MAP", My.Settings.MachineType, "", 0, 0, 0, 0, 0)
             m_EmsClient.Register(reg)

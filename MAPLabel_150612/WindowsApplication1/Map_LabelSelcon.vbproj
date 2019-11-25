@@ -156,6 +156,12 @@
     <Compile Include="frmInputQrCode.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="InputCarrier.Designer.vb">
+      <DependentUpon>InputCarrier.vb</DependentUpon>
+    </Compile>
+    <Compile Include="InputCarrier.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="InputQty.Designer.vb">
       <DependentUpon>InputQty.vb</DependentUpon>
     </Compile>
@@ -174,6 +180,7 @@
     <Compile Include="KeyBoard.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="LotData.vb" />
     <Compile Include="Mode.designer.vb">
       <DependentUpon>Mode.vb</DependentUpon>
     </Compile>
@@ -245,6 +252,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmInputQrCode.resx">
       <DependentUpon>frmInputQrCode.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InputCarrier.resx">
+      <DependentUpon>InputCarrier.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InputQty.resx">
       <DependentUpon>InputQty.vb</DependentUpon>
@@ -347,6 +357,9 @@
     <None Include="Service References\iLibraryService\MAP_Label.iLibraryService.CancelLotResult.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\iLibraryService\MAP_Label.iLibraryService.CarrierInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\iLibraryService\MAP_Label.iLibraryService.CheckLotApcsProResult.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -441,6 +454,9 @@
     <Content Include="Dll\Rohm.Apcs.Tdc.dll" />
     <Content Include="Dll\Rohm.dll" />
     <Content Include="Dll\Rohm.Ems.dll" />
+    <None Include="Resources\PictureBoxWrong.png" />
+    <None Include="Resources\PictureBoxQrCode.png" />
+    <None Include="Resources\PicturBoxRohmLogo.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

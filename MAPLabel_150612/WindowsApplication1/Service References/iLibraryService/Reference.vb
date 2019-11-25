@@ -1770,6 +1770,488 @@ Namespace iLibraryService
         End Sub
     End Class
     
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="CarrierInfo", [Namespace]:="http://schemas.datacontract.org/2004/07/"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class CarrierInfo
+        Inherits Object
+        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
+        
+        <System.NonSerializedAttribute()>  _
+        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private CurrentCarrierNoField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private EnabledControlCarrierField As iLibraryService.CarrierInfo.CarrierStatus
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private InControlCarrierField As iLibraryService.CarrierInfo.CarrierStatus
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private IsPassField As Boolean
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private LoadCarrierField As iLibraryService.CarrierInfo.CarrierStatus
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private LoadCarrierNoField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private NextCarrierNoField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ReasonField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private RegisterCarrierField As iLibraryService.CarrierInfo.CarrierStatus
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private RegisterCarrierNoField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private TransferCarrierField As iLibraryService.CarrierInfo.CarrierStatus
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private TransferCarrierNoField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private UnloadCarrierField As iLibraryService.CarrierInfo.CarrierStatus
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private UnloadCarrierNoField As String
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
+        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
+            Get
+                Return Me.extensionDataField
+            End Get
+            Set
+                Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property CurrentCarrierNo() As String
+            Get
+                Return Me.CurrentCarrierNoField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.CurrentCarrierNoField, value) <> true) Then
+                    Me.CurrentCarrierNoField = value
+                    Me.RaisePropertyChanged("CurrentCarrierNo")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property EnabledControlCarrier() As iLibraryService.CarrierInfo.CarrierStatus
+            Get
+                Return Me.EnabledControlCarrierField
+            End Get
+            Set
+                If (Me.EnabledControlCarrierField.Equals(value) <> true) Then
+                    Me.EnabledControlCarrierField = value
+                    Me.RaisePropertyChanged("EnabledControlCarrier")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property InControlCarrier() As iLibraryService.CarrierInfo.CarrierStatus
+            Get
+                Return Me.InControlCarrierField
+            End Get
+            Set
+                If (Me.InControlCarrierField.Equals(value) <> true) Then
+                    Me.InControlCarrierField = value
+                    Me.RaisePropertyChanged("InControlCarrier")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property IsPass() As Boolean
+            Get
+                Return Me.IsPassField
+            End Get
+            Set
+                If (Me.IsPassField.Equals(value) <> true) Then
+                    Me.IsPassField = value
+                    Me.RaisePropertyChanged("IsPass")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property LoadCarrier() As iLibraryService.CarrierInfo.CarrierStatus
+            Get
+                Return Me.LoadCarrierField
+            End Get
+            Set
+                If (Me.LoadCarrierField.Equals(value) <> true) Then
+                    Me.LoadCarrierField = value
+                    Me.RaisePropertyChanged("LoadCarrier")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property LoadCarrierNo() As String
+            Get
+                Return Me.LoadCarrierNoField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.LoadCarrierNoField, value) <> true) Then
+                    Me.LoadCarrierNoField = value
+                    Me.RaisePropertyChanged("LoadCarrierNo")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property NextCarrierNo() As String
+            Get
+                Return Me.NextCarrierNoField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.NextCarrierNoField, value) <> true) Then
+                    Me.NextCarrierNoField = value
+                    Me.RaisePropertyChanged("NextCarrierNo")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Reason() As String
+            Get
+                Return Me.ReasonField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.ReasonField, value) <> true) Then
+                    Me.ReasonField = value
+                    Me.RaisePropertyChanged("Reason")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property RegisterCarrier() As iLibraryService.CarrierInfo.CarrierStatus
+            Get
+                Return Me.RegisterCarrierField
+            End Get
+            Set
+                If (Me.RegisterCarrierField.Equals(value) <> true) Then
+                    Me.RegisterCarrierField = value
+                    Me.RaisePropertyChanged("RegisterCarrier")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property RegisterCarrierNo() As String
+            Get
+                Return Me.RegisterCarrierNoField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.RegisterCarrierNoField, value) <> true) Then
+                    Me.RegisterCarrierNoField = value
+                    Me.RaisePropertyChanged("RegisterCarrierNo")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property TransferCarrier() As iLibraryService.CarrierInfo.CarrierStatus
+            Get
+                Return Me.TransferCarrierField
+            End Get
+            Set
+                If (Me.TransferCarrierField.Equals(value) <> true) Then
+                    Me.TransferCarrierField = value
+                    Me.RaisePropertyChanged("TransferCarrier")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property TransferCarrierNo() As String
+            Get
+                Return Me.TransferCarrierNoField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.TransferCarrierNoField, value) <> true) Then
+                    Me.TransferCarrierNoField = value
+                    Me.RaisePropertyChanged("TransferCarrierNo")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property UnloadCarrier() As iLibraryService.CarrierInfo.CarrierStatus
+            Get
+                Return Me.UnloadCarrierField
+            End Get
+            Set
+                If (Me.UnloadCarrierField.Equals(value) <> true) Then
+                    Me.UnloadCarrierField = value
+                    Me.RaisePropertyChanged("UnloadCarrier")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property UnloadCarrierNo() As String
+            Get
+                Return Me.UnloadCarrierNoField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.UnloadCarrierNoField, value) <> true) Then
+                    Me.UnloadCarrierNoField = value
+                    Me.RaisePropertyChanged("UnloadCarrierNo")
+                End If
+            End Set
+        End Property
+        
+        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+        
+        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
+            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
+            If (Not (propertyChanged) Is Nothing) Then
+                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+            End If
+        End Sub
+        
+        <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+         System.Runtime.Serialization.DataContractAttribute(Name:="CarrierInfo.CarrierStatus", [Namespace]:="http://schemas.datacontract.org/2004/07/")>  _
+        Public Enum CarrierStatus As Integer
+            
+            <System.Runtime.Serialization.EnumMemberAttribute()>  _
+            No_Use = 0
+            
+            <System.Runtime.Serialization.EnumMemberAttribute()>  _
+            Use = 1
+        End Enum
+    End Class
+    
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="Licenser", [Namespace]:="http://schemas.datacontract.org/2004/07/")>  _
+    Public Enum Licenser As Integer
+        
+        <System.Runtime.Serialization.EnumMemberAttribute()>  _
+        NoCheck = 0
+        
+        <System.Runtime.Serialization.EnumMemberAttribute()>  _
+        Check = 1
+    End Enum
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="SetupLotSpecialParametersEventArgs", [Namespace]:="http://schemas.datacontract.org/2004/07/"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class SetupLotSpecialParametersEventArgs
+        Inherits Object
+        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
+        
+        <System.NonSerializedAttribute()>  _
+        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private FrameInField As Integer
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private LayerNoApcsField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private McNoOvenApcsField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private RunModeApcsField As iLibraryService.RunMode
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
+        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
+            Get
+                Return Me.extensionDataField
+            End Get
+            Set
+                Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property FrameIn() As Integer
+            Get
+                Return Me.FrameInField
+            End Get
+            Set
+                If (Me.FrameInField.Equals(value) <> true) Then
+                    Me.FrameInField = value
+                    Me.RaisePropertyChanged("FrameIn")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property LayerNoApcs() As String
+            Get
+                Return Me.LayerNoApcsField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.LayerNoApcsField, value) <> true) Then
+                    Me.LayerNoApcsField = value
+                    Me.RaisePropertyChanged("LayerNoApcs")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property McNoOvenApcs() As String
+            Get
+                Return Me.McNoOvenApcsField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.McNoOvenApcsField, value) <> true) Then
+                    Me.McNoOvenApcsField = value
+                    Me.RaisePropertyChanged("McNoOvenApcs")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property RunModeApcs() As iLibraryService.RunMode
+            Get
+                Return Me.RunModeApcsField
+            End Get
+            Set
+                If (Me.RunModeApcsField.Equals(value) <> true) Then
+                    Me.RunModeApcsField = value
+                    Me.RaisePropertyChanged("RunModeApcs")
+                End If
+            End Set
+        End Property
+        
+        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+        
+        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
+            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
+            If (Not (propertyChanged) Is Nothing) Then
+                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+            End If
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="StartLotSpecialParametersEventArgs", [Namespace]:="http://schemas.datacontract.org/2004/07/"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class StartLotSpecialParametersEventArgs
+        Inherits Object
+        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
+        
+        <System.NonSerializedAttribute()>  _
+        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private McNoOvenApcsField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private RunModeApcsField As iLibraryService.RunMode
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
+        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
+            Get
+                Return Me.extensionDataField
+            End Get
+            Set
+                Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property McNoOvenApcs() As String
+            Get
+                Return Me.McNoOvenApcsField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.McNoOvenApcsField, value) <> true) Then
+                    Me.McNoOvenApcsField = value
+                    Me.RaisePropertyChanged("McNoOvenApcs")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property RunModeApcs() As iLibraryService.RunMode
+            Get
+                Return Me.RunModeApcsField
+            End Get
+            Set
+                If (Me.RunModeApcsField.Equals(value) <> true) Then
+                    Me.RunModeApcsField = value
+                    Me.RaisePropertyChanged("RunModeApcs")
+                End If
+            End Set
+        End Property
+        
+        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+        
+        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
+            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
+            If (Not (propertyChanged) Is Nothing) Then
+                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+            End If
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="EndLotSpecialParametersEventArgs", [Namespace]:="http://schemas.datacontract.org/2004/07/"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class EndLotSpecialParametersEventArgs
+        Inherits Object
+        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
+        
+        <System.NonSerializedAttribute()>  _
+        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private McNoOvenApcsField As String
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
+        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
+            Get
+                Return Me.extensionDataField
+            End Get
+            Set
+                Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property McNoOvenApcs() As String
+            Get
+                Return Me.McNoOvenApcsField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.McNoOvenApcsField, value) <> true) Then
+                    Me.McNoOvenApcsField = value
+                    Me.RaisePropertyChanged("McNoOvenApcs")
+                End If
+            End Set
+        End Property
+        
+        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+        
+        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
+            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
+            If (Not (propertyChanged) Is Nothing) Then
+                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+            End If
+        End Sub
+    End Class
+    
     <System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
      System.ServiceModel.ServiceContractAttribute(ConfigurationName:="iLibraryService.IServiceiLibrary")>  _
     Public Interface IServiceiLibrary
@@ -1845,6 +2327,18 @@ Namespace iLibraryService
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IServiceiLibrary/IRePortCheck", ReplyAction:="http://tempuri.org/IServiceiLibrary/IRePortCheckResponse")>  _
         Function IRePortCheck(ByVal mcNo As String) As iLibraryService.iReportResponse
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IServiceiLibrary/GetCarrierInfo", ReplyAction:="http://tempuri.org/IServiceiLibrary/GetCarrierInfoResponse")>  _
+        Function GetCarrierInfo(ByVal mcNo As String, ByVal lotNo As String, ByVal opNo As String) As iLibraryService.CarrierInfo
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IServiceiLibrary/SetupLotPhase2", ReplyAction:="http://tempuri.org/IServiceiLibrary/SetupLotPhase2Response")>  _
+        Function SetupLotPhase2(ByVal lotNo As String, ByVal mcNo As String, ByVal opNo As String, ByVal processName As String, ByVal licenser As iLibraryService.Licenser, ByVal carrierInfo As iLibraryService.CarrierInfo, ByVal specialParametersEventArgs As iLibraryService.SetupLotSpecialParametersEventArgs) As iLibraryService.SetupLotResult
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IServiceiLibrary/StartLotPhase2", ReplyAction:="http://tempuri.org/IServiceiLibrary/StartLotPhase2Response")>  _
+        Function StartLotPhase2(ByVal lotNo As String, ByVal mcNo As String, ByVal opNo As String, ByVal recipe As String, ByVal carrierInfo As iLibraryService.CarrierInfo, ByVal specialParametersEventArgs As iLibraryService.StartLotSpecialParametersEventArgs) As iLibraryService.StartLotResult
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IServiceiLibrary/EndLotPhase2", ReplyAction:="http://tempuri.org/IServiceiLibrary/EndLotPhase2Response")>  _
+        Function EndLotPhase2(ByVal lotNo As String, ByVal mcNo As String, ByVal opNo As String, ByVal good As Integer, ByVal ng As Integer, ByVal licenser As iLibraryService.Licenser, ByVal carrierInfo As iLibraryService.CarrierInfo, ByVal specialParametersEventArgs As iLibraryService.EndLotSpecialParametersEventArgs) As iLibraryService.EndLotResult
     End Interface
     
     <System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")>  _
@@ -1972,6 +2466,22 @@ Namespace iLibraryService
         
         Public Function IRePortCheck(ByVal mcNo As String) As iLibraryService.iReportResponse Implements iLibraryService.IServiceiLibrary.IRePortCheck
             Return MyBase.Channel.IRePortCheck(mcNo)
+        End Function
+        
+        Public Function GetCarrierInfo(ByVal mcNo As String, ByVal lotNo As String, ByVal opNo As String) As iLibraryService.CarrierInfo Implements iLibraryService.IServiceiLibrary.GetCarrierInfo
+            Return MyBase.Channel.GetCarrierInfo(mcNo, lotNo, opNo)
+        End Function
+        
+        Public Function SetupLotPhase2(ByVal lotNo As String, ByVal mcNo As String, ByVal opNo As String, ByVal processName As String, ByVal licenser As iLibraryService.Licenser, ByVal carrierInfo As iLibraryService.CarrierInfo, ByVal specialParametersEventArgs As iLibraryService.SetupLotSpecialParametersEventArgs) As iLibraryService.SetupLotResult Implements iLibraryService.IServiceiLibrary.SetupLotPhase2
+            Return MyBase.Channel.SetupLotPhase2(lotNo, mcNo, opNo, processName, licenser, carrierInfo, specialParametersEventArgs)
+        End Function
+        
+        Public Function StartLotPhase2(ByVal lotNo As String, ByVal mcNo As String, ByVal opNo As String, ByVal recipe As String, ByVal carrierInfo As iLibraryService.CarrierInfo, ByVal specialParametersEventArgs As iLibraryService.StartLotSpecialParametersEventArgs) As iLibraryService.StartLotResult Implements iLibraryService.IServiceiLibrary.StartLotPhase2
+            Return MyBase.Channel.StartLotPhase2(lotNo, mcNo, opNo, recipe, carrierInfo, specialParametersEventArgs)
+        End Function
+        
+        Public Function EndLotPhase2(ByVal lotNo As String, ByVal mcNo As String, ByVal opNo As String, ByVal good As Integer, ByVal ng As Integer, ByVal licenser As iLibraryService.Licenser, ByVal carrierInfo As iLibraryService.CarrierInfo, ByVal specialParametersEventArgs As iLibraryService.EndLotSpecialParametersEventArgs) As iLibraryService.EndLotResult Implements iLibraryService.IServiceiLibrary.EndLotPhase2
+            Return MyBase.Channel.EndLotPhase2(lotNo, mcNo, opNo, good, ng, licenser, carrierInfo, specialParametersEventArgs)
         End Function
     End Class
 End Namespace

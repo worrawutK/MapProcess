@@ -447,7 +447,7 @@ Partial Class Form1
         Me.lbRevision.Name = "lbRevision"
         Me.lbRevision.Size = New System.Drawing.Size(407, 20)
         Me.lbRevision.TabIndex = 108
-        Me.lbRevision.Text = "SelCon MAP Labeler  Mark  Software Ver 2.20 Apcs Pro."
+        Me.lbRevision.Text = "SelCon MAP Labeler  Mark  Software Ver 2.21 Apcs Pro."
         '
         'lbAndonJudge
         '
