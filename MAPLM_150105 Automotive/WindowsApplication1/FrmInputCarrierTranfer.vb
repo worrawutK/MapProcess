@@ -11,6 +11,7 @@
     Private Sub FrmInputCarrierTranfer_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         TextBoxCarrierTranfer.Focus()
         TextBoxCarrierTranfer.Select()
+        lbClose.Parent = PictureBox1
     End Sub
 
     Private Sub TextBoxCarrierTranfer_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TextBoxCarrierTranfer.KeyPress
@@ -32,5 +33,9 @@
                 TextBoxCarrierTranfer.Select()
             End If
         End If
+    End Sub
+
+    Private Sub lbClose_Click(sender As Object, e As EventArgs) Handles lbClose.Click
+        Me.Close()
     End Sub
 End Class

@@ -15,6 +15,7 @@
     Private Sub FrmInputCarrierRegis_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         TextBoxCarrierRegis.Focus()
         TextBoxCarrierRegis.Select()
+        lbClose.Parent = PictureBox1
     End Sub
 
     Private Sub TextBoxCarrierRegis_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TextBoxCarrierRegis.KeyPress

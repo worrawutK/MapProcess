@@ -106,7 +106,6 @@ Partial Class Form1
         Me.OFFToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TransactionDataTableAdapter = New MAP_LM.DBxDataSetTableAdapters.TransactionDataTableAdapter()
         Me.MaplmDataTableAdapter1 = New MAP_LM.DBxDataSetTableAdapters.MAPLMDataTableAdapter()
-        Me.Button3 = New System.Windows.Forms.Button()
         Me.ContextMenuStrip1.SuspendLayout()
         CType(Me.MAPLMDataBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DBxDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -725,7 +724,7 @@ Partial Class Form1
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AndonToolStripMenuItem, Me.APCSStaffToolStripMenuItem, Me.BMRequestToolStripMenuItem, Me.PMRepairToolStripMenuItem, Me.WorkRecordToolStripMenuItem, Me.HelpToolStripMenuItem, Me.SettingToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(34, 107)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(734, 33)
+        Me.MenuStrip1.Size = New System.Drawing.Size(854, 33)
         Me.MenuStrip1.TabIndex = 250
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -850,15 +849,6 @@ Partial Class Form1
         '
         Me.MaplmDataTableAdapter1.ClearBeforeFill = True
         '
-        'Button3
-        '
-        Me.Button3.Location = New System.Drawing.Point(34, 681)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(75, 23)
-        Me.Button3.TabIndex = 253
-        Me.Button3.Text = "Button3"
-        Me.Button3.UseVisualStyleBackColor = True
-        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -866,7 +856,6 @@ Partial Class Form1
         Me.AutoScroll = True
         Me.BackgroundImage = Global.MAP_LM.My.Resources.Resources.MAPLM2
         Me.ClientSize = New System.Drawing.Size(1024, 776)
-        Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.MenuStrip1)
         Me.Controls.Add(Me.cbxRemark)
         Me.Controls.Add(Me.btnInsert)
@@ -1004,5 +993,4 @@ Partial Class Form1
     Friend WithEvents ONToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents OFFToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents MaplmDataTableAdapter1 As DBxDataSetTableAdapters.MAPLMDataTableAdapter
-    Friend WithEvents Button3 As Button
 End Class

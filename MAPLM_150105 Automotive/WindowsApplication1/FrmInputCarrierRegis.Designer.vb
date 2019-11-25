@@ -25,6 +25,8 @@ Partial Class FrmInputCarrierRegis
         Me.lbClose = New System.Windows.Forms.Label()
         Me.TextBoxCarrierRegis = New System.Windows.Forms.TextBox()
         Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'lbClose
@@ -49,18 +51,29 @@ Partial Class FrmInputCarrierRegis
         Me.ProgressBar1.Size = New System.Drawing.Size(380, 40)
         Me.ProgressBar1.TabIndex = 106
         '
+        'PictureBox1
+        '
+        Me.PictureBox1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.PictureBox1.Image = Global.MAP_LM.My.Resources.Resources.RegisGIF
+        Me.PictureBox1.Location = New System.Drawing.Point(0, 0)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(584, 261)
+        Me.PictureBox1.TabIndex = 107
+        Me.PictureBox1.TabStop = False
+        '
         'FrmInputCarrierRegis
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackgroundImage = Global.MAP_LM.My.Resources.Resources.RegisGIF
         Me.ClientSize = New System.Drawing.Size(584, 261)
         Me.ControlBox = False
         Me.Controls.Add(Me.ProgressBar1)
         Me.Controls.Add(Me.TextBoxCarrierRegis)
         Me.Controls.Add(Me.lbClose)
+        Me.Controls.Add(Me.PictureBox1)
         Me.Name = "FrmInputCarrierRegis"
         Me.Text = "FrmInputCarrierRegis"
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -69,4 +82,5 @@ Partial Class FrmInputCarrierRegis
     Friend WithEvents lbClose As Label
     Friend WithEvents TextBoxCarrierRegis As TextBox
     Friend WithEvents ProgressBar1 As ProgressBar
+    Friend WithEvents PictureBox1 As PictureBox
 End Class
