@@ -3,6 +3,8 @@
 Imports MAP_OSFT.iLibraryService
 Imports MessageDialog
 Imports System.Reflection
+Imports System.Xml.Serialization
+Imports System.IO
 
 Module Module1
     Friend Const _ipServer = "172.16.0.100"                      'ZION Server
@@ -41,6 +43,8 @@ Module Module1
         Return TarObj
     End Function
     Friend m_Recipe As String
+    Public m_LotData As LotData
+    Public m_PathFileLotData As String = System.IO.Path.Combine(Application.StartupPath, "LotData.xml")
     Friend Function SetupLot(lotNo As String, mcNo As String, opNo As String, process As String, layerNo As String, strCommand As String(), ByRef cmd As String) As Boolean
         Try
 
@@ -48,7 +52,14 @@ Module Module1
             Dim device As String = strCommand(6)
             'mcProgram AUTO(1),AUTO(2), OS ,OSFT
             'Check flow lot and mcProgram
-            Dim flowLot As String = GetFlowLot(lotNo).Replace(" ", "").ToUpper()
+            Dim flowLot As String
+            Dim lotInfo As LotInformation = m_iLibraryService.GetLotInfo(lotNo, mcNo)
+            If lotInfo Is Nothing Then
+                flowLot = GetFlowLot(lotNo).Replace(" ", "").ToUpper()
+            Else
+                flowLot = lotInfo.JobName
+            End If
+
             Dim ftSetup As FTSetupData = GetFTSetup(mcNo)
             If (ftSetup Is Nothing) Then
                 cmd = "Error," & "Setup Check Sheet not register"
@@ -104,8 +115,39 @@ Module Module1
                 End If
 
             End If
+            Dim carrierInfo As CarrierInfo = m_iLibraryService.GetCarrierInfo(mcNo, lotNo, opNo)
+            If carrierInfo.InControlCarrier = CarrierInfo.CarrierStatus.Use And carrierInfo.EnabledControlCarrier = CarrierInfo.CarrierStatus.Use Then
+                If carrierInfo.LoadCarrier = CarrierInfo.CarrierStatus.Use Then
+                    Dim frm As InputCarrier = New InputCarrier(11, "Input load carrier No.", Color.SpringGreen)
+                    If frm.ShowDialog() = DialogResult.OK Then
+                        carrierInfo.LoadCarrierNo = frm.QrCarrierNo
+                    Else
+                        Return False
+                    End If
+                End If
+                If carrierInfo.RegisterCarrier = CarrierInfo.CarrierStatus.Use Then
+                    Dim frm As InputCarrier = New InputCarrier(11, "Input load carrier No. (Registration)", Color.SpringGreen)
+                    If frm.ShowDialog() = DialogResult.OK Then
+                        carrierInfo.RegisterCarrierNo = frm.QrCarrierNo
+                    Else
+                        Return False
+                    End If
+                End If
+                If carrierInfo.TransferCarrier = CarrierInfo.CarrierStatus.Use Then
+                    Dim frm As InputCarrier = New InputCarrier(11, "Input unload carrier No.", Color.OrangeRed)
+                    If frm.ShowDialog() = DialogResult.OK Then
+                        carrierInfo.TransferCarrierNo = frm.QrCarrierNo
+                    Else
+                        Return False
+                    End If
 
-            Dim result = m_iLibraryService.SetupLot(lotNo, mcNo, opNo, process, layerNo)
+                End If
+            End If
+            Dim setupParamiter As SetupLotSpecialParametersEventArgs = New SetupLotSpecialParametersEventArgs With {
+                .LayerNoApcs = layerNo
+            }
+            'Dim result = m_iLibraryService.SetupLot(lotNo, mcNo, opNo, process, layerNo)
+            Dim result = m_iLibraryService.SetupLotPhase2(lotNo, mcNo, opNo, process, Licenser.Check, m_LotData.CarrierInfo, setupParamiter)
             Select Case Not result.IsPass
                 Case SetupLotResult.Status.NotPass
                     cmd = "Error," & result.Type.ToString() & "," & mcNo & "," & lotNo & ","
@@ -115,6 +157,14 @@ Module Module1
                 Case SetupLotResult.Status.Warning
                     MessageBoxDialog.ShowMessageDialog(result.FunctionName, result.Cause, result.Type.ToString())
             End Select
+            m_LotData = New LotData With {
+                .LotNo = lotNo,
+                .MachineNo = mcNo,
+                .Recipe = result.Recipe,
+                .CarrierInfo = carrierInfo,
+                .OpNo = opNo
+                }
+            WriterXml(m_PathFileLotData, m_LotData)
             m_Recipe = result.Recipe
             SaveLog(MethodInfo.GetCurrentMethod().ToString(), result.Type.ToString() & ">> Pass")
             Return True
@@ -124,6 +174,26 @@ Module Module1
         End Try
 
     End Function
+    Friend Function ReadXml(Of T)(ByVal fileName As String) As T
+        If Not File.Exists(fileName) Then
+            Return Nothing
+        End If
+
+        Using fs As StreamReader = New StreamReader(fileName)
+            Dim bs = New XmlSerializer(GetType(T))
+            Dim data As T = CType(bs.Deserialize(fs), T)
+            Return data
+        End Using
+    End Function
+    Friend Sub WriterXml(ByVal pathfile As String, ByVal TarObj As Object)
+        Dim xsSubmit As XmlSerializer = New XmlSerializer(TarObj.GetType)
+        Using sww As New StringWriter
+            Using writer As StreamWriter = New StreamWriter(pathfile, False)
+                xsSubmit.Serialize(writer, TarObj)
+                Dim xxx = sww.ToString
+            End Using
+        End Using
+    End Sub
     Private Function GetFlowLot(lotNo As String) As String
         Dim data As DataTable = New DataTable()
         Using cmd As New SqlClient.SqlCommand
@@ -179,7 +249,8 @@ Module Module1
     End Function
     Friend Function StartLot(lotNo As String, mcNo As String, opNo As String, recipe As String) As Boolean
         Try
-            Dim result = m_iLibraryService.StartLot(lotNo, mcNo, opNo, recipe)
+            'Dim result = m_iLibraryService.StartLot(lotNo, mcNo, opNo, recipe)
+            Dim result = m_iLibraryService.StartLotPhase2(lotNo, mcNo, opNo, m_LotData.Recipe, m_LotData.CarrierInfo, Nothing)
             If Not result.IsPass Then
                 SaveLog(MethodInfo.GetCurrentMethod().ToString(), result.Type.ToString() & ">> Not Pass")
                 MessageBoxDialog.ShowMessageDialog(result.FunctionName, result.Cause, result.Type.ToString())
@@ -195,7 +266,8 @@ Module Module1
     End Function
     Friend Function EndLot(lotNo As String, mcNo As String, opNo As String, good As Integer, ng As Integer) As Boolean
         Try
-            Dim result = m_iLibraryService.EndLot(lotNo, mcNo, opNo, good, ng)
+            'Dim result = m_iLibraryService.EndLot(lotNo, mcNo, opNo, good, ng)
+            Dim result = m_iLibraryService.EndLotPhase2(lotNo, mcNo, opNo, good, ng, Licenser.Check, m_LotData.CarrierInfo, Nothing)
             If Not result.IsPass Then
                 SaveLog(MethodInfo.GetCurrentMethod().ToString(), result.Type.ToString() & ">> Not Pass")
                 MessageBoxDialog.ShowMessageDialog(result.FunctionName, result.Cause, result.Type.ToString())

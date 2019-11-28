@@ -30,7 +30,10 @@ Public Class frmMain
 
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
-
+        m_LotData = ReadXml(Of LotData)(m_PathFileLotData)
+        If m_LotData Is Nothing Then
+            m_LotData = New LotData
+        End If
         '!! Check Comment at [On Error Resume Next] of [ Protected Overrides Sub WndProc] for test this Sub afer new edit
         initial()
         BuildMCList()

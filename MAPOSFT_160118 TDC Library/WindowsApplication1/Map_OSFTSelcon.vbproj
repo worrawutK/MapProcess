@@ -157,12 +157,19 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FTSetupData.vb" />
+    <Compile Include="InputCarrier.Designer.vb">
+      <DependentUpon>InputCarrier.vb</DependentUpon>
+    </Compile>
+    <Compile Include="InputCarrier.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="KeyBoard.Designer.vb">
       <DependentUpon>KeyBoard.vb</DependentUpon>
     </Compile>
     <Compile Include="KeyBoard.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="LotData.vb" />
     <Compile Include="Mode.designer.vb">
       <DependentUpon>Mode.vb</DependentUpon>
     </Compile>
@@ -237,6 +244,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmInputQrCode.resx">
       <DependentUpon>frmInputQrCode.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InputCarrier.resx">
+      <DependentUpon>InputCarrier.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="KeyBoard.resx">
       <DependentUpon>KeyBoard.vb</DependentUpon>
@@ -325,6 +335,9 @@
     <None Include="Service References\iLibraryService\MAP_OSFT.iLibraryService.CancelLotResult.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\iLibraryService\MAP_OSFT.iLibraryService.CarrierInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\iLibraryService\MAP_OSFT.iLibraryService.CheckLotApcsProResult.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -332,6 +345,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\iLibraryService\MAP_OSFT.iLibraryService.iReportResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\iLibraryService\MAP_OSFT.iLibraryService.LotInformation.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\iLibraryService\MAP_OSFT.iLibraryService.MachineAlarmResult.datasource">
@@ -403,6 +419,9 @@
     <Content Include="Dll\MessageDialog.dll" />
     <Content Include="Dll\Rohm.Apcs.Tdc.dll" />
     <Content Include="Dll\Rohm.Ems.dll" />
+    <None Include="Resources\PictureBoxWrong.png" />
+    <None Include="Resources\PictureBoxQrCode.png" />
+    <None Include="Resources\PicturBoxRohmLogo.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
