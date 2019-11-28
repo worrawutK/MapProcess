@@ -2151,4 +2151,6 @@ inputQr:
 
         file_Log.Close()
     End Sub
+
+
 End Class

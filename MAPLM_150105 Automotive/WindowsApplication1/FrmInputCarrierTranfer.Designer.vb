@@ -24,6 +24,9 @@ Partial Class FrmInputCarrierTranfer
     Private Sub InitializeComponent()
         Me.lbClose = New System.Windows.Forms.Label()
         Me.TextBoxCarrierTranfer = New System.Windows.Forms.TextBox()
+        Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'lbClose
@@ -41,17 +44,36 @@ Partial Class FrmInputCarrierTranfer
         Me.TextBoxCarrierTranfer.Size = New System.Drawing.Size(100, 20)
         Me.TextBoxCarrierTranfer.TabIndex = 105
         '
+        'ProgressBar1
+        '
+        Me.ProgressBar1.Location = New System.Drawing.Point(134, 194)
+        Me.ProgressBar1.Name = "ProgressBar1"
+        Me.ProgressBar1.Size = New System.Drawing.Size(380, 40)
+        Me.ProgressBar1.TabIndex = 107
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.PictureBox1.Image = Global.MAP_LM.My.Resources.Resources.TranGIF
+        Me.PictureBox1.Location = New System.Drawing.Point(0, 0)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(584, 261)
+        Me.PictureBox1.TabIndex = 108
+        Me.PictureBox1.TabStop = False
+        '
         'FrmInputCarrierTranfer
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackgroundImage = Global.MAP_LM.My.Resources.Resources.TranGIF
         Me.ClientSize = New System.Drawing.Size(584, 261)
         Me.ControlBox = False
+        Me.Controls.Add(Me.ProgressBar1)
         Me.Controls.Add(Me.TextBoxCarrierTranfer)
         Me.Controls.Add(Me.lbClose)
+        Me.Controls.Add(Me.PictureBox1)
         Me.Name = "FrmInputCarrierTranfer"
         Me.Text = "FrmInputCarrierTranfer"
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -59,4 +81,6 @@ Partial Class FrmInputCarrierTranfer
 
     Friend WithEvents lbClose As Label
     Friend WithEvents TextBoxCarrierTranfer As TextBox
+    Friend WithEvents ProgressBar1 As ProgressBar
+    Friend WithEvents PictureBox1 As PictureBox
 End Class

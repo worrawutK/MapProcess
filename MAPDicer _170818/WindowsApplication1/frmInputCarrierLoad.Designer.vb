@@ -22,55 +22,54 @@ Partial Class frmInputCarrierLoad
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.TextBoxCarrierLoad = New System.Windows.Forms.TextBox()
-        Me.lbClose = New System.Windows.Forms.Label()
         Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
+        Me.lbClose = New System.Windows.Forms.Label()
+        Me.TextBoxCarrierInput = New System.Windows.Forms.TextBox()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'TextBoxCarrierLoad
+        'ProgressBar1
         '
-        Me.TextBoxCarrierLoad.Location = New System.Drawing.Point(15, 207)
-        Me.TextBoxCarrierLoad.Name = "TextBoxCarrierLoad"
-        Me.TextBoxCarrierLoad.Size = New System.Drawing.Size(100, 20)
-        Me.TextBoxCarrierLoad.TabIndex = 0
+        Me.ProgressBar1.Location = New System.Drawing.Point(136, 193)
+        Me.ProgressBar1.Name = "ProgressBar1"
+        Me.ProgressBar1.Size = New System.Drawing.Size(398, 34)
+        Me.ProgressBar1.TabIndex = 5
         '
         'lbClose
         '
         Me.lbClose.BackColor = System.Drawing.Color.Transparent
-        Me.lbClose.Location = New System.Drawing.Point(520, 9)
+        Me.lbClose.Location = New System.Drawing.Point(522, 9)
         Me.lbClose.Name = "lbClose"
-        Me.lbClose.Size = New System.Drawing.Size(51, 46)
-        Me.lbClose.TabIndex = 103
+        Me.lbClose.Size = New System.Drawing.Size(47, 45)
+        Me.lbClose.TabIndex = 4
         '
-        'ProgressBar1
+        'TextBoxCarrierInput
         '
-        Me.ProgressBar1.Location = New System.Drawing.Point(134, 194)
-        Me.ProgressBar1.Name = "ProgressBar1"
-        Me.ProgressBar1.Size = New System.Drawing.Size(380, 40)
-        Me.ProgressBar1.TabIndex = 107
+        Me.TextBoxCarrierInput.Location = New System.Drawing.Point(15, 207)
+        Me.TextBoxCarrierInput.Name = "TextBoxCarrierInput"
+        Me.TextBoxCarrierInput.Size = New System.Drawing.Size(100, 20)
+        Me.TextBoxCarrierInput.TabIndex = 3
         '
         'PictureBox1
         '
         Me.PictureBox1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.PictureBox1.Image = Global.MAP_LM.My.Resources.Resources.LoadGIF
+        Me.PictureBox1.Image = Global.MAP_Dicer.My.Resources.Resources.LoadGIF
         Me.PictureBox1.Location = New System.Drawing.Point(0, 0)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(584, 261)
-        Me.PictureBox1.TabIndex = 108
+        Me.PictureBox1.TabIndex = 6
         Me.PictureBox1.TabStop = False
         '
         'frmInputCarrierLoad
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.ClientSize = New System.Drawing.Size(584, 261)
         Me.ControlBox = False
         Me.Controls.Add(Me.ProgressBar1)
         Me.Controls.Add(Me.lbClose)
-        Me.Controls.Add(Me.TextBoxCarrierLoad)
+        Me.Controls.Add(Me.TextBoxCarrierInput)
         Me.Controls.Add(Me.PictureBox1)
         Me.Name = "frmInputCarrierLoad"
         Me.Text = "frmInputCarrierLoad"
@@ -80,8 +79,8 @@ Partial Class frmInputCarrierLoad
 
     End Sub
 
-    Friend WithEvents TextBoxCarrierLoad As TextBox
-    Friend WithEvents lbClose As Label
     Friend WithEvents ProgressBar1 As ProgressBar
+    Friend WithEvents lbClose As Label
+    Friend WithEvents TextBoxCarrierInput As TextBox
     Friend WithEvents PictureBox1 As PictureBox
 End Class
