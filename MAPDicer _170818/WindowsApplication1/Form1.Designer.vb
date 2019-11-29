@@ -736,7 +736,7 @@ Partial Class Form1
         Me.lbRevision.Name = "lbRevision"
         Me.lbRevision.Size = New System.Drawing.Size(235, 13)
         Me.lbRevision.TabIndex = 108
-        Me.lbRevision.Text = "SelCon MAP Dicer  Software Ver 1.10 Apcs Pro."
+        Me.lbRevision.Text = "SelCon MAP Dicer  Software Ver 1.11 Apcs Pro."
         '
         'lbAndonJudge
         '
