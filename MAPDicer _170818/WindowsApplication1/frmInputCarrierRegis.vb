@@ -15,7 +15,7 @@
     End Sub
 
     Private Sub lbClose_Click(sender As Object, e As EventArgs) Handles lbClose.Click
-        Me.Close()
+        Me.DialogResult = DialogResult.Cancel
     End Sub
 
     Private Sub TextBoxCarrierInput_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TextBoxCarrierInput.KeyPress
@@ -30,7 +30,7 @@
             If TextBoxCarrierInput.Text.Length = 11 Then
                 c_CarrierRegis = TextBoxCarrierInput.Text
                 TextBoxCarrierInput.Text = ""
-                Me.Close()
+                Me.DialogResult = DialogResult.OK
             Else
                 MsgBox("รูปของ Carrier ไม่ถูกต้อง")
                 TextBoxCarrierInput.Text = ""

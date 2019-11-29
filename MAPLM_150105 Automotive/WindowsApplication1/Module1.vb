@@ -119,10 +119,10 @@ Module Module1
     Friend Function EndLot(lotNo As String, mcNo As String, opNo As String, good As Integer, ng As Integer) As Boolean
         Try
             Dim carrierInfo = m_iLibraryService.GetCarrierInfo(mcNo, lotNo, opNo)
-            If Not carrierInfo.IsPass Then
-                MessageBoxDialog.ShowMessageDialog("GetCarrierInfo", carrierInfo.Reason, "Carrier")
-                Return False
-            End If
+            'If Not carrierInfo.IsPass Then
+            '    MessageBoxDialog.ShowMessageDialog("GetCarrierInfo", carrierInfo.Reason, "Carrier")
+            '    Return False
+            'End If
             If carrierInfo.UnloadCarrier = CarrierInfo.CarrierStatus.Use Then
                 Dim carrierTran As FrmInputCarrierTranfer = New FrmInputCarrierTranfer("unload")
                 If carrierTran.ShowDialog() <> DialogResult.OK Then

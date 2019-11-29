@@ -303,6 +303,9 @@
     <None Include="Service References\iLibraryService\MAP_Dicer.iLibraryService.iReportResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\iLibraryService\MAP_Dicer.iLibraryService.LotInformation.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\iLibraryService\MAP_Dicer.iLibraryService.MachineAlarmResult.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -371,6 +374,7 @@
     <Content Include="Dll\MessageDialog.dll" />
     <Content Include="Dll\Rohm.dll" />
     <Content Include="Dll\Rohm.Ems.dll" />
+    <None Include="Resources\UnloadGIF.gif" />
     <None Include="Resources\TranGIF.gif" />
     <None Include="Resources\LoadGIF.gif" />
     <None Include="Resources\RegisGIF.gif" />

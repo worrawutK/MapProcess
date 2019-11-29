@@ -2252,6 +2252,179 @@ Namespace iLibraryService
         End Sub
     End Class
     
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="LotInformation", [Namespace]:="http://schemas.datacontract.org/2004/07/"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class LotInformation
+        Inherits Object
+        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
+        
+        <System.NonSerializedAttribute()>  _
+        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private DeviceNameField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private FailQtyField As Integer
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private JobNameField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private LotIdField As Integer
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private LotNoField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private LotTypeField As iLibraryService.LotInformation.LotTypeState
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private PackageNameField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private PassQtyField As Integer
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
+        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
+            Get
+                Return Me.extensionDataField
+            End Get
+            Set
+                Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property DeviceName() As String
+            Get
+                Return Me.DeviceNameField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.DeviceNameField, value) <> true) Then
+                    Me.DeviceNameField = value
+                    Me.RaisePropertyChanged("DeviceName")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property FailQty() As Integer
+            Get
+                Return Me.FailQtyField
+            End Get
+            Set
+                If (Me.FailQtyField.Equals(value) <> true) Then
+                    Me.FailQtyField = value
+                    Me.RaisePropertyChanged("FailQty")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property JobName() As String
+            Get
+                Return Me.JobNameField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.JobNameField, value) <> true) Then
+                    Me.JobNameField = value
+                    Me.RaisePropertyChanged("JobName")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property LotId() As Integer
+            Get
+                Return Me.LotIdField
+            End Get
+            Set
+                If (Me.LotIdField.Equals(value) <> true) Then
+                    Me.LotIdField = value
+                    Me.RaisePropertyChanged("LotId")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property LotNo() As String
+            Get
+                Return Me.LotNoField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.LotNoField, value) <> true) Then
+                    Me.LotNoField = value
+                    Me.RaisePropertyChanged("LotNo")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property LotType() As iLibraryService.LotInformation.LotTypeState
+            Get
+                Return Me.LotTypeField
+            End Get
+            Set
+                If (Me.LotTypeField.Equals(value) <> true) Then
+                    Me.LotTypeField = value
+                    Me.RaisePropertyChanged("LotType")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property PackageName() As String
+            Get
+                Return Me.PackageNameField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.PackageNameField, value) <> true) Then
+                    Me.PackageNameField = value
+                    Me.RaisePropertyChanged("PackageName")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property PassQty() As Integer
+            Get
+                Return Me.PassQtyField
+            End Get
+            Set
+                If (Me.PassQtyField.Equals(value) <> true) Then
+                    Me.PassQtyField = value
+                    Me.RaisePropertyChanged("PassQty")
+                End If
+            End Set
+        End Property
+        
+        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+        
+        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
+            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
+            If (Not (propertyChanged) Is Nothing) Then
+                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+            End If
+        End Sub
+        
+        <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+         System.Runtime.Serialization.DataContractAttribute(Name:="LotInformation.LotTypeState", [Namespace]:="http://schemas.datacontract.org/2004/07/")>  _
+        Public Enum LotTypeState As Integer
+            
+            <System.Runtime.Serialization.EnumMemberAttribute()>  _
+            Apcs = 0
+            
+            <System.Runtime.Serialization.EnumMemberAttribute()>  _
+            ApcsPro = 1
+            
+            <System.Runtime.Serialization.EnumMemberAttribute()>  _
+            Unknown = 2
+        End Enum
+    End Class
+    
     <System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
      System.ServiceModel.ServiceContractAttribute(ConfigurationName:="iLibraryService.IServiceiLibrary")>  _
     Public Interface IServiceiLibrary
@@ -2339,6 +2512,9 @@ Namespace iLibraryService
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IServiceiLibrary/EndLotPhase2", ReplyAction:="http://tempuri.org/IServiceiLibrary/EndLotPhase2Response")>  _
         Function EndLotPhase2(ByVal lotNo As String, ByVal mcNo As String, ByVal opNo As String, ByVal good As Integer, ByVal ng As Integer, ByVal licenser As iLibraryService.Licenser, ByVal carrierInfo As iLibraryService.CarrierInfo, ByVal specialParametersEventArgs As iLibraryService.EndLotSpecialParametersEventArgs) As iLibraryService.EndLotResult
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IServiceiLibrary/GetLotInfo", ReplyAction:="http://tempuri.org/IServiceiLibrary/GetLotInfoResponse")>  _
+        Function GetLotInfo(ByVal lotNo As String, ByVal mcNo As String) As iLibraryService.LotInformation
     End Interface
     
     <System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")>  _
@@ -2482,6 +2658,10 @@ Namespace iLibraryService
         
         Public Function EndLotPhase2(ByVal lotNo As String, ByVal mcNo As String, ByVal opNo As String, ByVal good As Integer, ByVal ng As Integer, ByVal licenser As iLibraryService.Licenser, ByVal carrierInfo As iLibraryService.CarrierInfo, ByVal specialParametersEventArgs As iLibraryService.EndLotSpecialParametersEventArgs) As iLibraryService.EndLotResult Implements iLibraryService.IServiceiLibrary.EndLotPhase2
             Return MyBase.Channel.EndLotPhase2(lotNo, mcNo, opNo, good, ng, licenser, carrierInfo, specialParametersEventArgs)
+        End Function
+        
+        Public Function GetLotInfo(ByVal lotNo As String, ByVal mcNo As String) As iLibraryService.LotInformation Implements iLibraryService.IServiceiLibrary.GetLotInfo
+            Return MyBase.Channel.GetLotInfo(lotNo, mcNo)
         End Function
     End Class
 End Namespace
