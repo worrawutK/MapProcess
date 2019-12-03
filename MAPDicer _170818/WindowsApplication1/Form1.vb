@@ -1051,8 +1051,8 @@ Public Class Form1
 
 
 
-        If tbxCtrl.Text >= Int16.MaxValue Then
-            MsgBox(" ใส่ค่าได้ไม่เกิน" & Int16.MaxValue)
+        If tbxCtrl.Text >= Int32.MaxValue Then
+            MsgBox(" ใส่ค่าได้ไม่เกิน" & Int32.MaxValue)
             Exit Sub
         End If
         LB.Font = New Font("Microsoft Sans Serif", 9, FontStyle.Regular)
