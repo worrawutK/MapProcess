@@ -312,7 +312,7 @@ Partial Class Form1
         Me.lbRevision.Name = "lbRevision"
         Me.lbRevision.Size = New System.Drawing.Size(260, 13)
         Me.lbRevision.TabIndex = 108
-        Me.lbRevision.Text = "SelCon MAP Laser Mark  Software Ver 1.12 Apcs Pro"
+        Me.lbRevision.Text = "SelCon MAP Laser Mark  Software Ver 1.13 Apcs Pro"
         '
         'lbMspec
         '
@@ -530,6 +530,7 @@ Partial Class Form1
         'btnFinal
         '
         Me.btnFinal.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.btnFinal.Image = Global.MAP_LM.My.Resources.Resources.btnGif
         Me.btnFinal.Location = New System.Drawing.Point(778, 513)
         Me.btnFinal.Name = "btnFinal"
         Me.btnFinal.Size = New System.Drawing.Size(82, 37)

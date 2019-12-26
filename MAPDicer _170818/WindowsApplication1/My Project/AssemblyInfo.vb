@@ -9,7 +9,7 @@ Imports System.Runtime.InteropServices
 ' Review the values of the assembly attributes
 
 <Assembly: AssemblyTitle("WindowsApplication1")>
-<Assembly: AssemblyDescription("Edit Bug Input Good Overcharge Int16 to Int32")>
+<Assembly: AssemblyDescription("disabled btnEndLot When have Value")>
 <Assembly: AssemblyCompany("")> 
 <Assembly: AssemblyProduct("WindowsApplication1")> 
 <Assembly: AssemblyCopyright("Copyright ©  2013")> 
@@ -31,5 +31,5 @@ Imports System.Runtime.InteropServices
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("1.0.0.12")>
-<Assembly: AssemblyFileVersion("1.0.0.12")>
+<Assembly: AssemblyVersion("1.0.13.1")>
+<Assembly: AssemblyFileVersion("1.0.13.1")>

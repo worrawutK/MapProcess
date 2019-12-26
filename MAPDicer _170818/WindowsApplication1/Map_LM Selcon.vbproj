@@ -374,6 +374,7 @@
     <Content Include="Dll\MessageDialog.dll" />
     <Content Include="Dll\Rohm.dll" />
     <Content Include="Dll\Rohm.Ems.dll" />
+    <None Include="Resources\btnGif.gif" />
     <None Include="Resources\UnloadGIF.gif" />
     <None Include="Resources\TranGIF.gif" />
     <None Include="Resources\LoadGIF.gif" />

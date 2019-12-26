@@ -634,8 +634,6 @@ Public Class Form1
 
         If Master Then
             DBxDataSet.MAPLMData.Rows(0)("LotEndTime") = DateTimePicker1.Value
-
-
         Else
             DBxDataSet.MAPLMData.Rows(0)("LotEndTime") = Format(Now, "yyyy/MM/dd HH:mm:ss")
         End If
@@ -657,6 +655,7 @@ Public Class Form1
             m_EmsClient.SetOutput(lbMC.Text, CInt(lbGood.Text), CInt(lbInput.Text) - CInt(lbGood.Text))
             m_EmsClient.SetLotEnd(lbMC.Text) 'LA-01
             m_EmsClient.SetActivity(lbMC.Text, "Stop", TmeCategory.StopLoss)
+            btnFinal.Enabled = False
         Catch ex As Exception
             SaveLog(Message.Cellcon, "SetActivity Stop:" & ex.ToString)
         End Try
@@ -997,6 +996,7 @@ Public Class Form1
         tbxRemark.Text = ""
         lbMarkNo.Text = ""
         lbMC.Text = sender.text            'Set Click MC No.
+        btnFinal.Enabled = True
         '=== Query 
         MachineOnline("MAP-" & lbMC.Text, iLibraryService.MachineOnline.Online)
         'EMS
@@ -1189,6 +1189,7 @@ inputQr:
             DateTimePicker1.Format = DateTimePickerFormat.Custom
             DateTimePicker1.CustomFormat = "yyyy-MM-dd  HH :mm :ss"
             DateTimePicker1.Show()
+            btnFinal.Enabled = True
             If sender.name = "lbEnd" Then
                 clickLb = True
             Else
