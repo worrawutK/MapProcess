@@ -148,15 +148,20 @@ Module Module1
             }
             'Dim result = m_iLibraryService.SetupLot(lotNo, mcNo, opNo, process, layerNo)
             Dim result = m_iLibraryService.SetupLotPhase2(lotNo, mcNo, opNo, process, Licenser.Check, m_LotData.CarrierInfo, setupParamiter)
-            Select Case Not result.IsPass
-                Case SetupLotResult.Status.NotPass
-                    cmd = "Error," & result.Type.ToString() & "," & mcNo & "," & lotNo & ","
-                    SaveLog(MethodInfo.GetCurrentMethod().ToString(), result.Type.ToString() & ">> Not Pass")
-                    MessageBoxDialog.ShowMessageDialog(result.FunctionName, result.Cause, result.Type.ToString())
-                    Return False
-                Case SetupLotResult.Status.Warning
-                    MessageBoxDialog.ShowMessageDialog(result.FunctionName, result.Cause, result.Type.ToString())
-            End Select
+            If result.IsPass = SetupLotResult.Status.NotPass Then
+                cmd = "Error," & result.Type.ToString() & "," & mcNo & "," & lotNo & ","
+                SaveLog(MethodInfo.GetCurrentMethod().ToString(), result.Type.ToString() & ">> Not Pass")
+                MessageBoxDialog.ShowMessageDialog(result.FunctionName, result.Cause, result.Type.ToString())
+                Return False
+            ElseIf result.IsPass = SetupLotResult.Status.Warning Then
+                MessageBoxDialog.ShowMessageDialog(result.FunctionName, result.Cause, result.Type.ToString())
+            End If
+            'Select Case result.IsPass
+            '    Case SetupLotResult.Status.NotPass
+
+            '    Case SetupLotResult.Status.Warning
+            '        MessageBoxDialog.ShowMessageDialog(result.FunctionName, result.Cause, result.Type.ToString())
+            'End Select
             m_LotData = New LotData With {
                 .LotNo = lotNo,
                 .MachineNo = mcNo,
@@ -271,6 +276,23 @@ Module Module1
             If Not result.IsPass Then
                 SaveLog(MethodInfo.GetCurrentMethod().ToString(), result.Type.ToString() & ">> Not Pass")
                 MessageBoxDialog.ShowMessageDialog(result.FunctionName, result.Cause, result.Type.ToString())
+                Return False
+            End If
+            SaveLog(MethodInfo.GetCurrentMethod().ToString(), result.Type.ToString() & ">> Pass")
+            Return True
+        Catch ex As Exception
+            SaveLog(MethodInfo.GetCurrentMethod().ToString(), ex.Message.ToString())
+            Return False
+        End Try
+
+    End Function
+    Friend Function FinalLot(lotNo As String, mcNo As String, opNo As String) As Boolean
+        Try
+            'Dim result = m_iLibraryService.EndLot(lotNo, mcNo, opNo, good, ng)
+            Dim result = m_iLibraryService.UpdateFinalinspection(lotNo, opNo, Judge.OK, mcNo)
+            If Not result.IsPass Then
+                SaveLog(MethodInfo.GetCurrentMethod().ToString(), result.Type.ToString() & ">> Not Pass")
+                ' MessageBoxDialog.ShowMessageDialog(result.FunctionName, result.Cause, result.Type.ToString())
                 Return False
             End If
             SaveLog(MethodInfo.GetCurrentMethod().ToString(), result.Type.ToString() & ">> Pass")
