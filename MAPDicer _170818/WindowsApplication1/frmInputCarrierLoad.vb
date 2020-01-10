@@ -9,7 +9,7 @@
         End Set
     End Property
     Private Sub lbClose_Click(sender As Object, e As EventArgs) Handles lbClose.Click
-        Me.Close()
+        Me.DialogResult = DialogResult.Cancel
     End Sub
 
     Private Sub frmInputCarrierLoad_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -30,7 +30,7 @@
             If TextBoxCarrierInput.Text.Length = 11 Then
                 c_CarrierLoad = TextBoxCarrierInput.Text
                 TextBoxCarrierInput.Text = ""
-                Me.Close()
+                Me.DialogResult = DialogResult.OK
             Else
                 MsgBox("รูปของ Carrier ไม่ถูกต้อง")
                 TextBoxCarrierInput.Text = ""

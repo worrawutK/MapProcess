@@ -312,7 +312,7 @@ Partial Class Form1
         Me.lbRevision.Name = "lbRevision"
         Me.lbRevision.Size = New System.Drawing.Size(260, 13)
         Me.lbRevision.TabIndex = 108
-        Me.lbRevision.Text = "SelCon MAP Laser Mark  Software Ver 1.10 Apcs Pro"
+        Me.lbRevision.Text = "SelCon MAP Laser Mark  Software Ver 1.13 Apcs Pro"
         '
         'lbMspec
         '
@@ -530,6 +530,7 @@ Partial Class Form1
         'btnFinal
         '
         Me.btnFinal.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.btnFinal.Image = Global.MAP_LM.My.Resources.Resources.btnGif
         Me.btnFinal.Location = New System.Drawing.Point(778, 513)
         Me.btnFinal.Name = "btnFinal"
         Me.btnFinal.Size = New System.Drawing.Size(82, 37)
@@ -724,7 +725,7 @@ Partial Class Form1
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AndonToolStripMenuItem, Me.APCSStaffToolStripMenuItem, Me.BMRequestToolStripMenuItem, Me.PMRepairToolStripMenuItem, Me.WorkRecordToolStripMenuItem, Me.HelpToolStripMenuItem, Me.SettingToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(34, 107)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(854, 33)
+        Me.MenuStrip1.Size = New System.Drawing.Size(734, 33)
         Me.MenuStrip1.TabIndex = 250
         Me.MenuStrip1.Text = "MenuStrip1"
         '

@@ -26,7 +26,7 @@
             If TextBoxCarrierLoad.Text.Length = 11 Then
                 c_CarrierLoad = TextBoxCarrierLoad.Text
                 TextBoxCarrierLoad.Text = ""
-                Me.Close()
+                Me.DialogResult = DialogResult.OK
             Else
                 MsgBox("รูปของ Carrier ไม่ถูกต้อง")
                 TextBoxCarrierLoad.Text = ""
@@ -36,6 +36,6 @@
     End Sub
 
     Private Sub LbClose_Click(sender As Object, e As EventArgs) Handles lbClose.Click
-        Me.Close()
+        Me.DialogResult = DialogResult.Cancel
     End Sub
 End Class

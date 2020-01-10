@@ -13,7 +13,18 @@
         TextBoxCarrierTranfer.Select()
         lbClose.Parent = PictureBox1
     End Sub
+    Sub New(frm As String)
 
+        ' This call is required by the designer.
+        InitializeComponent()
+        If frm = "tranfer" Then
+            PictureBox1.Image = Global.MAP_LM.My.Resources.Resources.TranGIF
+        ElseIf frm = "unload" Then
+            PictureBox1.Image = Global.MAP_LM.My.Resources.Resources.UnloadGIF
+        End If
+        ' Add any initialization after the InitializeComponent() call.
+
+    End Sub
     Private Sub TextBoxCarrierTranfer_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TextBoxCarrierTranfer.KeyPress
 
         If TextBoxCarrierTranfer.TextLength * 5 <= 100 Then
@@ -26,7 +37,7 @@
             If TextBoxCarrierTranfer.Text.Length = 11 Then
                 c_CarrierTranfer = TextBoxCarrierTranfer.Text
                 TextBoxCarrierTranfer.Text = ""
-                Me.Close()
+                Me.DialogResult = DialogResult.OK
             Else
                 MsgBox("รูปของ Carrier ไม่ถูกต้อง")
                 TextBoxCarrierTranfer.Text = ""
@@ -36,6 +47,6 @@
     End Sub
 
     Private Sub lbClose_Click(sender As Object, e As EventArgs) Handles lbClose.Click
-        Me.Close()
+        Me.DialogResult = DialogResult.Cancel
     End Sub
 End Class
