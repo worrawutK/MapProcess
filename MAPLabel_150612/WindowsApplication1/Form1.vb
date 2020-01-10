@@ -1508,7 +1508,7 @@ InputQr:
         ' frm.ShowDialog()
         If frm.ShowDialog = Windows.Forms.DialogResult.OK Then
 
-            If frm.IsPass = False OrElse SetupLot(frm.LotNo, ProcessHeader & lbMC.Text, frm.OpNo, "MAP", "0288") Then
+            If Not SetupLot(frm.LotNo, ProcessHeader & lbMC.Text, frm.OpNo, "MAP", "0288") Then
                 GoTo InputQr
             End If
 

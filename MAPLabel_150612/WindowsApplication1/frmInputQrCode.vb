@@ -37,7 +37,7 @@ Public Class frmInputQrCode
             c_InputQty = value
         End Set
     End Property
-    Public IsPass As Boolean = True
+    'Public IsPass As Boolean = True
     Private c_QrCode As String
     'Public Property QrCode() As String
     '    Get
