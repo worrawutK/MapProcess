@@ -1862,27 +1862,27 @@ Public Class frmMain
 
                                         ' If My.Settings.RunOffline = False Then
                                         Try
-                                                If PermissionGetDataAPCS(strCommand(7), strCommand(4)) = False Then
-                                                    strSendCmd = "Error," & strCmd & "," & strMachineNo & "," & strAssyLotNo & "," & "No Permiision "
-                                                    GoTo sendLoop
-                                                End If
-                                            Catch ex As Exception
-                                                Dim frm As MsgShow = New MsgShow
-                                                frm.txt = "Error:PermissionGetDataAPCS :" & ex.ToString
-                                                frm.Show()
-                                                clsErrorLog.addlogWT("Error:PermissionGetDataAPCS/" & strSendCmd & ">>" & ex.ToString)
-                                            End Try
+                                            If PermissionGetDataAPCS(strCommand(7), strCommand(4)) = False Then
+                                                strSendCmd = "Error," & strCmd & "," & strMachineNo & "," & strAssyLotNo & "," & "No Permiision "
+                                                GoTo sendLoop
+                                            End If
+                                        Catch ex As Exception
+                                            Dim frm As MsgShow = New MsgShow
+                                            frm.txt = "Error:PermissionGetDataAPCS :" & ex.ToString
+                                            frm.Show()
+                                            clsErrorLog.addlogWT("Error:PermissionGetDataAPCS/" & strSendCmd & ">>" & ex.ToString)
+                                        End Try
 
-                                            If My.Settings.RetestMode = True And strCommand(10).ToUpper = "RNG" Then
+                                        If My.Settings.RetestMode = True And strCommand(10).ToUpper = "RNG" Then
                                                 GoTo RunModeRetest
                                             End If
 
                                         '<0>,<Selcon IP>,<Cmd >,<M/Cno3>,<LotNo3>, <Package5>,<Devic6e>,<OPNo7>,<Process8>,<TestPro9>,<TestMode10>,<BoxName>
 
-                                        If Not SetupLot(strAssyLotNo, "MAP-" & lbMC.Text, strCommand(7), "MAP", "", strCommand, strSendCmd) Then
-                                            strSendCmd = "Error," & strCmd & "," & strMachineNo & "," & strAssyLotNo & "," & "TDC Error "
-                                            GoTo sendLoop
-                                        End If
+                                        'If Not SetupLot(strAssyLotNo, "MAP-" & lbMC.Text, strCommand(7), "MAP", "", strCommand, strSendCmd) Then
+                                        '    strSendCmd = "Error," & strCmd & "," & strMachineNo & "," & strAssyLotNo & "," & "TDC Error "
+                                        '    GoTo sendLoop
+                                        'End If
 
                                         'If LotRequestTDC(strAssyLotNo, RunModeType.Normal, "MAP-" & lbMC.Text) = False Then
                                         '    'TbQRInput.Text = ""
@@ -1949,6 +1949,11 @@ RunModeRetest:
 
                                         End If
 
+
+                                        If Not SetupLot(strAssyLotNo, "MAP-" & lbMC.Text, strCommand(7), "MAP", "", strCommand, strSendCmd) Then
+                                            strSendCmd = "Error," & strCmd & "," & strMachineNo & "," & strAssyLotNo & "," & "TDC Error "
+                                            GoTo sendLoop
+                                        End If
                                         'Dim ETC2 As String = Trim(WorkSlipData.Substring(232, 20))
                                         'Dim QROpNo As String = TbQRInput.Text
                                         'If PermiisionCheck(ETC2, QROpNo, My.Settings.MC_MAPGroup, My.Settings.GL_MAPGroup, "MAP", ProcessHeader & Form1.lbMC.Text) = False Then

@@ -54,7 +54,7 @@ Module Module1
             'Check flow lot and mcProgram
             Dim flowLot As String
             Dim lotInfo As LotInformation = m_iLibraryService.GetLotInfo(lotNo, mcNo)
-            If lotInfo Is Nothing Then
+            If lotInfo Is Nothing OrElse lotInfo.LotType = LotInformation.LotTypeState.Apcs Then
                 flowLot = GetFlowLot(lotNo).Replace(" ", "").ToUpper()
             Else
                 flowLot = lotInfo.JobName
