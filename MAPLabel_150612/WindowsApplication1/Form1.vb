@@ -1281,14 +1281,21 @@ fin:
                         SendPLC("RELEASE")
                         Log.TextBox1.Text &= Format(Now, "yyyy-MM-dd HH:mm:ss") & " : Send >> " & "RELEASE" & vbCrLf
                     Else
+                        SaveLog(Message.Send, "Send error: SplitData(1) =" & SplitData(1))
                         MsgBox(SplitData(1))
                     End If
 
                 Catch ex As Exception
+                    SaveLog(Message.Send, "Send error Exception:" & ex.Message.ToString)
                     '    addlogfile(CellConData.LotNo & " : LR :" & ex.Message)
                 End Try
             Case "LS"
                 Dim LotNo As String = SplitData(1)
+                If lbLotNo.Text.ToUpper.Trim <> LotNo.ToUpper.Trim Then
+                    MessageDialog.MessageBoxDialog.ShowMessageDialog("LS", "LotNo not match MC[" & LotNo & "] Cellcon[" & lbLotNo.Text & "]", "Error")
+                    SaveLog(Message.Rcv, "LotNo not match MC[" & LotNo & "] Cellcon[" & lbLotNo.Text & "]")
+                    Return
+                End If
                 Label10.Text = "Running"
                 Alarm = "START"
 
@@ -1518,6 +1525,14 @@ InputQr:
             dr.InputQty = frm.InputQty
             dr.OPNo = frm.OpNo
 
+            For Each row As DataRow In DBxDataSet.MAPALData.ToArray
+                If Not row.Item("LotNo") Is Nothing AndAlso row.Item("LotNo").ToString = frm.LotNo Then
+                    DBxDataSet.MAPALData.Rows.Remove(row)
+                End If
+
+            Next
+
+            'DBxDataSet.MAPALData.Rows(0).Item("LotNo")
             ' dr.LotStartTime = Format(Now, "yyyy/MM/dd HH:mm:ss")
             DBxDataSet.MAPALData.Rows.InsertAt(dr, 0)
             MAPALDataBindingSource.Position = 0          'Update new data 

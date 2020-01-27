@@ -369,6 +369,9 @@
     <None Include="Service References\iLibraryService\MAP_Label.iLibraryService.iReportResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\iLibraryService\MAP_Label.iLibraryService.LotInformation.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\iLibraryService\MAP_Label.iLibraryService.MachineAlarmResult.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
