@@ -39,7 +39,41 @@ Module Module1
     Private m_Recipe As String
     Friend Function SetupLot(lotNo As String, mcNo As String, opNo As String, processName As String, layerNo As String) As Boolean
         Try
-            Dim result = m_iLibraryService.SetupLot(lotNo, mcNo, opNo, processName, layerNo)
+
+            Dim carrierInfo = m_iLibraryService.GetCarrierInfo(mcNo, lotNo, opNo)
+            If Not carrierInfo.IsPass Then
+                MessageBoxDialog.ShowMessageDialog("GetCarrierInfo", carrierInfo.Reason, "Carrier")
+                Return False
+            End If
+            If carrierInfo.InControlCarrier = CarrierInfo.CarrierStatus.Use AndAlso carrierInfo.EnabledControlCarrier = CarrierInfo.CarrierStatus.Use Then
+                If carrierInfo.LoadCarrier = CarrierInfo.CarrierStatus.Use Then
+                    'frmInputCarrierLoad.ShowDialog()
+                    Dim carrierLoad As frmInputCarrierLoad = New frmInputCarrierLoad()
+                    If carrierLoad.ShowDialog() <> DialogResult.OK Then
+                        Return False
+                    End If
+                    carrierInfo.LoadCarrierNo = carrierLoad.CarrierLoad
+                End If
+                If carrierInfo.RegisterCarrier = CarrierInfo.CarrierStatus.Use Then
+                    'FrmInputCarrierRegis.ShowDialog()
+                    Dim carrierRegis As FrmInputCarrierRegis = New FrmInputCarrierRegis()
+                    If carrierRegis.ShowDialog() <> DialogResult.OK Then
+                        Return False
+                    End If
+                    carrierInfo.RegisterCarrierNo = carrierRegis.CarrierRegis
+                End If
+                If carrierInfo.TransferCarrier = CarrierInfo.CarrierStatus.Use Then
+                    Dim carrierTran As FrmInputCarrierTranfer = New FrmInputCarrierTranfer("tranfer")
+                    If carrierTran.ShowDialog() <> DialogResult.OK Then
+                        Return False
+                    End If
+                    carrierInfo.TransferCarrierNo = carrierTran.CarrierTranfer
+                End If
+            End If
+            Dim SetupParameter As SetupLotSpecialParametersEventArgs = New SetupLotSpecialParametersEventArgs
+            SetupParameter.LayerNoApcs = layerNo
+
+            Dim result = m_iLibraryService.SetupLotPhase2(lotNo, mcNo, opNo, processName, Licenser.Check, carrierInfo, SetupParameter)
             Select Case result.IsPass
                 Case SetupLotResult.Status.NotPass
                     MessageBoxDialog.ShowMessageDialog(result.FunctionName, result.Cause, result.Type.ToString())
@@ -62,7 +96,12 @@ Module Module1
 
     Friend Function StartLot(lotNo As String, mcNo As String, opNo As String) As Boolean
         Try
-            Dim result = m_iLibraryService.StartLot(lotNo, mcNo, opNo, m_Recipe)
+            Dim carrierInfo = m_iLibraryService.GetCarrierInfo(mcNo, lotNo, opNo)
+            'If Not carrierInfo.IsPass Then
+            '    MessageBoxDialog.ShowMessageDialog("GetCarrierInfo", carrierInfo.Reason, "Carrier")
+            '    Return False
+            'End If
+            Dim result = m_iLibraryService.StartLotPhase2(lotNo, mcNo, opNo, m_Recipe, carrierInfo, Nothing)
             If Not result.IsPass Then
                 MessageBoxDialog.ShowMessageDialog(result.FunctionName, result.Cause, result.Type.ToString())
                 Return False
@@ -79,7 +118,20 @@ Module Module1
 
     Friend Function EndLot(lotNo As String, mcNo As String, opNo As String, good As Integer, ng As Integer) As Boolean
         Try
-            Dim result = m_iLibraryService.EndLot(lotNo, mcNo, opNo, good, ng)
+            Dim carrierInfo = m_iLibraryService.GetCarrierInfo(mcNo, lotNo, opNo)
+            'If Not carrierInfo.IsPass Then
+            '    MessageBoxDialog.ShowMessageDialog("GetCarrierInfo", carrierInfo.Reason, "Carrier")
+            '    Return False
+            'End If
+            If carrierInfo.UnloadCarrier = CarrierInfo.CarrierStatus.Use Then
+                Dim carrierTran As FrmInputCarrierTranfer = New FrmInputCarrierTranfer("unload")
+                If carrierTran.ShowDialog() <> DialogResult.OK Then
+                    Return False
+                End If
+                carrierInfo.UnloadCarrierNo = carrierTran.CarrierTranfer
+            End If
+            Dim EndParameter As EndLotSpecialParametersEventArgs = New EndLotSpecialParametersEventArgs
+            Dim result = m_iLibraryService.EndLotPhase2(lotNo, mcNo, opNo, good, ng, Licenser.Check, carrierInfo, EndParameter)
             If Not result.IsPass Then
                 MessageBoxDialog.ShowMessageDialog(result.FunctionName, result.Cause, result.Type.ToString())
                 Return False

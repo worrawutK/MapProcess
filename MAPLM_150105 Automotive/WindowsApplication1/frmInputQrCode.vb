@@ -311,7 +311,11 @@ Public Class frmInputQrCode
 
 
                         QrCode = TbQRInput.Text
-                        Dim trans As TransactionData = New TransactionData(TbQRInput.Text)
+
+                        'Dim trans As TransactionData = New TransactionData(TbQRInput.Text)
+                        Dim tmpWkSlip As Rohm.WorkingSlip = New WorkingSlip()
+                        tmpWkSlip.FullCode = QrCode
+
                         'If My.Computer.Network.IsAvailable Then
                         '    If My.Computer.Network.Ping(_ipDbxUser) Then                                                        ' Save QR Code to transsaction table                                On Error GoTo ErrHander
                         '        trans.Save()
@@ -324,13 +328,13 @@ Public Class frmInputQrCode
                         'QR OK Data Save -----------------------------------------------------------------------------------
                         '
 
-                        lotNo = trans.LotNo
+                        LotNo = tmpWkSlip.LotNo
 
 
-                        LbPKG.Text = "Package  : " & trans.Package
-                        LbDevice.Text = "Device    : " & trans.Device
-                        LbLotNo.Text = "Lot No.    : " & lotNo
-                        lbMarkNo.Text = "Mark No  : " & trans.MarkTextLine1 & " " & trans.MarkTextLine2 & " " & trans.MarkTextLine3
+                        LbPKG.Text = "Package  : " & tmpWkSlip.PackageName
+                        LbDevice.Text = "Device    : " & tmpWkSlip.DeviceName
+                        LbLotNo.Text = "Lot No.    : " & LotNo
+                        lbMarkNo.Text = "Mark No  : " & tmpWkSlip.MarkingSpec1 & " " & tmpWkSlip.MarkingSpec2 & " " & tmpWkSlip.MarkingSpec3
 
                         '
                         'Switch to OP No. input -------------------------------------------------------------------------------

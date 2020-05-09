@@ -30,7 +30,10 @@ Public Class frmMain
 
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
-
+        m_LotData = ReadXml(Of LotData)(m_PathFileLotData)
+        If m_LotData Is Nothing Then
+            m_LotData = New LotData
+        End If
         '!! Check Comment at [On Error Resume Next] of [ Protected Overrides Sub WndProc] for test this Sub afer new edit
         initial()
         BuildMCList()
@@ -715,6 +718,25 @@ Public Class frmMain
 
         Dim endtime As DateTime = Format(Format(Now, "yyyy/MM/dd HH:mm:ss"))
 
+        Dim dialogEnd As New DialogEndConfirm()
+        If dialogEnd.ShowDialog() = DialogResult.OK Then
+            ' Dim resEnd As TdcResponse
+            If dialogEnd.EndLot = DialogEndConfirm.Status.EndNomal Then
+                FinalLot(lbLotNo.Text, ProcessHeader & lbMC.Text, lbOp.Text)
+                Dim result As Boolean = EndLot(lbLotNo.Text, ProcessHeader & lbMC.Text, lbOp.Text, CInt(lbGood.Text), CInt(lbInput.Text) - CInt(lbGood.Text))
+                If Not result Then
+                    Return
+                End If
+                ' resEnd = m_TdcService.LotEnd(ProcessHeader & lbMC.Text, lbLotNo.Text, CDate(lbEnd.Text), CInt(lbGood.Text), CInt(lbInput.Text) - CInt(lbGood.Text), EndModeType.Normal, lbOp.Text)
+            ElseIf dialogEnd.EndLot = DialogEndConfirm.Status.EndRetest Then
+                Dim result As Boolean = RetestLot(lbLotNo.Text, ProcessHeader & lbMC.Text, lbOp.Text)
+                If Not result Then
+                    Return
+                End If
+                ' resEnd = m_TdcService.LotEnd(ProcessHeader & lbMC.Text, lbLotNo.Text, CDate(lbEnd.Text), CInt(lbGood.Text), CInt(lbInput.Text) - CInt(lbGood.Text), EndModeType.AbnormalEndReset, lbOp.Text)
+            End If
+        End If
+
         If MAP_MAPDataTableAdapter.EndSerch(DBxDataSet.MAP_MAPData, "MAP-" & lbMC.Text, lbLotNo.Text) = 1 Then
             'DBxDataSet.MAP_MAPData.Rows(0)("LotEndTime") = endtime
             For Each strDataRow As DBxDataSet.MAP_MAPDataRow In DBxDataSet.MAP_MAPData.Rows
@@ -774,17 +796,18 @@ Public Class frmMain
 
         'SendPostMessage("@LOTEND|" & ProcessHeader & lbMC.Text & "|" & lbLotNo.Text & "," & _
         ' lbEnd.Text & "," & lbGood.Text & "," & CInt(lbInput.Text) - CInt(lbGood.Text) & ",01") 'Lot End       'Normal
-        Dim dialogEnd As New DialogEndConfirm()
-        If dialogEnd.ShowDialog() = DialogResult.OK Then
-            ' Dim resEnd As TdcResponse
-            If dialogEnd.EndLot = DialogEndConfirm.Status.EndNomal Then
-                EndLot(lbLotNo.Text, ProcessHeader & lbMC.Text, lbOp.Text, CInt(lbGood.Text), CInt(lbInput.Text) - CInt(lbGood.Text))
-                ' resEnd = m_TdcService.LotEnd(ProcessHeader & lbMC.Text, lbLotNo.Text, CDate(lbEnd.Text), CInt(lbGood.Text), CInt(lbInput.Text) - CInt(lbGood.Text), EndModeType.Normal, lbOp.Text)
-            ElseIf dialogEnd.EndLot = DialogEndConfirm.Status.EndRetest Then
-                RetestLot(lbLotNo.Text, ProcessHeader & lbMC.Text, lbOp.Text)
-                ' resEnd = m_TdcService.LotEnd(ProcessHeader & lbMC.Text, lbLotNo.Text, CDate(lbEnd.Text), CInt(lbGood.Text), CInt(lbInput.Text) - CInt(lbGood.Text), EndModeType.AbnormalEndReset, lbOp.Text)
-            End If
-        End If
+        'Dim dialogEnd As New DialogEndConfirm()
+        'If dialogEnd.ShowDialog() = DialogResult.OK Then
+        '    ' Dim resEnd As TdcResponse
+        '    If dialogEnd.EndLot = DialogEndConfirm.Status.EndNomal Then
+        '        FinalLot(lbLotNo.Text, ProcessHeader & lbMC.Text, lbOp.Text)
+        '        EndLot(lbLotNo.Text, ProcessHeader & lbMC.Text, lbOp.Text, CInt(lbGood.Text), CInt(lbInput.Text) - CInt(lbGood.Text))
+        '        ' resEnd = m_TdcService.LotEnd(ProcessHeader & lbMC.Text, lbLotNo.Text, CDate(lbEnd.Text), CInt(lbGood.Text), CInt(lbInput.Text) - CInt(lbGood.Text), EndModeType.Normal, lbOp.Text)
+        '    ElseIf dialogEnd.EndLot = DialogEndConfirm.Status.EndRetest Then
+        '        RetestLot(lbLotNo.Text, ProcessHeader & lbMC.Text, lbOp.Text)
+        '        ' resEnd = m_TdcService.LotEnd(ProcessHeader & lbMC.Text, lbLotNo.Text, CDate(lbEnd.Text), CInt(lbGood.Text), CInt(lbInput.Text) - CInt(lbGood.Text), EndModeType.AbnormalEndReset, lbOp.Text)
+        '    End If
+        'End If
 
         'EMS end
         Try
@@ -1840,27 +1863,27 @@ Public Class frmMain
 
                                         ' If My.Settings.RunOffline = False Then
                                         Try
-                                                If PermissionGetDataAPCS(strCommand(7), strCommand(4)) = False Then
-                                                    strSendCmd = "Error," & strCmd & "," & strMachineNo & "," & strAssyLotNo & "," & "No Permiision "
-                                                    GoTo sendLoop
-                                                End If
-                                            Catch ex As Exception
-                                                Dim frm As MsgShow = New MsgShow
-                                                frm.txt = "Error:PermissionGetDataAPCS :" & ex.ToString
-                                                frm.Show()
-                                                clsErrorLog.addlogWT("Error:PermissionGetDataAPCS/" & strSendCmd & ">>" & ex.ToString)
-                                            End Try
+                                            If PermissionGetDataAPCS(strCommand(7), strCommand(4)) = False Then
+                                                strSendCmd = "Error," & strCmd & "," & strMachineNo & "," & strAssyLotNo & "," & "No Permiision "
+                                                GoTo sendLoop
+                                            End If
+                                        Catch ex As Exception
+                                            Dim frm As MsgShow = New MsgShow
+                                            frm.txt = "Error:PermissionGetDataAPCS :" & ex.ToString
+                                            frm.Show()
+                                            clsErrorLog.addlogWT("Error:PermissionGetDataAPCS/" & strSendCmd & ">>" & ex.ToString)
+                                        End Try
 
-                                            If My.Settings.RetestMode = True And strCommand(10).ToUpper = "RNG" Then
+                                        If My.Settings.RetestMode = True And strCommand(10).ToUpper = "RNG" Then
                                                 GoTo RunModeRetest
                                             End If
 
                                         '<0>,<Selcon IP>,<Cmd >,<M/Cno3>,<LotNo3>, <Package5>,<Devic6e>,<OPNo7>,<Process8>,<TestPro9>,<TestMode10>,<BoxName>
 
-                                        If Not SetupLot(strAssyLotNo, "MAP-" & lbMC.Text, strCommand(7), "MAP", "", strCommand, strSendCmd) Then
-                                            strSendCmd = "Error," & strCmd & "," & strMachineNo & "," & strAssyLotNo & "," & "TDC Error "
-                                            GoTo sendLoop
-                                        End If
+                                        'If Not SetupLot(strAssyLotNo, "MAP-" & lbMC.Text, strCommand(7), "MAP", "", strCommand, strSendCmd) Then
+                                        '    strSendCmd = "Error," & strCmd & "," & strMachineNo & "," & strAssyLotNo & "," & "TDC Error "
+                                        '    GoTo sendLoop
+                                        'End If
 
                                         'If LotRequestTDC(strAssyLotNo, RunModeType.Normal, "MAP-" & lbMC.Text) = False Then
                                         '    'TbQRInput.Text = ""
@@ -1927,6 +1950,11 @@ RunModeRetest:
 
                                         End If
 
+
+                                        If Not SetupLot(strAssyLotNo, "MAP-" & lbMC.Text, strCommand(7), "MAP", "", strCommand, strSendCmd) Then
+                                            strSendCmd = "Error," & strCmd & "," & strMachineNo & "," & strAssyLotNo & "," & "TDC Error "
+                                            GoTo sendLoop
+                                        End If
                                         'Dim ETC2 As String = Trim(WorkSlipData.Substring(232, 20))
                                         'Dim QROpNo As String = TbQRInput.Text
                                         'If PermiisionCheck(ETC2, QROpNo, My.Settings.MC_MAPGroup, My.Settings.GL_MAPGroup, "MAP", ProcessHeader & Form1.lbMC.Text) = False Then
@@ -3119,7 +3147,7 @@ nextstep:
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        OnPrint("True,10.28.32.70,LOTSTART,IPB-22,1934A4226V,VSON008X20,BR34E02NUX-W(8A9U),003114,OSFT,F34E02ND,new,F8 BR34E02N,2019-08-27 16:08:36")
+        OnPrint("True,10.1.1.50,LOTSTART,IPB-27,1951A5381V,VSON04Z111,BU52272NUZ-ZA(X8G),006584,AUTO1,FU52272M30A,rng,F2 BU52272M30 A1,2019-11-01 15:53:16")
         'If IsNothing(f2) OrElse f2.IsDisposed Then
         '    f2 = New Form2
         'End If

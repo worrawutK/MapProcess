@@ -375,7 +375,7 @@ Partial Class frmMain
         Me.lbRevision.Name = "lbRevision"
         Me.lbRevision.Size = New System.Drawing.Size(191, 13)
         Me.lbRevision.TabIndex = 108
-        Me.lbRevision.Text = "SelCon MAP OS/FT Software Ver 2.09"
+        Me.lbRevision.Text = "SelCon MAP OS/FT Software Ver 2.18"
         '
         'lbAndonJudge
         '
@@ -1112,13 +1112,13 @@ Partial Class frmMain
         'ONToolStripMenuItemRetest
         '
         Me.ONToolStripMenuItemRetest.Name = "ONToolStripMenuItemRetest"
-        Me.ONToolStripMenuItemRetest.Size = New System.Drawing.Size(116, 30)
+        Me.ONToolStripMenuItemRetest.Size = New System.Drawing.Size(180, 30)
         Me.ONToolStripMenuItemRetest.Text = "ON"
         '
         'OFFToolStripMenuItemRetest
         '
         Me.OFFToolStripMenuItemRetest.Name = "OFFToolStripMenuItemRetest"
-        Me.OFFToolStripMenuItemRetest.Size = New System.Drawing.Size(116, 30)
+        Me.OFFToolStripMenuItemRetest.Size = New System.Drawing.Size(180, 30)
         Me.OFFToolStripMenuItemRetest.Text = "OFF"
         '
         'TesterManualLoadToolStripMenuItem

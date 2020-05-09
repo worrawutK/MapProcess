@@ -37,7 +37,7 @@ Public Class frmInputQrCode
             c_InputQty = value
         End Set
     End Property
-    Public IsPass As Boolean = True
+    'Public IsPass As Boolean = True
     Private c_QrCode As String
     'Public Property QrCode() As String
     '    Get
@@ -371,11 +371,14 @@ FailTDC:
                             Dim aa As String = Form1.CancelASEStrip(Parameter.LotNo)
                             If aa Like "*True*" Then
                                 '   MsgBox(CancelASEStrip(Parameter.LotNo))
+                                SaveLog("CancelLot", "F Lot สำเร็จ :" & aa)
                                 MsgBox("Cancel F Lot สำเร็จ")
                             Else
+                                SaveLog("CancelLot", "Error:" & aa)
                                 MsgBox(aa)
                             End If
                         Else
+                            SaveLog("CancelLot", "A Lot สำเร็จ")
                             MsgBox("Cancel A Lot สำเร็จ")
                         End If
                         CancelLot(Parameter.LotNo, ProcessHeader & My.Settings.MCNo, Parameter.OpNo)

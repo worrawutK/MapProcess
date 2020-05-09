@@ -1000,6 +1000,8 @@ Public Class Form1
             m_EmsClient.SetOutput(lbMC.Text, CInt(lbGood.Text), CInt(lbInput.Text) - CInt(lbGood.Text))
             m_EmsClient.SetLotEnd(lbMC.Text) 'LA-01
             m_EmsClient.SetActivity(lbMC.Text, "Stop", TmeCategory.StopLoss)
+            btnFinal.Enabled = False
+
         Catch ex As Exception
             SaveLog(Message.Cellcon, "SetActivity Stop:" & ex.ToString)
         End Try
@@ -1051,8 +1053,8 @@ Public Class Form1
 
 
 
-        If tbxCtrl.Text >= Int16.MaxValue Then
-            MsgBox(" ใส่ค่าได้ไม่เกิน" & Int16.MaxValue)
+        If tbxCtrl.Text >= Int32.MaxValue Then
+            MsgBox(" ใส่ค่าได้ไม่เกิน" & Int32.MaxValue)
             Exit Sub
         End If
         LB.Font = New Font("Microsoft Sans Serif", 9, FontStyle.Regular)
@@ -1474,7 +1476,9 @@ Public Class Form1
         DBxDataSet.TransactionData.Clear()
         'No Binding Controls ---------------
         lbStatus.Hide()
-
+        If lbEnd.Text = "" Then
+            btnFinal.Enabled = True
+        End If
         tbxRemark.Text = ""
 
         lbMC.Text = sender.text            'Set Click MC No.
@@ -1560,6 +1564,7 @@ inputQr:
             tbBladeTypeZ2.Text = ""
 
             QRInput.ShowDialog()
+
             If Not QRInput.lotNo = "" Then
                 '  SendPostMessage("@LOTREQ" & "|" & ProcessHeader & lbMC.Text & "|" & lbLotNo.Text & "," & lbOp.Text & ",00")   'Normal
                 If QRInput.IsPass = False OrElse Not SetupLot(QRInput.LotNo, ProcessHeader & lbMC.Text, QRInput.OpNo, "MAP", "0250") Then
@@ -1764,12 +1769,14 @@ inputQr:
             DateTimePicker1.Format = DateTimePickerFormat.Custom
             DateTimePicker1.CustomFormat = "yyyy-MM-dd  HH :mm :ss"
             DateTimePicker1.Show()
+            btnFinal.Enabled = True
             If sender.name = "lbEnd" Then
                 clickLb = True
             Else
                 clickLb = False
             End If
             DateTimePicker1.Value = lbStart.Text
+
         End If
     End Sub
     Private Sub lbStart_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lbStart.MouseHover, lbEnd.MouseHover
@@ -2151,4 +2158,6 @@ inputQr:
 
         file_Log.Close()
     End Sub
+
+
 End Class

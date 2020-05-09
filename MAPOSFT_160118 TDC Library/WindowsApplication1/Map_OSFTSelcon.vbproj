@@ -58,17 +58,17 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AuthenticationUser">
-      <HintPath>..\..\MAPLM_150105 Automotive\WindowsApplication1\bin\Debug\AuthenticationUser.dll</HintPath>
+      <HintPath>Dll\AuthenticationUser.dll</HintPath>
     </Reference>
     <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\FDLess\IPBC\netfdd40_Convert\netfdd\ICSharpCode.SharpZipLib.dll</HintPath>
+      <HintPath>Dll\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
     <Reference Include="MessageDialog">
       <HintPath>\\172.16.0.115\_PublicShare\Apcs Pro\MessageDialog.dll</HintPath>
     </Reference>
     <Reference Include="Rohm.Ems">
-      <HintPath>..\..\MAPLabel_150612\WindowsApplication1\bin\Debug\Rohm.Ems.dll</HintPath>
+      <HintPath>Dll\Rohm.Ems.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -157,12 +157,19 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FTSetupData.vb" />
+    <Compile Include="InputCarrier.Designer.vb">
+      <DependentUpon>InputCarrier.vb</DependentUpon>
+    </Compile>
+    <Compile Include="InputCarrier.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="KeyBoard.Designer.vb">
       <DependentUpon>KeyBoard.vb</DependentUpon>
     </Compile>
     <Compile Include="KeyBoard.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="LotData.vb" />
     <Compile Include="Mode.designer.vb">
       <DependentUpon>Mode.vb</DependentUpon>
     </Compile>
@@ -238,6 +245,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmInputQrCode.resx">
       <DependentUpon>frmInputQrCode.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InputCarrier.resx">
+      <DependentUpon>InputCarrier.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="KeyBoard.resx">
       <DependentUpon>KeyBoard.vb</DependentUpon>
@@ -326,6 +336,9 @@
     <None Include="Service References\iLibraryService\MAP_OSFT.iLibraryService.CancelLotResult.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\iLibraryService\MAP_OSFT.iLibraryService.CarrierInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\iLibraryService\MAP_OSFT.iLibraryService.CheckLotApcsProResult.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -333,6 +346,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\iLibraryService\MAP_OSFT.iLibraryService.iReportResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\iLibraryService\MAP_OSFT.iLibraryService.LotInformation.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\iLibraryService\MAP_OSFT.iLibraryService.MachineAlarmResult.datasource">
@@ -396,6 +412,17 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.vb</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Dll\AuthenticationUser.dll" />
+    <Content Include="Dll\ICSharpCode.SharpZipLib.dll" />
+    <Content Include="Dll\MessageDialog.dll" />
+    <Content Include="Dll\Rohm.Apcs.Tdc.dll" />
+    <Content Include="Dll\Rohm.Ems.dll" />
+    <None Include="Resources\PictureBoxWrong.png" />
+    <None Include="Resources\PictureBoxQrCode.png" />
+    <None Include="Resources\PicturBoxRohmLogo.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

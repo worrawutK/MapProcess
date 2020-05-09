@@ -66,7 +66,7 @@
     </Reference>
     <Reference Include="Rohm, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\Rohm.dll</HintPath>
+      <HintPath>Dll\Rohm.dll</HintPath>
     </Reference>
     <Reference Include="Rohm.Ems">
       <HintPath>..\..\MAPLabel_150612\WindowsApplication1\bin\Debug\Rohm.Ems.dll</HintPath>
@@ -122,6 +122,24 @@
     </Compile>
     <Compile Include="Form1.Designer.vb">
       <DependentUpon>Form1.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmInputCarrierLoad.Designer.vb">
+      <DependentUpon>frmInputCarrierLoad.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmInputCarrierLoad.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmInputCarrierRegis.Designer.vb">
+      <DependentUpon>FrmInputCarrierRegis.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmInputCarrierRegis.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmInputCarrierTranfer.Designer.vb">
+      <DependentUpon>FrmInputCarrierTranfer.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmInputCarrierTranfer.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmInputQrCode.Designer.vb">
@@ -180,6 +198,15 @@
   <ItemGroup>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmInputCarrierLoad.resx">
+      <DependentUpon>frmInputCarrierLoad.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmInputCarrierRegis.resx">
+      <DependentUpon>FrmInputCarrierRegis.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmInputCarrierTranfer.resx">
+      <DependentUpon>FrmInputCarrierTranfer.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmInputQrCode.resx">
       <DependentUpon>frmInputQrCode.vb</DependentUpon>
@@ -268,6 +295,9 @@
     <None Include="Service References\iLibraryService\MAP_LM.iLibraryService.CancelLotResult.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\iLibraryService\MAP_LM.iLibraryService.CarrierInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\iLibraryService\MAP_LM.iLibraryService.CheckLotApcsProResult.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -338,6 +368,19 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.vb</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Dll\AuthenticationUser.dll" />
+    <Content Include="Dll\ICSharpCode.SharpZipLib.dll" />
+    <Content Include="Dll\MessageDialog.dll" />
+    <Content Include="Dll\Rohm.dll" />
+    <Content Include="Dll\Rohm.Ems.dll" />
+    <None Include="Resources\btnGif.gif" />
+    <Content Include="Resources\CarrierUnload1.png" />
+    <None Include="Resources\UnloadGIF.gif" />
+    <None Include="Resources\TranGIF.gif" />
+    <None Include="Resources\RegisGIF.gif" />
+    <None Include="Resources\LoadGIF.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
