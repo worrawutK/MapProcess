@@ -130,6 +130,7 @@ Partial Class frmMain
         Me.RetestModeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ONToolStripMenuItemRetest = New System.Windows.Forms.ToolStripMenuItem()
         Me.OFFToolStripMenuItemRetest = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TesterManualLoadToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TransactionDataTableAdapter = New MAP_OSFT.DBxDataSetTableAdapters.TransactionDataTableAdapter()
         Me.MAPOSFTDataTableAdapter = New MAP_OSFT.DBxDataSetTableAdapters.MAPOSFTDataTableAdapter()
         Me.MAPALDataBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -979,10 +980,10 @@ Partial Class frmMain
         '
         Me.MenuStrip1.BackColor = System.Drawing.Color.Transparent
         Me.MenuStrip1.Dock = System.Windows.Forms.DockStyle.None
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AndonToolStripMenuItem, Me.APCSStaffToolStripMenuItem, Me.BMRequestToolStripMenuItem, Me.PMRepairToolStripMenuItem, Me.WorkRecordToolStripMenuItem, Me.HelpToolStripMenuItem, Me.SettingToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AndonToolStripMenuItem, Me.APCSStaffToolStripMenuItem, Me.BMRequestToolStripMenuItem, Me.PMRepairToolStripMenuItem, Me.WorkRecordToolStripMenuItem, Me.HelpToolStripMenuItem, Me.SettingToolStripMenuItem, Me.TesterManualLoadToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(33, 106)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(734, 33)
+        Me.MenuStrip1.Size = New System.Drawing.Size(853, 33)
         Me.MenuStrip1.TabIndex = 259
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -1119,6 +1120,13 @@ Partial Class frmMain
         Me.OFFToolStripMenuItemRetest.Name = "OFFToolStripMenuItemRetest"
         Me.OFFToolStripMenuItemRetest.Size = New System.Drawing.Size(116, 30)
         Me.OFFToolStripMenuItemRetest.Text = "OFF"
+        '
+        'TesterManualLoadToolStripMenuItem
+        '
+        Me.TesterManualLoadToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TesterManualLoadToolStripMenuItem.Name = "TesterManualLoadToolStripMenuItem"
+        Me.TesterManualLoadToolStripMenuItem.Size = New System.Drawing.Size(119, 29)
+        Me.TesterManualLoadToolStripMenuItem.Text = "Load Tester"
         '
         'TransactionDataTableAdapter
         '
@@ -1367,4 +1375,5 @@ Partial Class frmMain
     Friend WithEvents ONToolStripMenuItemRetest As ToolStripMenuItem
     Friend WithEvents OFFToolStripMenuItemRetest As ToolStripMenuItem
     Friend WithEvents Button1 As Button
+    Friend WithEvents TesterManualLoadToolStripMenuItem As ToolStripMenuItem
 End Class

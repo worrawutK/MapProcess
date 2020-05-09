@@ -215,6 +215,7 @@
     <Compile Include="SettingTDC.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="LotInfo.vb" />
     <Compile Include="VerticalProgressbar.Designer.vb">
       <DependentUpon>VerticalProgressbar.vb</DependentUpon>
     </Compile>

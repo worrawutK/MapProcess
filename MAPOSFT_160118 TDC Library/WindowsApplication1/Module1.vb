@@ -19,7 +19,7 @@ Module Module1
     Friend Const ProcessHeader As String = "MAP-"                  'TDC Header
     Friend Master As Boolean = False
     Friend Const NetVer As String = "2.00_151014"
-
+    Friend LotInfos As List(Of Lotinfo) = New List(Of Lotinfo)
     'Friend m_TdcService As TdcService
     Friend m_iLibraryService As ServiceiLibraryClient = New ServiceiLibraryClient()
     Friend Sub WrXml(ByVal pathfile As String, ByVal TarObj As Object)
@@ -96,6 +96,15 @@ Module Module1
             End Select
             m_Recipe = result.Recipe
             SaveLog(MethodInfo.GetCurrentMethod().ToString(), result.Type.ToString() & ">> Pass")
+
+            'Save program tester
+            Dim lotinfo As Lotinfo = New Lotinfo
+            lotinfo.MachineNo = mcNo
+            lotinfo.LotNo = lotNo
+            lotinfo.TesterProgram = strCommand(9)
+            lotinfo.OpNo = opNo
+            LotInfos.Add(lotinfo)
+            WrXml(SelPath & "LotInfos.xml", LotInfos)
             Return True
         Catch ex As Exception
             SaveLog(MethodInfo.GetCurrentMethod().ToString(), ex.Message.ToString())

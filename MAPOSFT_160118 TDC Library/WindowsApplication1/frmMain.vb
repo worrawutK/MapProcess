@@ -95,6 +95,7 @@ Public Class frmMain
         Try
 
             Confg = RdXml(SelPath & "Config.xml")
+            LotInfos = RdXml(SelPath & "LotInfos.xml")
         Catch ex As Exception
             MsgBox(ex.Message.ToString)
         End Try
@@ -3123,5 +3124,22 @@ nextstep:
         '    f2 = New Form2
         'End If
         'f2.Show()
+    End Sub
+
+    Private Sub TesterManualLoadToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TesterManualLoadToolStripMenuItem.Click
+        Dim lotinfo As Lotinfo = LotInfos.Where(Function(x) x.LotNo = lbLotNo.Text.Trim.ToUpper).FirstOrDefault()
+        If lotinfo Is Nothing Then
+            Exit Sub
+        End If
+        If MessageBox.Show("ต้องการ manual load program tester หรือไม่? " & vbCrLf & "program name :" & lotinfo.TesterProgram, "Confrim", MessageBoxButtons.YesNo) = DialogResult.Yes Then
+            Dim ans As String = TestProLoadAuto(lotinfo.MachineNo, lotinfo.TesterProgram, lotinfo.OpNo)
+            If ans = "True" Then
+                MessageBox.Show("Load program tester success", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                SaveLog(3, "TestProLoadAuto>> Pass")
+            Else   'If test auto load fail continue with Manual load <warning> 
+                MessageBox.Show("Load program tester fail", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                SaveLog(3, "TestProLoadAuto>> Not Pass")
+            End If
+        End If
     End Sub
 End Class
