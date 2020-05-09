@@ -59,7 +59,9 @@ Module Module1
             Else
                 flowLot = lotInfo.JobName
             End If
-
+            If flowLot.Trim.ToUpper = "OS1" Then
+                flowLot = "OS"
+            End If
             Dim ftSetup As FTSetupData = GetFTSetup(mcNo)
             If (ftSetup Is Nothing) Then
                 cmd = "Error," & "Setup Check Sheet not register"
