@@ -36,4 +36,13 @@
             c_OpNo = value
         End Set
     End Property
+    Private c_DateCreate As DateTime
+    Public Property DateCreate() As DateTime
+        Get
+            Return c_DateCreate
+        End Get
+        Set(ByVal value As DateTime)
+            c_DateCreate = value
+        End Set
+    End Property
 End Class

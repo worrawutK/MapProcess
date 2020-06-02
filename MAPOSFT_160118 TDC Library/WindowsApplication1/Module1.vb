@@ -45,6 +45,7 @@ Module Module1
     Friend m_Recipe As String
     Public m_LotData As LotData
     Public m_PathFileLotData As String = System.IO.Path.Combine(Application.StartupPath, "LotData.xml")
+    Public m_PathFileLotInfos As String = System.IO.Path.Combine(Application.StartupPath, "LotInfos.xml")
     Friend Function SetupLot(lotNo As String, mcNo As String, opNo As String, process As String, layerNo As String, strCommand As String(), ByRef cmd As String) As Boolean
         Try
 
@@ -176,13 +177,28 @@ Module Module1
             SaveLog(MethodInfo.GetCurrentMethod().ToString(), result.Type.ToString() & ">> Pass")
 
             'Save program tester
-            Dim lotinfo As Lotinfo = New Lotinfo
-            lotinfo.MachineNo = mcNo
-            lotinfo.LotNo = lotNo
-            lotinfo.TesterProgram = strCommand(9)
-            lotinfo.OpNo = opNo
-            LotInfos.Add(lotinfo)
-            WrXml(SelPath & "LotInfos.xml", LotInfos)
+            Dim lotinfoProgram As Lotinfo = New Lotinfo
+            lotinfoProgram.MachineNo = strCommand(3) 'mcNo ipbc IPB-22
+            lotinfoProgram.LotNo = lotNo
+            lotinfoProgram.TesterProgram = strCommand(9)
+            lotinfoProgram.OpNo = opNo
+            lotinfoProgram.DateCreate = Now
+            If (LotInfos Is Nothing) Then
+                LotInfos = New List(Of Lotinfo)
+            End If
+            Dim lotData As Lotinfo = LotInfos.Where(Function(x) x.MachineNo = lotinfoProgram.MachineNo).FirstOrDefault
+            If (lotData IsNot Nothing) Then
+                LotInfos.Remove(lotData)
+                LotInfos.Add(lotinfoProgram)
+            Else
+                LotInfos.Add(lotinfoProgram)
+            End If
+            Try
+                WriterXml(m_PathFileLotInfos, LotInfos)
+            Catch ex As Exception
+                SaveLog(MethodInfo.GetCurrentMethod().ToString(), SelPath & "LotInfos.xml=>" & ex.Message.ToString())
+            End Try
+
             Return True
         Catch ex As Exception
             SaveLog(MethodInfo.GetCurrentMethod().ToString(), ex.Message.ToString())
@@ -201,12 +217,11 @@ Module Module1
             Return data
         End Using
     End Function
-    Friend Sub WriterXml(ByVal pathfile As String, ByVal TarObj As Object)
+    Friend Sub WriterXml(ByVal pathfile As String, ByVal TarObj As Object, Optional append As Boolean = False)
         Dim xsSubmit As XmlSerializer = New XmlSerializer(TarObj.GetType)
         Using sww As New StringWriter
-            Using writer As StreamWriter = New StreamWriter(pathfile, False)
+            Using writer As StreamWriter = New StreamWriter(pathfile, append)
                 xsSubmit.Serialize(writer, TarObj)
-                Dim xxx = sww.ToString
             End Using
         End Using
     End Sub

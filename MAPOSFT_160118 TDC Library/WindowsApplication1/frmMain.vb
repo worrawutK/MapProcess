@@ -98,11 +98,14 @@ Public Class frmMain
         Try
 
             Confg = RdXml(SelPath & "Config.xml")
-            LotInfos = RdXml(SelPath & "LotInfos.xml")
         Catch ex As Exception
-            MsgBox(ex.Message.ToString)
+            MsgBox("Config.xml:" & ex.Message.ToString)
         End Try
-
+        Try
+            LotInfos = ReadXml(Of List(Of Lotinfo))(m_PathFileLotInfos)
+        Catch ex As Exception
+            MsgBox("LotInfo.xml:" & ex.Message.ToString)
+        End Try
         Try
             For i = 0 To Confg.TesterName.Length - 1                     'Confg.tester to Array List
                 LST.Add(Confg.TesterName(i))
@@ -2513,7 +2516,7 @@ nextstep:
         Return "True"
     End Function
 
-    Public Function TestProLoadAuto(ByVal MCNO As String, ByVal ProName As String, ByVal OPName As String) As String
+    Public Function TestProLoadAuto(ByVal MCNO As String, ByVal ProName As String, ByVal OPName As String, Optional ByVal IsRunning As Boolean = False) As String
 
         '--- Check IPBC Staus
         Dim ans As String
@@ -2527,7 +2530,9 @@ nextstep:
 
         ProgressBar1.Show()
         ans = clsNfdMap.GetProberInfo(MCNO)
-        If ans = "AUTO" Or ans = "STOP" Then
+        If IsRunning And ans = "AUTO" Then
+            Return "False:Can Not Conect IPBC <ON Running>"
+        ElseIf IsRunning = False And (ans = "AUTO" Or ans = "STOP") Then
             'Cursor.Current = precursor
             Return "False:Can Not Conect IPBC <ON Running>"
         End If
@@ -2930,6 +2935,29 @@ nextstep:
     End Sub
 
     Private Sub lbMinimize_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lbMinimize.Click
+        'Dim lotinfoProgram As Lotinfo = New Lotinfo
+        'lotinfoProgram.MachineNo = "MachineNo"
+        'lotinfoProgram.LotNo = "LotNo"
+        'lotinfoProgram.TesterProgram = "TesterProgram"
+        'lotinfoProgram.OpNo = "007567"
+        'lotinfoProgram.DateCreate = Now
+        'If (LotInfos Is Nothing) Then
+        '    LotInfos = New List(Of Lotinfo)
+        'End If
+        'Dim lotData As Lotinfo = LotInfos.Where(Function(x) x.MachineNo = lotinfoProgram.MachineNo).FirstOrDefault
+        'If (lotData IsNot Nothing) Then
+        '    LotInfos.Remove(lotData)
+        '    LotInfos.Add(lotinfoProgram)
+        'Else
+        '    LotInfos.Add(lotinfoProgram)
+        'End If
+
+        'Try
+        '    WriterXml(m_PathFileLotInfos, LotInfos)
+        'Catch ex As Exception
+        '    SaveLog("Exception", m_PathFileLotData & "=>" & ex.Message.ToString())
+        'End Try
+        'Exit Sub
         Me.WindowState = FormWindowState.Minimized
     End Sub
     Private Sub btnClose_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnClose.Click
@@ -3157,16 +3185,18 @@ nextstep:
     Private Sub TesterManualLoadToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TesterManualLoadToolStripMenuItem.Click
         Dim lotinfo As Lotinfo = LotInfos.Where(Function(x) x.LotNo = lbLotNo.Text.Trim.ToUpper).FirstOrDefault()
         If lotinfo Is Nothing Then
+            MessageBox.Show("ไม่พบ lot ใน cellcon", "Information", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Exit Sub
         End If
         If MessageBox.Show("ต้องการ manual load program tester หรือไม่? " & vbCrLf & "program name :" & lotinfo.TesterProgram, "Confrim", MessageBoxButtons.YesNo) = DialogResult.Yes Then
-            Dim ans As String = TestProLoadAuto(lotinfo.MachineNo, lotinfo.TesterProgram, lotinfo.OpNo)
+            Dim ans As String = TestProLoadAuto(lotinfo.MachineNo, lotinfo.TesterProgram, lotinfo.OpNo, True)
             If ans = "True" Then
                 MessageBox.Show("Load program tester success", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                SaveLog(3, "TestProLoadAuto>> Pass")
+                SaveLog(3, "TestProLoadAuto>> Pass :" & ans)
             Else   'If test auto load fail continue with Manual load <warning> 
-                MessageBox.Show("Load program tester fail", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                SaveLog(3, "TestProLoadAuto>> Not Pass")
+                'MessageBox.Show("Load program tester fail", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                MessageBox.Show(ans, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                SaveLog(3, "TestProLoadAuto>> Not Pass :" & ans)
             End If
         End If
     End Sub
