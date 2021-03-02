@@ -70,7 +70,13 @@ Module Module1
                 MessageBoxDialog.ShowMessageDialog("SetupLot(GetFTSetup)", " Error," & "เครื่อง :" & mcNo & " นี้ยังไม่ได้ทำการลงทะเบียนในระบบ Setup Check Sheet กรุราติดต่อหัวหน้างาน", "GetFTSetup")
                 Return False
             End If
-
+            Dim checkSetupCheckSheetResult = CheckSetupCheckSheet(mcNo)
+            If Not String.IsNullOrEmpty(checkSetupCheckSheetResult) Then
+                cmd = "Error," & "Setup Check Sheet Not CONFIRMED"
+                SaveLog(MethodInfo.GetCurrentMethod().ToString(), "CheckSetupCheckSheet" & ">> Not Pass " & checkSetupCheckSheetResult)
+                MessageBoxDialog.ShowMessageDialog("SetupLot(CheckSetupCheckSheet)", " Error," & checkSetupCheckSheetResult, "CheckSetupCheckSheet")
+                Return False
+            End If
             Try
                 SaveLog(MethodInfo.GetCurrentMethod().ToString(), "MachineProgram:" & mcProgram & ",LotFlow:" & flowLot & ":" & device & ",FTSetup:" & ftSetup.SetupFlow & ":" & ftSetup.Device)
 
@@ -278,6 +284,35 @@ Module Module1
         Next
         Return Nothing
     End Function
+    Private Function CheckSetupCheckSheet(mcNo As String) As String
+        Dim result As String = ""
+        Dim setupStatus As String
+        Dim data As DataTable = New DataTable()
+        Using cmd As New SqlClient.SqlCommand
+            cmd.Connection = New SqlClient.SqlConnection("Data Source=172.16.0.102;Initial Catalog=StoredProcedureDB;Persist Security Info=True;User ID=system;Password=p@$$w0rd")
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.CommandText = "[dbo].[sp_get_setupchecksheet_getftsetupreportbymcno]"
+            cmd.Parameters.Add("@MCNo", SqlDbType.VarChar).Value = mcNo
+            cmd.Connection.Open()
+            Using rd = cmd.ExecuteReader()
+                If rd.HasRows Then
+                    data.Load(rd)
+                End If
+            End Using
+        End Using
+        For Each row As DataRow In data.Rows
+            setupStatus = row("SetupStatus").ToString()
+        Next
+        If String.IsNullOrEmpty(setupStatus) Then
+            Return "[dbo].[sp_get_setupchecksheet_getftsetupreportbymcno] MCNo=" + mcNo + " data not found "
+        End If
+        If setupStatus <> "CONFIRMED" Then
+            result = "Setup Check Sheet ไม่สมบูรณ์ กรุณา CONFIRMED ก่อน! [" + mcNo + ":" + setupStatus + "] กรุณาติดต่อหัวหน้างาน"
+        End If
+
+        Return result
+    End Function
+
     Friend Function StartLot(lotNo As String, mcNo As String, opNo As String, recipe As String) As Boolean
         Try
             'Dim result = m_iLibraryService.StartLot(lotNo, mcNo, opNo, recipe)
