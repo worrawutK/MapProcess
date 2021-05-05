@@ -3175,7 +3175,8 @@ nextstep:
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        OnPrint("True,10.1.1.50,LOTSTART,IPB-27,1951A5381V,VSON04Z111,BU52272NUZ-ZA(X8G),006584,AUTO1,FU52272M30A,rng,F2 BU52272M30 A1,2019-11-01 15:53:16")
+
+        OnPrint("True,10.1.1.50,LOTSTART,IPB-27,2112A2455V,VSON04Z111,BU52272NUZ-ZA(X8G),006584,AUTO1,FU52272M30A,rng,F2 BU52272M30 A1,2019-11-01 15:53:16")
         'If IsNothing(f2) OrElse f2.IsDisposed Then
         '    f2 = New Form2
         'End If

@@ -50,11 +50,12 @@ Module Module1
         Try
 
             Dim mcProgram As String = strCommand(8).Trim().ToUpper()
-            Dim device As String = strCommand(6)
+            'Dim device As String = strCommand(6)
             'mcProgram AUTO(1),AUTO(2), OS ,OSFT
             'Check flow lot and mcProgram
             Dim flowLot As String
             Dim lotInfo As LotInformation = m_iLibraryService.GetLotInfo(lotNo, mcNo)
+            Dim device As String = lotInfo.DeviceName
             If lotInfo Is Nothing OrElse lotInfo.LotType = LotInformation.LotTypeState.Apcs Then
                 flowLot = GetFlowLot(lotNo).Replace(" ", "").ToUpper()
             Else
