@@ -107,6 +107,7 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AutoloadTester.vb" />
     <Compile Include="ClientSocket.vb" />
     <Compile Include="clsAntiInjection.vb" />
     <Compile Include="clsCheckSum.vb" />
@@ -157,6 +158,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FTSetupData.vb" />
+    <Compile Include="FTSetupRecord.vb" />
     <Compile Include="InputCarrier.Designer.vb">
       <DependentUpon>InputCarrier.vb</DependentUpon>
     </Compile>
@@ -210,6 +212,12 @@
     <Compile Include="ProcessSelect.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Resultbase.vb" />
+    <Compile Include="Service References\FTService\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\iLibraryService\Reference.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -223,6 +231,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="LotInfo.vb" />
+    <Compile Include="TestProgramAutoloadingDialog.Designer.vb">
+      <DependentUpon>TestProgramAutoloadingDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TestProgramAutoloadingDialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="VerticalProgressbar.Designer.vb">
       <DependentUpon>VerticalProgressbar.vb</DependentUpon>
     </Compile>
@@ -273,12 +287,16 @@
     <EmbeddedResource Include="SettingTDC.resx">
       <DependentUpon>SettingTDC.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="TestProgramAutoloadingDialog.resx">
+      <DependentUpon>TestProgramAutoloadingDialog.vb</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
     </None>
+    <None Include="My Project\DataSources\FTSetupRecord.datasource" />
     <None Include="My Project\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <CustomToolNamespace>My</CustomToolNamespace>
@@ -333,6 +351,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\MAPOSFT.png" />
+    <None Include="Service References\FTService\SettingService.wsdl" />
     <None Include="Service References\iLibraryService\MAP_OSFT.iLibraryService.CancelLotResult.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -396,6 +415,7 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Service References\FTService\" />
     <WCFMetadataStorage Include="Service References\iLibraryService\" />
   </ItemGroup>
   <ItemGroup>
@@ -420,6 +440,13 @@
     <Content Include="Dll\MessageDialog.dll" />
     <Content Include="Dll\Rohm.Apcs.Tdc.dll" />
     <Content Include="Dll\Rohm.Ems.dll" />
+    <None Include="Service References\FTService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+    <None Include="Service References\FTService\configuration.svcinfo" />
+    <None Include="Service References\FTService\configuration91.svcinfo" />
+    <None Include="Service References\FTService\SettingService.disco" />
     <None Include="Resources\PictureBoxWrong.png" />
     <None Include="Resources\PictureBoxQrCode.png" />
     <None Include="Resources\PicturBoxRohmLogo.gif" />

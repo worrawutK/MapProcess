@@ -65,6 +65,19 @@ Public Class frmMain
         'm_TdcService = TdcService.GetInstance()
         'm_TdcService.ConnectionString = My.Settings.APCSDBConnectionString
 
+        'test
+        'Dim _TempPath As String = "F:\D\SelCon MapOSFT\LOG\Temp\"
+        'Dim _TempDataBasePath As String = "F:\D\SelCon MapOSFT\LOG\TempDataBase\"
+        'Dim _SelPath As String = "F:\D\SelCon MapOSFT\"
+        'Dim _MapZipDestin As String = "F:\D\SelCon MapOSFT\MapZip\"
+        'If Directory.Exists(_TempDataBasePath) = False Then                          'AutoDirectory Create
+        '    Directory.CreateDirectory(_TempDataBasePath)
+        '    Directory.CreateDirectory(_TempPath)
+        'End If
+        'If Directory.Exists(_MapZipDestin) = False Then
+        '    Directory.CreateDirectory(_MapZipDestin)
+        '    Directory.CreateDirectory(_MapZipDestin & "BackUp\")
+        'End If
         If Directory.Exists(TempDataBasePath) = False Then                          'AutoDirectory Create
             Directory.CreateDirectory(TempDataBasePath)
             Directory.CreateDirectory(TempPath)
@@ -2530,9 +2543,13 @@ nextstep:
 
         ProgressBar1.Show()
         ans = clsNfdMap.GetProberInfo(MCNO)
-        If IsRunning And ans = "AUTO" Then
-            Return "False:Can Not Conect IPBC <ON Running>"
-        ElseIf IsRunning = False And (ans = "AUTO" Or ans = "STOP") Then
+        'If IsRunning And ans = "AUTO" Then
+        '    Return "False:Can Not Conect IPBC <ON Running>"
+        'ElseIf IsRunning = False And (ans = "AUTO" Or ans = "STOP") Then
+        '    'Cursor.Current = precursor
+        '    Return "False:Can Not Conect IPBC <ON Running>"
+        'End If
+        If IsRunning = False And (ans = "AUTO" Or ans = "STOP") Then
             'Cursor.Current = precursor
             Return "False:Can Not Conect IPBC <ON Running>"
         End If

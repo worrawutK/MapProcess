@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetMailBoxPath">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="testerType" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMailBoxPathResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMailBoxPathResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTestFlowNo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="flowName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTestFlowNoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTestFlowNoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LotRptIsIgnore">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="errorNo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LotRptIsIgnoreResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="LotRptIsIgnoreResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTesterMailBoxPath">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="testerType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="testerNo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTesterMailBoxPathResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTesterMailBoxPathResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTesterMailBoxPathWithPrefix">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="QRTester" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="testerNo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTesterMailBoxPathWithPrefixResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTesterMailBoxPathWithPrefixResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetMailBoxPathSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMailBoxPath" />
+  </wsdl:message>
+  <wsdl:message name="GetMailBoxPathSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMailBoxPathResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTestFlowNoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTestFlowNo" />
+  </wsdl:message>
+  <wsdl:message name="GetTestFlowNoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTestFlowNoResponse" />
+  </wsdl:message>
+  <wsdl:message name="LotRptIsIgnoreSoapIn">
+    <wsdl:part name="parameters" element="tns:LotRptIsIgnore" />
+  </wsdl:message>
+  <wsdl:message name="LotRptIsIgnoreSoapOut">
+    <wsdl:part name="parameters" element="tns:LotRptIsIgnoreResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTesterMailBoxPathSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTesterMailBoxPath" />
+  </wsdl:message>
+  <wsdl:message name="GetTesterMailBoxPathSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTesterMailBoxPathResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTesterMailBoxPathWithPrefixSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTesterMailBoxPathWithPrefix" />
+  </wsdl:message>
+  <wsdl:message name="GetTesterMailBoxPathWithPrefixSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTesterMailBoxPathWithPrefixResponse" />
+  </wsdl:message>
+  <wsdl:portType name="SettingServiceSoap">
+    <wsdl:operation name="GetMailBoxPath">
+      <wsdl:input message="tns:GetMailBoxPathSoapIn" />
+      <wsdl:output message="tns:GetMailBoxPathSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTestFlowNo">
+      <wsdl:input message="tns:GetTestFlowNoSoapIn" />
+      <wsdl:output message="tns:GetTestFlowNoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LotRptIsIgnore">
+      <wsdl:input message="tns:LotRptIsIgnoreSoapIn" />
+      <wsdl:output message="tns:LotRptIsIgnoreSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTesterMailBoxPath">
+      <wsdl:input message="tns:GetTesterMailBoxPathSoapIn" />
+      <wsdl:output message="tns:GetTesterMailBoxPathSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTesterMailBoxPathWithPrefix">
+      <wsdl:input message="tns:GetTesterMailBoxPathWithPrefixSoapIn" />
+      <wsdl:output message="tns:GetTesterMailBoxPathWithPrefixSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SettingServiceSoap" type="tns:SettingServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetMailBoxPath">
+      <soap:operation soapAction="http://tempuri.org/GetMailBoxPath" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTestFlowNo">
+      <soap:operation soapAction="http://tempuri.org/GetTestFlowNo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LotRptIsIgnore">
+      <soap:operation soapAction="http://tempuri.org/LotRptIsIgnore" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTesterMailBoxPath">
+      <soap:operation soapAction="http://tempuri.org/GetTesterMailBoxPath" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTesterMailBoxPathWithPrefix">
+      <soap:operation soapAction="http://tempuri.org/GetTesterMailBoxPathWithPrefix" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SettingServiceSoap12" type="tns:SettingServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetMailBoxPath">
+      <soap12:operation soapAction="http://tempuri.org/GetMailBoxPath" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTestFlowNo">
+      <soap12:operation soapAction="http://tempuri.org/GetTestFlowNo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LotRptIsIgnore">
+      <soap12:operation soapAction="http://tempuri.org/LotRptIsIgnore" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTesterMailBoxPath">
+      <soap12:operation soapAction="http://tempuri.org/GetTesterMailBoxPath" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTesterMailBoxPathWithPrefix">
+      <soap12:operation soapAction="http://tempuri.org/GetTesterMailBoxPathWithPrefix" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SettingService">
+    <wsdl:port name="SettingServiceSoap" binding="tns:SettingServiceSoap">
+      <soap:address location="http://webserv.thematrix.net/FTSelfConSetting/SettingService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="SettingServiceSoap12" binding="tns:SettingServiceSoap12">
+      <soap12:address location="http://webserv.thematrix.net/FTSelfConSetting/SettingService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
