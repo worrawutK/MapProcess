@@ -58,6 +58,9 @@ Module Module1
             Dim device As String = lotInfo.DeviceName
             If lotInfo Is Nothing OrElse lotInfo.LotType = LotInformation.LotTypeState.Apcs Then
                 flowLot = GetFlowLot(lotNo).Replace(" ", "").ToUpper()
+                If (flowLot.ToUpper() = "AUTO(1) SBLSYL") Then
+                    flowLot = "AUTO(1)"
+                End If
             Else
                 flowLot = lotInfo.JobName
             End If
