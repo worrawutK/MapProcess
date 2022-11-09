@@ -24,9 +24,6 @@ Partial Class TestProgramAutoloadingDialog
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.label28 = New System.Windows.Forms.Label()
-        Me.LoadInf = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Result = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.testProgramAutoloadingBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.groupBox2 = New System.Windows.Forms.GroupBox()
         Me.LabelCurrentProgramName = New System.Windows.Forms.Label()
         Me.label10 = New System.Windows.Forms.Label()
@@ -43,9 +40,9 @@ Partial Class TestProgramAutoloadingDialog
         Me.ButtonStop = New System.Windows.Forms.Button()
         Me.ButtonStart = New System.Windows.Forms.Button()
         Me.backgroundWorker1 = New System.ComponentModel.BackgroundWorker()
-        Me.DataGridViewAutoloadResult = New System.Windows.Forms.DataGridView()
         Me.groupBox1 = New System.Windows.Forms.GroupBox()
         Me.LabelSetupProgramName = New System.Windows.Forms.Label()
+        Me.FTSetupRecordBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.LabelSetupTestFlow = New System.Windows.Forms.Label()
         Me.label17 = New System.Windows.Forms.Label()
         Me.label18 = New System.Windows.Forms.Label()
@@ -65,12 +62,13 @@ Partial Class TestProgramAutoloadingDialog
         Me.label3 = New System.Windows.Forms.Label()
         Me.label2 = New System.Windows.Forms.Label()
         Me.label1 = New System.Windows.Forms.Label()
-        Me.FTSetupRecordBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        CType(Me.testProgramAutoloadingBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.testProgramAutoloadingBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.groupBox2.SuspendLayout()
-        CType(Me.DataGridViewAutoloadResult, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.groupBox1.SuspendLayout()
         CType(Me.FTSetupRecordBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.testProgramAutoloadingBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'label28
@@ -81,20 +79,6 @@ Partial Class TestProgramAutoloadingDialog
         Me.label28.Size = New System.Drawing.Size(45, 13)
         Me.label28.TabIndex = 20
         Me.label28.Text = "Lot No :"
-        '
-        'LoadInf
-        '
-        Me.LoadInf.DataPropertyName = "LoadInf"
-        Me.LoadInf.HeaderText = "LoadInf"
-        Me.LoadInf.Name = "LoadInf"
-        Me.LoadInf.ReadOnly = True
-        '
-        'Result
-        '
-        Me.Result.DataPropertyName = "Result"
-        Me.Result.HeaderText = "Result"
-        Me.Result.Name = "Result"
-        Me.Result.ReadOnly = True
         '
         'groupBox2
         '
@@ -208,7 +192,7 @@ Partial Class TestProgramAutoloadingDialog
         '
         'ButtonClose
         '
-        Me.ButtonClose.Location = New System.Drawing.Point(486, 503)
+        Me.ButtonClose.Location = New System.Drawing.Point(487, 335)
         Me.ButtonClose.Name = "ButtonClose"
         Me.ButtonClose.Size = New System.Drawing.Size(75, 23)
         Me.ButtonClose.TabIndex = 14
@@ -217,7 +201,7 @@ Partial Class TestProgramAutoloadingDialog
         '
         'ButtonStopAll
         '
-        Me.ButtonStopAll.Location = New System.Drawing.Point(392, 503)
+        Me.ButtonStopAll.Location = New System.Drawing.Point(393, 335)
         Me.ButtonStopAll.Name = "ButtonStopAll"
         Me.ButtonStopAll.Size = New System.Drawing.Size(75, 23)
         Me.ButtonStopAll.TabIndex = 13
@@ -226,7 +210,7 @@ Partial Class TestProgramAutoloadingDialog
         '
         'ButtonStartAll
         '
-        Me.ButtonStartAll.Location = New System.Drawing.Point(299, 503)
+        Me.ButtonStartAll.Location = New System.Drawing.Point(300, 335)
         Me.ButtonStartAll.Name = "ButtonStartAll"
         Me.ButtonStartAll.Size = New System.Drawing.Size(75, 23)
         Me.ButtonStartAll.TabIndex = 12
@@ -235,7 +219,7 @@ Partial Class TestProgramAutoloadingDialog
         '
         'ButtonStop
         '
-        Me.ButtonStop.Location = New System.Drawing.Point(206, 503)
+        Me.ButtonStop.Location = New System.Drawing.Point(207, 335)
         Me.ButtonStop.Name = "ButtonStop"
         Me.ButtonStop.Size = New System.Drawing.Size(75, 23)
         Me.ButtonStop.TabIndex = 11
@@ -244,7 +228,7 @@ Partial Class TestProgramAutoloadingDialog
         '
         'ButtonStart
         '
-        Me.ButtonStart.Location = New System.Drawing.Point(113, 503)
+        Me.ButtonStart.Location = New System.Drawing.Point(114, 335)
         Me.ButtonStart.Name = "ButtonStart"
         Me.ButtonStart.Size = New System.Drawing.Size(75, 23)
         Me.ButtonStart.TabIndex = 10
@@ -254,21 +238,6 @@ Partial Class TestProgramAutoloadingDialog
         'backgroundWorker1
         '
         Me.backgroundWorker1.WorkerReportsProgress = True
-        '
-        'DataGridViewAutoloadResult
-        '
-        Me.DataGridViewAutoloadResult.AllowUserToAddRows = False
-        Me.DataGridViewAutoloadResult.AllowUserToDeleteRows = False
-        Me.DataGridViewAutoloadResult.AutoGenerateColumns = False
-        Me.DataGridViewAutoloadResult.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridViewAutoloadResult.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.LoadInf, Me.Result})
-        Me.DataGridViewAutoloadResult.DataSource = Me.testProgramAutoloadingBindingSource
-        Me.DataGridViewAutoloadResult.Location = New System.Drawing.Point(21, 318)
-        Me.DataGridViewAutoloadResult.Name = "DataGridViewAutoloadResult"
-        Me.DataGridViewAutoloadResult.ReadOnly = True
-        Me.DataGridViewAutoloadResult.RowHeadersVisible = False
-        Me.DataGridViewAutoloadResult.Size = New System.Drawing.Size(640, 150)
-        Me.DataGridViewAutoloadResult.TabIndex = 9
         '
         'groupBox1
         '
@@ -310,6 +279,10 @@ Partial Class TestProgramAutoloadingDialog
         Me.LabelSetupProgramName.TabIndex = 20
         Me.LabelSetupProgramName.Text = "FU5753FVM A1"
         Me.LabelSetupProgramName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'FTSetupRecordBindingSource
+        '
+        Me.FTSetupRecordBindingSource.DataSource = GetType(MAP_OSFT.FTSetupRecord)
         '
         'LabelSetupTestFlow
         '
@@ -509,39 +482,43 @@ Partial Class TestProgramAutoloadingDialog
         Me.label1.TabIndex = 0
         Me.label1.Text = "Machine No:"
         '
-        'FTSetupRecordBindingSource
+        'PictureBox1
         '
-        Me.FTSetupRecordBindingSource.DataSource = GetType(MAP_OSFT.FTSetupRecord)
+        Me.PictureBox1.Image = Global.MAP_OSFT.My.Resources.Resources.loading
+        Me.PictureBox1.Location = New System.Drawing.Point(11, 318)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(80, 62)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox1.TabIndex = 16
+        Me.PictureBox1.TabStop = False
         '
         'TestProgramAutoloadingDialog
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(673, 540)
+        Me.ClientSize = New System.Drawing.Size(676, 402)
+        Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.groupBox2)
         Me.Controls.Add(Me.ButtonClose)
         Me.Controls.Add(Me.ButtonStopAll)
         Me.Controls.Add(Me.ButtonStartAll)
         Me.Controls.Add(Me.ButtonStop)
         Me.Controls.Add(Me.ButtonStart)
-        Me.Controls.Add(Me.DataGridViewAutoloadResult)
         Me.Controls.Add(Me.groupBox1)
         Me.Name = "TestProgramAutoloadingDialog"
         Me.Text = "TestProgramAutoloadingDialog"
-        CType(Me.testProgramAutoloadingBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.groupBox2.ResumeLayout(False)
         Me.groupBox2.PerformLayout()
-        CType(Me.DataGridViewAutoloadResult, System.ComponentModel.ISupportInitialize).EndInit()
         Me.groupBox1.ResumeLayout(False)
         Me.groupBox1.PerformLayout()
         CType(Me.FTSetupRecordBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.testProgramAutoloadingBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
 
     Private WithEvents label28 As Label
-    Private WithEvents LoadInf As DataGridViewTextBoxColumn
-    Private WithEvents Result As DataGridViewTextBoxColumn
     Private WithEvents testProgramAutoloadingBindingSource As BindingSource
     Private WithEvents groupBox2 As GroupBox
     Private WithEvents LabelCurrentProgramName As Label
@@ -559,7 +536,6 @@ Partial Class TestProgramAutoloadingDialog
     Private WithEvents ButtonStop As Button
     Private WithEvents ButtonStart As Button
     Private WithEvents backgroundWorker1 As System.ComponentModel.BackgroundWorker
-    Private WithEvents DataGridViewAutoloadResult As DataGridView
     Private WithEvents groupBox1 As GroupBox
     Private WithEvents LabelSetupProgramName As Label
     Private WithEvents LabelSetupTestFlow As Label
@@ -582,4 +558,5 @@ Partial Class TestProgramAutoloadingDialog
     Private WithEvents label2 As Label
     Private WithEvents label1 As Label
     Friend WithEvents FTSetupRecordBindingSource As BindingSource
+    Friend WithEvents PictureBox1 As PictureBox
 End Class

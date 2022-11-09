@@ -440,6 +440,11 @@
     <Content Include="Dll\MessageDialog.dll" />
     <Content Include="Dll\Rohm.Apcs.Tdc.dll" />
     <Content Include="Dll\Rohm.Ems.dll" />
+    <Content Include="Picture\AnguishedImpassionedGrosbeak-size_restricted.gif" />
+    <Content Include="Picture\checkbox-dribbble-looped-landing.gif" />
+    <Content Include="Picture\legalraasta.gif" />
+    <Content Include="Picture\loading.gif" />
+    <Content Include="Picture\success.gif" />
     <None Include="Service References\FTService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.vb</LastGenOutput>

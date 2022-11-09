@@ -27,6 +27,7 @@ Public Class TestProgramAutoloadingDialog
 
     Private Sub TestProgramAutoloadingDialog_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         GetFTSetupRecord(c_MachineNo)
+
     End Sub
     Private Function GetFTSetupRecord(mcNo As String) As FTSetupRecord
         Dim ftSetup As New FTSetupRecord
@@ -78,4 +79,8 @@ Public Class TestProgramAutoloadingDialog
         End Using
         Return ftSetup
     End Function
+
+    Private Sub ButtonStart_Click(sender As Object, e As EventArgs) Handles ButtonStart.Click
+        backgroundWorker1.RunWorkerAsync()
+    End Sub
 End Class

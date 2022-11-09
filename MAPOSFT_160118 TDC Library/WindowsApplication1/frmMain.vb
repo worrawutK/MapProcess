@@ -3217,5 +3217,9 @@ nextstep:
                 SaveLog(3, "TestProLoadAuto>> Not Pass :" & ans)
             End If
         End If
+
+        Dim newAutoLoad As New TestProgramAutoloadingDialog("", "", "", "", "")
+        newAutoLoad.ShowDialog()
+        '  newAutoLoad.LoadProgramTester()
     End Sub
 End Class
