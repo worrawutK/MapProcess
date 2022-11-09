@@ -375,7 +375,7 @@ Partial Class frmMain
         Me.lbRevision.Name = "lbRevision"
         Me.lbRevision.Size = New System.Drawing.Size(191, 13)
         Me.lbRevision.TabIndex = 108
-        Me.lbRevision.Text = "SelCon MAP OS/FT Software Ver 2.25"
+        Me.lbRevision.Text = "SelCon MAP OS/FT Software Ver 2.26"
         '
         'lbAndonJudge
         '
@@ -542,7 +542,7 @@ Partial Class frmMain
         Me.lbLotNo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbLotNo.Location = New System.Drawing.Point(6, 30)
         Me.lbLotNo.Name = "lbLotNo"
-        Me.lbLotNo.Size = New System.Drawing.Size(55, 16)
+        Me.lbLotNo.Size = New System.Drawing.Size(54, 16)
         Me.lbLotNo.TabIndex = 121
         Me.lbLotNo.Text = "lbLotNo"
         '
@@ -568,7 +568,7 @@ Partial Class frmMain
         Me.lbPackage.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbPackage.Location = New System.Drawing.Point(6, 49)
         Me.lbPackage.Name = "lbPackage"
-        Me.lbPackage.Size = New System.Drawing.Size(74, 16)
+        Me.lbPackage.Size = New System.Drawing.Size(73, 16)
         Me.lbPackage.TabIndex = 120
         Me.lbPackage.Text = "lbPackage"
         '
@@ -585,7 +585,7 @@ Partial Class frmMain
         Me.lbDevice.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbDevice.Location = New System.Drawing.Point(6, 69)
         Me.lbDevice.Name = "lbDevice"
-        Me.lbDevice.Size = New System.Drawing.Size(62, 16)
+        Me.lbDevice.Size = New System.Drawing.Size(61, 16)
         Me.lbDevice.TabIndex = 118
         Me.lbDevice.Text = "lbDevice"
         '
@@ -597,7 +597,7 @@ Partial Class frmMain
         Me.lbEnd.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbEnd.Location = New System.Drawing.Point(7, 169)
         Me.lbEnd.Name = "lbEnd"
-        Me.lbEnd.Size = New System.Drawing.Size(43, 16)
+        Me.lbEnd.Size = New System.Drawing.Size(42, 16)
         Me.lbEnd.TabIndex = 122
         Me.lbEnd.Text = "lbEnd"
         '
@@ -609,7 +609,7 @@ Partial Class frmMain
         Me.lbStart.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbStart.Location = New System.Drawing.Point(6, 150)
         Me.lbStart.Name = "lbStart"
-        Me.lbStart.Size = New System.Drawing.Size(46, 16)
+        Me.lbStart.Size = New System.Drawing.Size(45, 16)
         Me.lbStart.TabIndex = 123
         Me.lbStart.Text = "lbStart"
         '
@@ -662,7 +662,7 @@ Partial Class frmMain
         Me.lbProName.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbProName.Location = New System.Drawing.Point(8, 88)
         Me.lbProName.Name = "lbProName"
-        Me.lbProName.Size = New System.Drawing.Size(77, 16)
+        Me.lbProName.Size = New System.Drawing.Size(76, 16)
         Me.lbProName.TabIndex = 118
         Me.lbProName.Text = "lbProName"
         '
@@ -674,7 +674,7 @@ Partial Class frmMain
         Me.lbProcess.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbProcess.Location = New System.Drawing.Point(6, 9)
         Me.lbProcess.Name = "lbProcess"
-        Me.lbProcess.Size = New System.Drawing.Size(69, 16)
+        Me.lbProcess.Size = New System.Drawing.Size(68, 16)
         Me.lbProcess.TabIndex = 121
         Me.lbProcess.Text = "lbProcess"
         '
@@ -842,7 +842,7 @@ Partial Class frmMain
         Me.lbMaster.ForeColor = System.Drawing.Color.Red
         Me.lbMaster.Location = New System.Drawing.Point(282, 50)
         Me.lbMaster.Name = "lbMaster"
-        Me.lbMaster.Size = New System.Drawing.Size(49, 16)
+        Me.lbMaster.Size = New System.Drawing.Size(48, 16)
         Me.lbMaster.TabIndex = 138
         Me.lbMaster.Text = "Master"
         '
