@@ -3218,8 +3218,8 @@ nextstep:
             End If
         End If
 
-        Dim newAutoLoad As New TestProgramAutoloadingDialog("", "", "", "", "")
-        newAutoLoad.ShowDialog()
+        'Dim newAutoLoad As New TestProgramAutoloadingDialog("", "", "", "", "")
+        'newAutoLoad.ShowDialog()
         '  newAutoLoad.LoadProgramTester()
     End Sub
 End Class
