@@ -58,11 +58,12 @@ Module Module1
             Dim device As String = lotInfo.DeviceName
             If lotInfo Is Nothing OrElse lotInfo.LotType = LotInformation.LotTypeState.Apcs Then
                 flowLot = GetFlowLot(lotNo).Replace(" ", "").ToUpper()
-                If (flowLot.ToUpper() = "AUTO(1) SBLSYL") Then
-                    flowLot = "AUTO(1)"
-                End If
             Else
                 flowLot = lotInfo.JobName
+                If (flowLot.ToUpper().Replace(" ", "") = "AUTO(1)SBLSYL") Then
+                    SaveLog("SetupLot", "SBLSYL >> " & flowLot & "=>AUTO(1)")
+                    flowLot = "AUTO(1)"
+                End If
             End If
             If flowLot.Trim.ToUpper = "OS1" Then
                 flowLot = "OS"
@@ -70,22 +71,22 @@ Module Module1
             Dim ftSetup As FTSetupData = GetFTSetup(mcNo)
             If (ftSetup Is Nothing) Then
                 cmd = "Error," & "Setup Check Sheet not register"
-                SaveLog(MethodInfo.GetCurrentMethod().ToString(), "CheckProgram" & ">> Not Pass" & "Setup Check Sheet not register")
+                SaveLog("SetupLot", "CheckProgram" & ">> Not Pass" & "Setup Check Sheet not register")
                 MessageBoxDialog.ShowMessageDialog("SetupLot(GetFTSetup)", " Error," & "เครื่อง :" & mcNo & " นี้ยังไม่ได้ทำการลงทะเบียนในระบบ Setup Check Sheet กรุราติดต่อหัวหน้างาน", "GetFTSetup")
                 Return False
             End If
             Dim checkSetupCheckSheetResult = CheckSetupCheckSheet(mcNo)
             If Not String.IsNullOrEmpty(checkSetupCheckSheetResult) Then
                 cmd = "Error," & "Setup Check Sheet Not CONFIRMED"
-                SaveLog(MethodInfo.GetCurrentMethod().ToString(), "CheckSetupCheckSheet" & ">> Not Pass " & checkSetupCheckSheetResult)
+                SaveLog("SetupLot", "CheckSetupCheckSheet" & ">> Not Pass " & checkSetupCheckSheetResult)
                 MessageBoxDialog.ShowMessageDialog("SetupLot(CheckSetupCheckSheet)", " Error," & checkSetupCheckSheetResult, "CheckSetupCheckSheet")
                 Return False
             End If
             Try
-                SaveLog(MethodInfo.GetCurrentMethod().ToString(), "MachineProgram:" & mcProgram & ",LotFlow:" & flowLot & ":" & device & ",FTSetup:" & ftSetup.SetupFlow & ":" & ftSetup.Device)
+                SaveLog("SetupLot", "MachineProgram:" & mcProgram & ",LotFlow:" & flowLot & ":" & device & ",FTSetup:" & ftSetup.SetupFlow & ":" & ftSetup.Device)
 
             Catch ex As Exception
-                SaveLog(MethodInfo.GetCurrentMethod().ToString(), "Lot:" & lotNo & ",mcNo:" & mcNo & ",opNo:" & opNo & ",process:" & process & ",layerNo:" & layerNo & ",cmd:" & cmd)
+                SaveLog("SetupLot", "Lot:" & lotNo & ",mcNo:" & mcNo & ",opNo:" & opNo & ",process:" & process & ",layerNo:" & layerNo & ",cmd:" & cmd)
             End Try
 
             Select Case mcProgram.Replace(" ", "").ToUpper()
@@ -99,7 +100,7 @@ Module Module1
             End Select
             If mcProgram <> flowLot Then
                 cmd = "Error," & "Program not match (Machine:" & strCommand(8) & ",Lot:" & flowLot & "," & mcNo & "," & lotNo & ","
-                SaveLog(MethodInfo.GetCurrentMethod().ToString(), "CheckProgram" & ">> Not Pass" & "Program not match (Machine:" & mcProgram & ",Lot:" & flowLot & "," & mcNo & "," & lotNo)
+                SaveLog("SetupLot", "CheckProgram" & ">> Not Pass" & "Program not match (Machine:" & mcProgram & ",Lot:" & flowLot & "," & mcNo & "," & lotNo)
                 MessageBoxDialog.ShowMessageDialog("SetupLot(CheckProgram)", " Error," & "โปรแกรมไม่ตรงกับ Lot " & vbCrLf & "(Machine:" & mcProgram & ",Lot:" & flowLot & "," & vbCrLf & mcNo & "," & lotNo, "")
                 Return False
             End If
@@ -122,7 +123,7 @@ Module Module1
 
                 ElseIf ftFlow <> flowLot Then
                     cmd = "Error," & "Flow not match (MachineSetup:" & ftSetup.SetupFlow & "," & ftSetup.Device & ",Lot:" & flowLot & "," & mcNo & "," & lotNo & ","
-                    SaveLog(MethodInfo.GetCurrentMethod().ToString(), "CheckFTSetupFlow" & ">> Not Pass" & "Flow not match (Machine:" & ftSetup.SetupFlow & "," & ftSetup.Device & ",Lot:" & flowLot & "," & mcNo & "," & lotNo)
+                    SaveLog("SetupLot", "CheckFTSetupFlow" & ">> Not Pass" & "Flow not match (Machine:" & ftSetup.SetupFlow & "," & ftSetup.Device & ",Lot:" & flowLot & "," & mcNo & "," & lotNo)
                     MessageBoxDialog.ShowMessageDialog("SetupLot(CheckFTSetupFlow)", " Error," & "Flow การผลิตไม่ตรงกับที่ Setup ไว้" & vbCrLf & "(Machine:" & ftSetup.SetupFlow & "," & ftSetup.Device & ",Lot:" & flowLot & "," & device & "," & vbCrLf & mcNo & "," & lotNo, "")
                     Return False
                 End If
@@ -163,7 +164,7 @@ Module Module1
             Dim result = m_iLibraryService.SetupLotPhase2(lotNo, mcNo, opNo, process, Licenser.Check, m_LotData.CarrierInfo, setupParamiter)
             If result.IsPass = SetupLotResult.Status.NotPass Then
                 cmd = "Error," & result.Type.ToString() & "," & mcNo & "," & lotNo & ","
-                SaveLog(MethodInfo.GetCurrentMethod().ToString(), result.Type.ToString() & ">> Not Pass")
+                SaveLog("SetupLot", result.Type.ToString() & ">> Not Pass")
                 MessageBoxDialog.ShowMessageDialog(result.FunctionName, result.Cause, result.Type.ToString())
                 Return False
             ElseIf result.IsPass = SetupLotResult.Status.Warning Then
@@ -184,7 +185,7 @@ Module Module1
                 }
             WriterXml(m_PathFileLotData, m_LotData)
             m_Recipe = result.Recipe
-            SaveLog(MethodInfo.GetCurrentMethod().ToString(), result.Type.ToString() & ">> Pass")
+            SaveLog("SetupLot", result.Type.ToString() & ">> Pass")
 
             'Save program tester
             Dim lotinfoProgram As Lotinfo = New Lotinfo
@@ -206,12 +207,12 @@ Module Module1
             Try
                 WriterXml(m_PathFileLotInfos, LotInfos)
             Catch ex As Exception
-                SaveLog(MethodInfo.GetCurrentMethod().ToString(), SelPath & "LotInfos.xml=>" & ex.Message.ToString())
+                SaveLog("SetupLot", SelPath & "LotInfos.xml=>" & ex.Message.ToString())
             End Try
 
             Return True
         Catch ex As Exception
-            SaveLog(MethodInfo.GetCurrentMethod().ToString(), ex.Message.ToString())
+            SaveLog("SetupLot", ex.Message.ToString())
             Return False
         End Try
 
@@ -322,14 +323,14 @@ Module Module1
             'Dim result = m_iLibraryService.StartLot(lotNo, mcNo, opNo, recipe)
             Dim result = m_iLibraryService.StartLotPhase2(lotNo, mcNo, opNo, m_LotData.Recipe, m_LotData.CarrierInfo, Nothing)
             If Not result.IsPass Then
-                SaveLog(MethodInfo.GetCurrentMethod().ToString(), result.Type.ToString() & ">> Not Pass")
+                SaveLog("StartLot", result.Type.ToString() & ">> Not Pass")
                 MessageBoxDialog.ShowMessageDialog(result.FunctionName, result.Cause, result.Type.ToString())
                 Return False
             End If
-            SaveLog(MethodInfo.GetCurrentMethod().ToString(), result.Type.ToString() & ">> Pass")
+            SaveLog("StartLot", result.Type.ToString() & ">> Pass")
             Return True
         Catch ex As Exception
-            SaveLog(MethodInfo.GetCurrentMethod().ToString(), ex.Message.ToString())
+            SaveLog("StartLot", ex.Message.ToString())
             Return False
         End Try
 
@@ -339,14 +340,14 @@ Module Module1
             'Dim result = m_iLibraryService.EndLot(lotNo, mcNo, opNo, good, ng)
             Dim result = m_iLibraryService.EndLotPhase2(lotNo, mcNo, opNo, good, ng, Licenser.Check, m_LotData.CarrierInfo, Nothing)
             If Not result.IsPass Then
-                SaveLog(MethodInfo.GetCurrentMethod().ToString(), result.Type.ToString() & ">> Not Pass")
+                SaveLog("EndLot", result.Type.ToString() & ">> Not Pass")
                 MessageBoxDialog.ShowMessageDialog(result.FunctionName, result.Cause, result.Type.ToString())
                 Return False
             End If
-            SaveLog(MethodInfo.GetCurrentMethod().ToString(), result.Type.ToString() & ">> Pass")
+            SaveLog("EndLot", result.Type.ToString() & ">> Pass")
             Return True
         Catch ex As Exception
-            SaveLog(MethodInfo.GetCurrentMethod().ToString(), ex.Message.ToString())
+            SaveLog("EndLot", ex.Message.ToString())
             Return False
         End Try
 
@@ -356,14 +357,14 @@ Module Module1
             'Dim result = m_iLibraryService.EndLot(lotNo, mcNo, opNo, good, ng)
             Dim result = m_iLibraryService.UpdateFinalinspection(lotNo, opNo, Judge.OK, mcNo)
             If Not result.IsPass Then
-                SaveLog(MethodInfo.GetCurrentMethod().ToString(), result.Type.ToString() & ">> Not Pass")
+                SaveLog("FinalLot", result.Type.ToString() & ">> Not Pass")
                 ' MessageBoxDialog.ShowMessageDialog(result.FunctionName, result.Cause, result.Type.ToString())
                 Return False
             End If
-            SaveLog(MethodInfo.GetCurrentMethod().ToString(), result.Type.ToString() & ">> Pass")
+            SaveLog("FinalLot", result.Type.ToString() & ">> Pass")
             Return True
         Catch ex As Exception
-            SaveLog(MethodInfo.GetCurrentMethod().ToString(), ex.Message.ToString())
+            SaveLog("FinalLot", ex.Message.ToString())
             Return False
         End Try
 
@@ -372,14 +373,14 @@ Module Module1
         Try
             Dim result = m_iLibraryService.Reinput(lotNo, mcNo, opNo, 0, 0, EndMode.AbnormalEndReset)
             If Not result.IsPass Then
-                SaveLog(MethodInfo.GetCurrentMethod().ToString(), result.Type.ToString() & ">> Not Pass")
+                SaveLog("RetestLot", result.Type.ToString() & ">> Not Pass")
                 MessageBoxDialog.ShowMessageDialog(result.FunctionName, result.Cause, result.Type.ToString())
                 Return False
             End If
-            SaveLog(MethodInfo.GetCurrentMethod().ToString(), result.Type.ToString() & ">> Pass")
+            SaveLog("RetestLot", result.Type.ToString() & ">> Pass")
             Return True
         Catch ex As Exception
-            SaveLog(MethodInfo.GetCurrentMethod().ToString(), ex.Message.ToString())
+            SaveLog("RetestLot", ex.Message.ToString())
             Return False
         End Try
 
@@ -391,11 +392,11 @@ Module Module1
                 MessageBoxDialog.ShowMessageDialog(result.FunctionName, result.Cause, result.Type.ToString())
                 Return False
             End If
-            SaveLog(MethodInfo.GetCurrentMethod().ToString(), result.Type.ToString() & ">> Pass")
+            SaveLog("MachineOnlinet", result.Type.ToString() & ">> Pass")
             Return True
         Catch ex As Exception
-            SaveLog(MethodInfo.GetCurrentMethod().ToString(), ex.Message.ToString())
-            MessageBoxDialog.ShowMessageDialog(MethodInfo.GetCurrentMethod().ToString(), ex.Message.ToString(), "Exception")
+            SaveLog("MachineOnlinet", ex.Message.ToString())
+            MessageBoxDialog.ShowMessageDialog("MachineOnlinet", ex.Message.ToString(), "Exception")
             Return False
         End Try
     End Function
