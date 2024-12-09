@@ -3,20 +3,55 @@ Imports System.IO
 Imports System.Runtime.Serialization.Formatters.Soap
 Imports System.Threading
 Imports System.Xml.Serialization
-Imports Rohm.Apcs.Tdc
-Imports MAP_Dicer.RohmService
+
 
 
 
 Public Class frmInputQrCode
 
-    Dim lotNo As String
-    'Dim assyDevice As String
-    'Dim package As String
-    Dim opNo As String
-    Dim inputQty As String
+    'Dim lotNo As String
+    ''Dim assyDevice As String
+    ''Dim package As String
+    'Dim opNo As String
+    'Dim inputQty As String
+    Public IsPass As Boolean = True
 
-
+    Private c_LotNo As String
+    Public Property LotNo() As String
+        Get
+            Return c_LotNo
+        End Get
+        Set(ByVal value As String)
+            c_LotNo = value
+        End Set
+    End Property
+    Private c_OpNo As String
+    Public Property OpNo() As String
+        Get
+            Return c_OpNo
+        End Get
+        Set(ByVal value As String)
+            c_OpNo = value
+        End Set
+    End Property
+    Private c_InputQty As String
+    Public Property InputQty() As String
+        Get
+            Return c_InputQty
+        End Get
+        Set(ByVal value As String)
+            c_InputQty = value
+        End Set
+    End Property
+    Private c_QrCode As String
+    Public Property QrCode() As String
+        Get
+            Return c_QrCode
+        End Get
+        Set(ByVal value As String)
+            c_QrCode = value
+        End Set
+    End Property
 
 
     Private Sub frmInputQrCode_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
@@ -205,32 +240,31 @@ Public Class frmInputQrCode
 
 
     '    End Function
-    Function LotRequestTDC(ByVal LotNo As String, ByVal rm As RunModeType, ByVal MCNo As String) As Boolean
-        ' Dim mc As String = "MAP-" & MCNo
-        Dim strMess As String = ""
-        Dim res As TdcLotRequestResponse = m_TdcService.LotRequest(MCNo, LotNo, rm)
+    'Function LotRequestTDC(ByVal LotNo As String, ByVal rm As RunModeType, ByVal MCNo As String) As Boolean
+    '    ' Dim mc As String = "MAP-" & MCNo
+    '    Dim strMess As String = ""
+    '    Dim res As TdcLotRequestResponse = m_TdcService.LotRequest(MCNo, LotNo, rm)
 
-        If res.HasError Then
+    '    If res.HasError Then
 
-            Using svError As ApcsWebServiceSoapClient = New ApcsWebServiceSoapClient
-                If svError.LotRptIgnoreError(MCNo, res.ErrorCode) = False Then
-                    Dim li As LotInfo = Nothing
-                    li = m_TdcService.GetLotInfo(LotNo, MCNo)
-                    Using dlg As TdcAlarmMessageForm = New TdcAlarmMessageForm(res.ErrorCode, res.ErrorMessage, LotNo, li)
-                        dlg.TopMost = True
-                        dlg.ShowDialog()
-                        Return False
-                    End Using
-                End If
-            End Using
-            strMess = res.ErrorCode & " : " & res.ErrorMessage
-            Return True
-        Else
-            strMess = "00 : Run Normal"
-            Return True
-        End If
-    End Function
-    Dim WorkSlipData As String
+    '        Using svError As ApcsWebServiceSoapClient = New ApcsWebServiceSoapClient
+    '            If svError.LotRptIgnoreError(MCNo, res.ErrorCode) = False Then
+    '                Dim li As LotInfo = Nothing
+    '                li = m_TdcService.GetLotInfo(LotNo, MCNo)
+    '                Using dlg As TdcAlarmMessageForm = New TdcAlarmMessageForm(res.ErrorCode, res.ErrorMessage, LotNo, li)
+    '                    dlg.TopMost = True
+    '                    dlg.ShowDialog()
+    '                    Return False
+    '                End Using
+    '            End If
+    '        End Using
+    '        strMess = res.ErrorCode & " : " & res.ErrorMessage
+    '        Return True
+    '    Else
+    '        strMess = "00 : Run Normal"
+    '        Return True
+    '    End If
+    'End Function
     Private Sub TbQRInput_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles TbQRInput.KeyPress, tbxInput.KeyPress
 
         If e.KeyChar = vbCr Then                                                                                                                        'CR Key Recieve
@@ -245,21 +279,21 @@ Public Class frmInputQrCode
 
                         'TDC -------------------------------------------------------------------------------
                         '   
-                        If My.Settings.RunOffline = False Then
-                            Dim LotRequest As Boolean = LotRequestTDC(TbQRInput.Text.Substring(30, 10), RunModeType.Normal, "MAP-" & Form1.lbMC.Text)
-                            ' Form1.SaveLog(Form1.Message.Cellcon, "LotRequestTDC :" & LotRequest)
-                            If LotRequest = False Then
-                                'TbQRInput.Text = ""
-                                ' TbQRInput.Select()
-                                GoTo FailTDC
-                            End If
-                        End If
-                        WorkSlipData = TbQRInput.Text
+                        'If My.Settings.RunOffline = False Then
+                        '    Dim LotRequest As Boolean = LotRequestTDC(TbQRInput.Text.Substring(30, 10), RunModeType.Normal, "MAP-" & Form1.lbMC.Text)
+                        '    ' Form1.SaveLog(Form1.Message.Cellcon, "LotRequestTDC :" & LotRequest)
+                        '    If LotRequest = False Then
+                        '        'TbQRInput.Text = ""
+                        '        ' TbQRInput.Select()
+                        '        GoTo FailTDC
+                        '    End If
+                        'End If
+                        QrCode = TbQRInput.Text
                         '
                         'QR OK Data Save -----------------------------------------------------------------------------------
                         '
                         '  lotNo = TbQRInput.Text.Substring(30, 10)
-                  
+
                         Dim WorkSlipQR As New WorkingSlipQRCode
                         WorkSlipQR.SplitQRCode(TbQRInput.Text)
                         WorkSlipQR.TransactionDataSave(TbQRInput.Text)
@@ -300,7 +334,7 @@ FailTDC:
                 Case "Input OP No."
 
                     If TbQRInput.Text.Length = 6 And IsNumeric(TbQRInput.Text.Remove(0, 1)) Then
-                        Dim ETC2 As String = Trim(WorkSlipData.Substring(232, 20))
+                        Dim ETC2 As String = Trim(QrCode.Substring(232, 20))
                         Dim QROpNo As String = TbQRInput.Text
                         If My.Settings.AuthenticationUser = True Then
                             If PermiisionCheck(ETC2, QROpNo, My.Settings.MC_MAPGroup, My.Settings.GL_MAPGroup, "MAP", Form1.lbMC.Text) = False Then
@@ -342,6 +376,7 @@ FailTDC:
                                     btnConfirm.Enabled = True
                                 Else
                                     MsgBox("ไม่สารถทำการผลิตได้เนื่องจาก ใน Process Mount ไม่มีประวัติ Lotนี้")
+                                    IsPass = False
                                     Me.Close()
                                 End If
                             Else
@@ -375,19 +410,19 @@ FailTDC:
                         tbxInput.Text = ""
 
                     End If
-                    'Save data to MAPPKGDCDatatable
-                    Dim dr As DBxDataSet.MAPPKGDCDataRow = Form1.DBxDataSet.MAPPKGDCData.NewRow
-                    dr.MCNo = ProcessHeader & Form1.lbMC.Text
-                    dr.LotNo = lotNo
-                    dr.InputQty = inputQty
-                    dr.OPNo = opNo
-                    dr.LotStartTime = Format(Now, "yyyy/MM/dd HH:mm:ss")
-                    Form1.DBxDataSet.MAPPKGDCData.Rows.InsertAt(dr, 0)
+                    ''Save data to MAPPKGDCDatatable
+                    'Dim dr As DBxDataSet.MAPPKGDCDataRow = Form1.DBxDataSet.MAPPKGDCData.NewRow
+                    'dr.MCNo = ProcessHeader & Form1.lbMC.Text
+                    'dr.LotNo = lotNo
+                    'dr.InputQty = inputQty
+                    'dr.OPNo = opNo
+                    'dr.LotStartTime = Format(Now, "yyyy/MM/dd HH:mm:ss")
+                    'Form1.DBxDataSet.MAPPKGDCData.Rows.InsertAt(dr, 0)
 
-                    With Form1
-                        .MAPPKGDCDataBindingSource.Position = 0          'Update new data 
+                    'With Form1
+                    '    .MAPPKGDCDataBindingSource.Position = 0          'Update new data 
 
-                    End With
+                    'End With
                     tbxInput.Text = ""
                     tbxInput.Enabled = False
 
@@ -471,19 +506,19 @@ FailTDC:
             tbxInput.Text = ""
             Exit Sub
         End If
-        'Save data to MAPPKGDCDatatable
-        Dim dr As DBxDataSet.MAPPKGDCDataRow = Form1.DBxDataSet.MAPPKGDCData.NewRow
-        dr.MCNo = ProcessHeader & Form1.lbMC.Text
-        dr.LotNo = lotNo
-        dr.InputQty = inputQty
-        dr.OPNo = opNo
-        dr.LotStartTime = Format(Now, "yyyy/MM/dd HH:mm:ss")
-        Form1.DBxDataSet.MAPPKGDCData.Rows.InsertAt(dr, 0)
+        ''Save data to MAPPKGDCDatatable
+        'Dim dr As DBxDataSet.MAPPKGDCDataRow = Form1.DBxDataSet.MAPPKGDCData.NewRow
+        'dr.MCNo = ProcessHeader & Form1.lbMC.Text
+        'dr.LotNo = lotNo
+        'dr.InputQty = inputQty
+        'dr.OPNo = opNo
+        'dr.LotStartTime = Format(Now, "yyyy/MM/dd HH:mm:ss")
+        'Form1.DBxDataSet.MAPPKGDCData.Rows.InsertAt(dr, 0)
 
-        With Form1
-            .MAPPKGDCDataBindingSource.Position = 0          'Update new data 
+        'With Form1
+        '    .MAPPKGDCDataBindingSource.Position = 0          'Update new data 
 
-        End With
+        'End With
         tbxInput.Text = ""
         tbxInput.Enabled = False
 

@@ -87,7 +87,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\New folder\MapConvert.dll</HintPath>
     </Reference>
-    <Reference Include="Rohm.Apcs.Tdc, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="MessageDialog">
+      <HintPath>\\172.16.0.115\_PublicShare\Apcs Pro\MessageDialog.dll</HintPath>
+    </Reference>
     <Reference Include="Rohm.Ems, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\Rohm.Ems.dll</HintPath>
@@ -154,6 +156,12 @@
     <Compile Include="frmInputQrCode.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="InputCarrier.Designer.vb">
+      <DependentUpon>InputCarrier.vb</DependentUpon>
+    </Compile>
+    <Compile Include="InputCarrier.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="InputQty.Designer.vb">
       <DependentUpon>InputQty.vb</DependentUpon>
     </Compile>
@@ -172,6 +180,7 @@
     <Compile Include="KeyBoard.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="LotData.vb" />
     <Compile Include="Mode.designer.vb">
       <DependentUpon>Mode.vb</DependentUpon>
     </Compile>
@@ -208,7 +217,7 @@
     <Compile Include="ScanASEID.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Service References\RohmService\Reference.vb">
+    <Compile Include="Service References\iLibraryService\Reference.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -243,6 +252,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmInputQrCode.resx">
       <DependentUpon>frmInputQrCode.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InputCarrier.resx">
+      <DependentUpon>InputCarrier.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InputQty.resx">
       <DependentUpon>InputQty.vb</DependentUpon>
@@ -342,28 +354,70 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\MAPLabeler.png" />
-    <None Include="Service References\RohmService\apcswebservice.wsdl" />
+    <None Include="Service References\iLibraryService\MAP_Label.iLibraryService.CancelLotResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\iLibraryService\MAP_Label.iLibraryService.CarrierInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\iLibraryService\MAP_Label.iLibraryService.CheckLotApcsProResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\iLibraryService\MAP_Label.iLibraryService.EndLotResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\iLibraryService\MAP_Label.iLibraryService.iReportResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\iLibraryService\MAP_Label.iLibraryService.LotInformation.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\iLibraryService\MAP_Label.iLibraryService.MachineAlarmResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\iLibraryService\MAP_Label.iLibraryService.MachineOnlineStateResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\iLibraryService\MAP_Label.iLibraryService.OnlineEndResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\iLibraryService\MAP_Label.iLibraryService.OnlineStartResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\iLibraryService\MAP_Label.iLibraryService.ReinputResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\iLibraryService\MAP_Label.iLibraryService.SetupLotResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\iLibraryService\MAP_Label.iLibraryService.StartLotResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\iLibraryService\MAP_Label.iLibraryService.UpdateFinalinspectionResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\iLibraryService\MAP_Label.iLibraryService.UpdateFirstinspectionResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\iLibraryService\MAP_Label.iLibraryService.UpdateMachineStateResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\iLibraryService\ServiceiLibrary.wsdl" />
+    <None Include="Service References\iLibraryService\ServiceiLibrary.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\iLibraryService\ServiceiLibrary1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\iLibraryService\ServiceiLibrary2.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\RohmService\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\RohmService\apcswebservice.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\RohmService\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\RohmService\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\RohmService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.vb</LastGenOutput>
-    </None>
+    <WCFMetadataStorage Include="Service References\iLibraryService\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Logo_ROHM.svg.png" />
@@ -379,6 +433,33 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\abort-146072_960_720.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\iLibraryService\ServiceiLibrary.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\iLibraryService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\iLibraryService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\iLibraryService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Dll\AuthenticationUser.dll" />
+    <Content Include="Dll\ICSharpCode.SharpZipLib.dll" />
+    <Content Include="Dll\MapConvert.dll" />
+    <Content Include="Dll\MessageDialog.dll" />
+    <Content Include="Dll\Rohm.Apcs.Tdc.dll" />
+    <Content Include="Dll\Rohm.dll" />
+    <Content Include="Dll\Rohm.Ems.dll" />
+    <None Include="Resources\PictureBoxWrong.png" />
+    <None Include="Resources\PictureBoxQrCode.png" />
+    <None Include="Resources\PicturBoxRohmLogo.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

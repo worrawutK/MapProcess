@@ -123,7 +123,6 @@ Partial Class frmMain
         Me.OnLineModeToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.OffLineModeToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.MCSettingToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.TDCToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.AuthenticationUserToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ONToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OFFToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -131,6 +130,7 @@ Partial Class frmMain
         Me.RetestModeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ONToolStripMenuItemRetest = New System.Windows.Forms.ToolStripMenuItem()
         Me.OFFToolStripMenuItemRetest = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TesterManualLoadToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TransactionDataTableAdapter = New MAP_OSFT.DBxDataSetTableAdapters.TransactionDataTableAdapter()
         Me.MAPOSFTDataTableAdapter = New MAP_OSFT.DBxDataSetTableAdapters.MAPOSFTDataTableAdapter()
         Me.MAPALDataBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -142,6 +142,7 @@ Partial Class frmMain
         Me.QueriesTableAdapter1 = New MAP_OSFT.DBxDataSetTableAdapters.QueriesTableAdapter()
         Me.TableAdapterManager = New MAP_OSFT.DBxDataSetTableAdapters.TableAdapterManager()
         Me.LcqW_UNION_WORK_DENPYO_PRINTTableAdapter1 = New MAP_OSFT.DBxDataSetTableAdapters.LCQW_UNION_WORK_DENPYO_PRINTTableAdapter()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.ContextMenuStrip1.SuspendLayout()
         CType(Me.MAPOSFTDataBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DBxDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -374,7 +375,7 @@ Partial Class frmMain
         Me.lbRevision.Name = "lbRevision"
         Me.lbRevision.Size = New System.Drawing.Size(191, 13)
         Me.lbRevision.TabIndex = 108
-        Me.lbRevision.Text = "SelCon MAP OS/FT Software Ver 2.06"
+        Me.lbRevision.Text = "SelCon MAP OS/FT Software Ver 2.27"
         '
         'lbAndonJudge
         '
@@ -408,30 +409,30 @@ Partial Class frmMain
         '
         Me.ContextMenuStrip2.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DeleteToolStripMenuItem, Me.AToolStripMenuItem, Me.LotCacelToolStripMenuItem, Me.ManualEndToolStripMenuItem})
         Me.ContextMenuStrip2.Name = "ContextMenuStrip2"
-        Me.ContextMenuStrip2.Size = New System.Drawing.Size(163, 92)
+        Me.ContextMenuStrip2.Size = New System.Drawing.Size(162, 92)
         '
         'DeleteToolStripMenuItem
         '
         Me.DeleteToolStripMenuItem.Name = "DeleteToolStripMenuItem"
-        Me.DeleteToolStripMenuItem.Size = New System.Drawing.Size(162, 22)
+        Me.DeleteToolStripMenuItem.Size = New System.Drawing.Size(161, 22)
         Me.DeleteToolStripMenuItem.Text = "Delete"
         '
         'AToolStripMenuItem
         '
         Me.AToolStripMenuItem.Name = "AToolStripMenuItem"
-        Me.AToolStripMenuItem.Size = New System.Drawing.Size(162, 22)
+        Me.AToolStripMenuItem.Size = New System.Drawing.Size(161, 22)
         Me.AToolStripMenuItem.Text = "TesterNameSave"
         '
         'LotCacelToolStripMenuItem
         '
         Me.LotCacelToolStripMenuItem.Name = "LotCacelToolStripMenuItem"
-        Me.LotCacelToolStripMenuItem.Size = New System.Drawing.Size(162, 22)
+        Me.LotCacelToolStripMenuItem.Size = New System.Drawing.Size(161, 22)
         Me.LotCacelToolStripMenuItem.Text = "LotCacel"
         '
         'ManualEndToolStripMenuItem
         '
         Me.ManualEndToolStripMenuItem.Name = "ManualEndToolStripMenuItem"
-        Me.ManualEndToolStripMenuItem.Size = New System.Drawing.Size(162, 22)
+        Me.ManualEndToolStripMenuItem.Size = New System.Drawing.Size(161, 22)
         Me.ManualEndToolStripMenuItem.Text = "Manual End"
         Me.ManualEndToolStripMenuItem.Visible = False
         '
@@ -541,7 +542,7 @@ Partial Class frmMain
         Me.lbLotNo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbLotNo.Location = New System.Drawing.Point(6, 30)
         Me.lbLotNo.Name = "lbLotNo"
-        Me.lbLotNo.Size = New System.Drawing.Size(55, 16)
+        Me.lbLotNo.Size = New System.Drawing.Size(54, 16)
         Me.lbLotNo.TabIndex = 121
         Me.lbLotNo.Text = "lbLotNo"
         '
@@ -567,7 +568,7 @@ Partial Class frmMain
         Me.lbPackage.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbPackage.Location = New System.Drawing.Point(6, 49)
         Me.lbPackage.Name = "lbPackage"
-        Me.lbPackage.Size = New System.Drawing.Size(74, 16)
+        Me.lbPackage.Size = New System.Drawing.Size(73, 16)
         Me.lbPackage.TabIndex = 120
         Me.lbPackage.Text = "lbPackage"
         '
@@ -584,7 +585,7 @@ Partial Class frmMain
         Me.lbDevice.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbDevice.Location = New System.Drawing.Point(6, 69)
         Me.lbDevice.Name = "lbDevice"
-        Me.lbDevice.Size = New System.Drawing.Size(62, 16)
+        Me.lbDevice.Size = New System.Drawing.Size(61, 16)
         Me.lbDevice.TabIndex = 118
         Me.lbDevice.Text = "lbDevice"
         '
@@ -596,7 +597,7 @@ Partial Class frmMain
         Me.lbEnd.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbEnd.Location = New System.Drawing.Point(7, 169)
         Me.lbEnd.Name = "lbEnd"
-        Me.lbEnd.Size = New System.Drawing.Size(43, 16)
+        Me.lbEnd.Size = New System.Drawing.Size(42, 16)
         Me.lbEnd.TabIndex = 122
         Me.lbEnd.Text = "lbEnd"
         '
@@ -608,7 +609,7 @@ Partial Class frmMain
         Me.lbStart.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbStart.Location = New System.Drawing.Point(6, 150)
         Me.lbStart.Name = "lbStart"
-        Me.lbStart.Size = New System.Drawing.Size(46, 16)
+        Me.lbStart.Size = New System.Drawing.Size(45, 16)
         Me.lbStart.TabIndex = 123
         Me.lbStart.Text = "lbStart"
         '
@@ -661,7 +662,7 @@ Partial Class frmMain
         Me.lbProName.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbProName.Location = New System.Drawing.Point(8, 88)
         Me.lbProName.Name = "lbProName"
-        Me.lbProName.Size = New System.Drawing.Size(77, 16)
+        Me.lbProName.Size = New System.Drawing.Size(76, 16)
         Me.lbProName.TabIndex = 118
         Me.lbProName.Text = "lbProName"
         '
@@ -673,7 +674,7 @@ Partial Class frmMain
         Me.lbProcess.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbProcess.Location = New System.Drawing.Point(6, 9)
         Me.lbProcess.Name = "lbProcess"
-        Me.lbProcess.Size = New System.Drawing.Size(69, 16)
+        Me.lbProcess.Size = New System.Drawing.Size(68, 16)
         Me.lbProcess.TabIndex = 121
         Me.lbProcess.Text = "lbProcess"
         '
@@ -841,7 +842,7 @@ Partial Class frmMain
         Me.lbMaster.ForeColor = System.Drawing.Color.Red
         Me.lbMaster.Location = New System.Drawing.Point(282, 50)
         Me.lbMaster.Name = "lbMaster"
-        Me.lbMaster.Size = New System.Drawing.Size(49, 16)
+        Me.lbMaster.Size = New System.Drawing.Size(48, 16)
         Me.lbMaster.TabIndex = 138
         Me.lbMaster.Text = "Master"
         '
@@ -979,10 +980,10 @@ Partial Class frmMain
         '
         Me.MenuStrip1.BackColor = System.Drawing.Color.Transparent
         Me.MenuStrip1.Dock = System.Windows.Forms.DockStyle.None
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AndonToolStripMenuItem, Me.APCSStaffToolStripMenuItem, Me.BMRequestToolStripMenuItem, Me.PMRepairToolStripMenuItem, Me.WorkRecordToolStripMenuItem, Me.HelpToolStripMenuItem, Me.SettingToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AndonToolStripMenuItem, Me.APCSStaffToolStripMenuItem, Me.BMRequestToolStripMenuItem, Me.PMRepairToolStripMenuItem, Me.WorkRecordToolStripMenuItem, Me.HelpToolStripMenuItem, Me.SettingToolStripMenuItem, Me.TesterManualLoadToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(33, 106)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(739, 33)
+        Me.MenuStrip1.Size = New System.Drawing.Size(853, 33)
         Me.MenuStrip1.TabIndex = 259
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -1010,28 +1011,28 @@ Partial Class frmMain
         '
         Me.APCSStaffToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.APCSStaffToolStripMenuItem.Name = "APCSStaffToolStripMenuItem"
-        Me.APCSStaffToolStripMenuItem.Size = New System.Drawing.Size(115, 29)
+        Me.APCSStaffToolStripMenuItem.Size = New System.Drawing.Size(114, 29)
         Me.APCSStaffToolStripMenuItem.Text = "APCS_Staff"
         '
         'BMRequestToolStripMenuItem
         '
         Me.BMRequestToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BMRequestToolStripMenuItem.Name = "BMRequestToolStripMenuItem"
-        Me.BMRequestToolStripMenuItem.Size = New System.Drawing.Size(124, 29)
+        Me.BMRequestToolStripMenuItem.Size = New System.Drawing.Size(123, 29)
         Me.BMRequestToolStripMenuItem.Text = "BM Request"
         '
         'PMRepairToolStripMenuItem
         '
         Me.PMRepairToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.PMRepairToolStripMenuItem.Name = "PMRepairToolStripMenuItem"
-        Me.PMRepairToolStripMenuItem.Size = New System.Drawing.Size(138, 29)
+        Me.PMRepairToolStripMenuItem.Size = New System.Drawing.Size(137, 29)
         Me.PMRepairToolStripMenuItem.Text = "PM Repairing"
         '
         'WorkRecordToolStripMenuItem
         '
         Me.WorkRecordToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.WorkRecordToolStripMenuItem.Name = "WorkRecordToolStripMenuItem"
-        Me.WorkRecordToolStripMenuItem.Size = New System.Drawing.Size(128, 29)
+        Me.WorkRecordToolStripMenuItem.Size = New System.Drawing.Size(126, 29)
         Me.WorkRecordToolStripMenuItem.Text = "WorkRecord"
         '
         'HelpToolStripMenuItem
@@ -1043,7 +1044,7 @@ Partial Class frmMain
         '
         'SettingToolStripMenuItem
         '
-        Me.SettingToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SelfConModeToolStripMenuItem1, Me.MCSettingToolStripMenuItem1, Me.TDCToolStripMenuItem1, Me.AuthenticationUserToolStripMenuItem, Me.SetUpCheckToolStripMenuItem, Me.RetestModeToolStripMenuItem})
+        Me.SettingToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SelfConModeToolStripMenuItem1, Me.MCSettingToolStripMenuItem1, Me.AuthenticationUserToolStripMenuItem, Me.SetUpCheckToolStripMenuItem, Me.RetestModeToolStripMenuItem})
         Me.SettingToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.SettingToolStripMenuItem.Name = "SettingToolStripMenuItem"
         Me.SettingToolStripMenuItem.Size = New System.Drawing.Size(83, 29)
@@ -1075,12 +1076,6 @@ Partial Class frmMain
         Me.MCSettingToolStripMenuItem1.Size = New System.Drawing.Size(246, 30)
         Me.MCSettingToolStripMenuItem1.Text = "M/C Setting"
         '
-        'TDCToolStripMenuItem1
-        '
-        Me.TDCToolStripMenuItem1.Name = "TDCToolStripMenuItem1"
-        Me.TDCToolStripMenuItem1.Size = New System.Drawing.Size(246, 30)
-        Me.TDCToolStripMenuItem1.Text = "TDC"
-        '
         'AuthenticationUserToolStripMenuItem
         '
         Me.AuthenticationUserToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ONToolStripMenuItem, Me.OFFToolStripMenuItem})
@@ -1091,13 +1086,13 @@ Partial Class frmMain
         'ONToolStripMenuItem
         '
         Me.ONToolStripMenuItem.Name = "ONToolStripMenuItem"
-        Me.ONToolStripMenuItem.Size = New System.Drawing.Size(152, 30)
+        Me.ONToolStripMenuItem.Size = New System.Drawing.Size(116, 30)
         Me.ONToolStripMenuItem.Text = "ON"
         '
         'OFFToolStripMenuItem
         '
         Me.OFFToolStripMenuItem.Name = "OFFToolStripMenuItem"
-        Me.OFFToolStripMenuItem.Size = New System.Drawing.Size(152, 30)
+        Me.OFFToolStripMenuItem.Size = New System.Drawing.Size(116, 30)
         Me.OFFToolStripMenuItem.Text = "OFF"
         '
         'SetUpCheckToolStripMenuItem
@@ -1112,18 +1107,26 @@ Partial Class frmMain
         Me.RetestModeToolStripMenuItem.Name = "RetestModeToolStripMenuItem"
         Me.RetestModeToolStripMenuItem.Size = New System.Drawing.Size(246, 30)
         Me.RetestModeToolStripMenuItem.Text = "Retest Mode"
+        Me.RetestModeToolStripMenuItem.Visible = False
         '
         'ONToolStripMenuItemRetest
         '
         Me.ONToolStripMenuItemRetest.Name = "ONToolStripMenuItemRetest"
-        Me.ONToolStripMenuItemRetest.Size = New System.Drawing.Size(152, 30)
+        Me.ONToolStripMenuItemRetest.Size = New System.Drawing.Size(116, 30)
         Me.ONToolStripMenuItemRetest.Text = "ON"
         '
         'OFFToolStripMenuItemRetest
         '
         Me.OFFToolStripMenuItemRetest.Name = "OFFToolStripMenuItemRetest"
-        Me.OFFToolStripMenuItemRetest.Size = New System.Drawing.Size(152, 30)
+        Me.OFFToolStripMenuItemRetest.Size = New System.Drawing.Size(116, 30)
         Me.OFFToolStripMenuItemRetest.Text = "OFF"
+        '
+        'TesterManualLoadToolStripMenuItem
+        '
+        Me.TesterManualLoadToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TesterManualLoadToolStripMenuItem.Name = "TesterManualLoadToolStripMenuItem"
+        Me.TesterManualLoadToolStripMenuItem.Size = New System.Drawing.Size(119, 29)
+        Me.TesterManualLoadToolStripMenuItem.Text = "Load Tester"
         '
         'TransactionDataTableAdapter
         '
@@ -1174,6 +1177,16 @@ Partial Class frmMain
         '
         Me.LcqW_UNION_WORK_DENPYO_PRINTTableAdapter1.ClearBeforeFill = True
         '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(836, 190)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(112, 23)
+        Me.Button1.TabIndex = 260
+        Me.Button1.Text = "TestSendMessage"
+        Me.Button1.UseVisualStyleBackColor = True
+        Me.Button1.Visible = False
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1181,6 +1194,7 @@ Partial Class frmMain
         Me.AutoScroll = True
         Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
         Me.ClientSize = New System.Drawing.Size(1024, 768)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.MenuStrip1)
         Me.Controls.Add(Me.Label17)
         Me.Controls.Add(Me.cbSocket)
@@ -1352,7 +1366,6 @@ Partial Class frmMain
     Friend WithEvents OnLineModeToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents OffLineModeToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents MCSettingToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents TDCToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents LcqW_UNION_WORK_DENPYO_PRINTTableAdapter1 As DBxDataSetTableAdapters.LCQW_UNION_WORK_DENPYO_PRINTTableAdapter
     Friend WithEvents AuthenticationUserToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ONToolStripMenuItem As ToolStripMenuItem
@@ -1361,4 +1374,6 @@ Partial Class frmMain
     Friend WithEvents RetestModeToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ONToolStripMenuItemRetest As ToolStripMenuItem
     Friend WithEvents OFFToolStripMenuItemRetest As ToolStripMenuItem
+    Friend WithEvents Button1 As Button
+    Friend WithEvents TesterManualLoadToolStripMenuItem As ToolStripMenuItem
 End Class

@@ -38,8 +38,6 @@ Partial Class Form1
         Me.OnlineToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OfflineToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.MAPALDataBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.DBxDataSet = New MAP_Label.DBxDataSet()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Label4 = New System.Windows.Forms.Label()
@@ -54,29 +52,6 @@ Partial Class Form1
         Me.lbAndonJudge = New System.Windows.Forms.Label()
         Me.lbLotJudge = New System.Windows.Forms.Label()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.MCNoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.LotNoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.LotStartTimeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.LotEndTimeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.OPNoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.InputQtyDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.TotalGoodDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.TotalNGDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.LabelPosChkBeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.LabelPosChkAfDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.LabelMarkChkBeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.LabelMarkChkAfDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.LabelChangeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.StickLabelChangeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ReissueLabelDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ReissueLabelQtyDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.AndonDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.OPJudgementDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.LotJudgementDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.SelfConVersionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.GLCheckDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.RemarkDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.NetVersionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ContextMenuStrip2 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.DeleteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.lbMC = New System.Windows.Forms.Label()
@@ -186,6 +161,31 @@ Partial Class Form1
         Me.Label16 = New System.Windows.Forms.Label()
         Me.Label17 = New System.Windows.Forms.Label()
         Me.TransactionDataBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.MAPALDataBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DBxDataSet = New MAP_Label.DBxDataSet()
+        Me.MCNoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.LotNoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.LotStartTimeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.LotEndTimeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.OPNoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.InputQtyDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TotalGoodDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TotalNGDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.LabelPosChkBeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.LabelPosChkAfDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.LabelMarkChkBeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.LabelMarkChkAfDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.LabelChangeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.StickLabelChangeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ReissueLabelDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ReissueLabelQtyDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AndonDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.OPJudgementDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.LotJudgementDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.SelfConVersionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.GLCheckDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.RemarkDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.NetVersionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.MAPAlarmInfoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.TransactionDataTableAdapter = New MAP_Label.DBxDataSetTableAdapters.TransactionDataTableAdapter()
         Me.MAPALDataTableAdapter = New MAP_Label.DBxDataSetTableAdapters.MAPALDataTableAdapter()
@@ -195,8 +195,6 @@ Partial Class Form1
         Me.MAPALDataBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         Me.MappkgdcDataTableAdapter1 = New MAP_Label.DBxDataSetTableAdapters.MAPPKGDCDataTableAdapter()
         Me.ContextMenuStrip1.SuspendLayout()
-        CType(Me.MAPALDataBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DBxDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ContextMenuStrip2.SuspendLayout()
@@ -207,6 +205,8 @@ Partial Class Form1
         Me.MenuStrip1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TransactionDataBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.MAPALDataBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DBxDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MAPAlarmInfoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MAPALDataBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -307,16 +307,6 @@ Partial Class Form1
         Me.Label1.TabIndex = 104
         Me.Label1.Text = "  1  "
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'MAPALDataBindingSource
-        '
-        Me.MAPALDataBindingSource.DataMember = "MAPALData"
-        Me.MAPALDataBindingSource.DataSource = Me.DBxDataSet
-        '
-        'DBxDataSet
-        '
-        Me.DBxDataSet.DataSetName = "DBxDataSet"
-        Me.DBxDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'Label2
         '
@@ -443,11 +433,11 @@ Partial Class Form1
         Me.lbRevision.AutoSize = True
         Me.lbRevision.BackColor = System.Drawing.Color.Transparent
         Me.lbRevision.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.lbRevision.Location = New System.Drawing.Point(1555, 1040)
+        Me.lbRevision.Location = New System.Drawing.Point(1480, 1040)
         Me.lbRevision.Name = "lbRevision"
-        Me.lbRevision.Size = New System.Drawing.Size(335, 20)
+        Me.lbRevision.Size = New System.Drawing.Size(407, 20)
         Me.lbRevision.TabIndex = 108
-        Me.lbRevision.Text = "SelCon MAP Labeler  Mark  Software Ver 2.15"
+        Me.lbRevision.Text = "SelCon MAP Labeler  Mark  Software Ver 2.22 Apcs Pro."
         '
         'lbAndonJudge
         '
@@ -481,144 +471,6 @@ Partial Class Form1
         Me.DataGridView1.Size = New System.Drawing.Size(423, 154)
         Me.DataGridView1.TabIndex = 259
         Me.DataGridView1.Visible = False
-        '
-        'MCNoDataGridViewTextBoxColumn
-        '
-        Me.MCNoDataGridViewTextBoxColumn.DataPropertyName = "MCNo"
-        Me.MCNoDataGridViewTextBoxColumn.HeaderText = "MCNo"
-        Me.MCNoDataGridViewTextBoxColumn.Name = "MCNoDataGridViewTextBoxColumn"
-        '
-        'LotNoDataGridViewTextBoxColumn
-        '
-        Me.LotNoDataGridViewTextBoxColumn.DataPropertyName = "LotNo"
-        Me.LotNoDataGridViewTextBoxColumn.HeaderText = "LotNo"
-        Me.LotNoDataGridViewTextBoxColumn.Name = "LotNoDataGridViewTextBoxColumn"
-        '
-        'LotStartTimeDataGridViewTextBoxColumn
-        '
-        Me.LotStartTimeDataGridViewTextBoxColumn.DataPropertyName = "LotStartTime"
-        Me.LotStartTimeDataGridViewTextBoxColumn.HeaderText = "LotStartTime"
-        Me.LotStartTimeDataGridViewTextBoxColumn.Name = "LotStartTimeDataGridViewTextBoxColumn"
-        '
-        'LotEndTimeDataGridViewTextBoxColumn
-        '
-        Me.LotEndTimeDataGridViewTextBoxColumn.DataPropertyName = "LotEndTime"
-        Me.LotEndTimeDataGridViewTextBoxColumn.HeaderText = "LotEndTime"
-        Me.LotEndTimeDataGridViewTextBoxColumn.Name = "LotEndTimeDataGridViewTextBoxColumn"
-        '
-        'OPNoDataGridViewTextBoxColumn
-        '
-        Me.OPNoDataGridViewTextBoxColumn.DataPropertyName = "OPNo"
-        Me.OPNoDataGridViewTextBoxColumn.HeaderText = "OPNo"
-        Me.OPNoDataGridViewTextBoxColumn.Name = "OPNoDataGridViewTextBoxColumn"
-        '
-        'InputQtyDataGridViewTextBoxColumn
-        '
-        Me.InputQtyDataGridViewTextBoxColumn.DataPropertyName = "InputQty"
-        Me.InputQtyDataGridViewTextBoxColumn.HeaderText = "InputQty"
-        Me.InputQtyDataGridViewTextBoxColumn.Name = "InputQtyDataGridViewTextBoxColumn"
-        '
-        'TotalGoodDataGridViewTextBoxColumn
-        '
-        Me.TotalGoodDataGridViewTextBoxColumn.DataPropertyName = "TotalGood"
-        Me.TotalGoodDataGridViewTextBoxColumn.HeaderText = "TotalGood"
-        Me.TotalGoodDataGridViewTextBoxColumn.Name = "TotalGoodDataGridViewTextBoxColumn"
-        '
-        'TotalNGDataGridViewTextBoxColumn
-        '
-        Me.TotalNGDataGridViewTextBoxColumn.DataPropertyName = "TotalNG"
-        Me.TotalNGDataGridViewTextBoxColumn.HeaderText = "TotalNG"
-        Me.TotalNGDataGridViewTextBoxColumn.Name = "TotalNGDataGridViewTextBoxColumn"
-        '
-        'LabelPosChkBeDataGridViewTextBoxColumn
-        '
-        Me.LabelPosChkBeDataGridViewTextBoxColumn.DataPropertyName = "LabelPosChkBe"
-        Me.LabelPosChkBeDataGridViewTextBoxColumn.HeaderText = "LabelPosChkBe"
-        Me.LabelPosChkBeDataGridViewTextBoxColumn.Name = "LabelPosChkBeDataGridViewTextBoxColumn"
-        '
-        'LabelPosChkAfDataGridViewTextBoxColumn
-        '
-        Me.LabelPosChkAfDataGridViewTextBoxColumn.DataPropertyName = "LabelPosChkAf"
-        Me.LabelPosChkAfDataGridViewTextBoxColumn.HeaderText = "LabelPosChkAf"
-        Me.LabelPosChkAfDataGridViewTextBoxColumn.Name = "LabelPosChkAfDataGridViewTextBoxColumn"
-        '
-        'LabelMarkChkBeDataGridViewTextBoxColumn
-        '
-        Me.LabelMarkChkBeDataGridViewTextBoxColumn.DataPropertyName = "LabelMarkChkBe"
-        Me.LabelMarkChkBeDataGridViewTextBoxColumn.HeaderText = "LabelMarkChkBe"
-        Me.LabelMarkChkBeDataGridViewTextBoxColumn.Name = "LabelMarkChkBeDataGridViewTextBoxColumn"
-        '
-        'LabelMarkChkAfDataGridViewTextBoxColumn
-        '
-        Me.LabelMarkChkAfDataGridViewTextBoxColumn.DataPropertyName = "LabelMarkChkAf"
-        Me.LabelMarkChkAfDataGridViewTextBoxColumn.HeaderText = "LabelMarkChkAf"
-        Me.LabelMarkChkAfDataGridViewTextBoxColumn.Name = "LabelMarkChkAfDataGridViewTextBoxColumn"
-        '
-        'LabelChangeDataGridViewTextBoxColumn
-        '
-        Me.LabelChangeDataGridViewTextBoxColumn.DataPropertyName = "LabelChange"
-        Me.LabelChangeDataGridViewTextBoxColumn.HeaderText = "LabelChange"
-        Me.LabelChangeDataGridViewTextBoxColumn.Name = "LabelChangeDataGridViewTextBoxColumn"
-        '
-        'StickLabelChangeDataGridViewTextBoxColumn
-        '
-        Me.StickLabelChangeDataGridViewTextBoxColumn.DataPropertyName = "StickLabelChange"
-        Me.StickLabelChangeDataGridViewTextBoxColumn.HeaderText = "StickLabelChange"
-        Me.StickLabelChangeDataGridViewTextBoxColumn.Name = "StickLabelChangeDataGridViewTextBoxColumn"
-        '
-        'ReissueLabelDataGridViewTextBoxColumn
-        '
-        Me.ReissueLabelDataGridViewTextBoxColumn.DataPropertyName = "ReissueLabel"
-        Me.ReissueLabelDataGridViewTextBoxColumn.HeaderText = "ReissueLabel"
-        Me.ReissueLabelDataGridViewTextBoxColumn.Name = "ReissueLabelDataGridViewTextBoxColumn"
-        '
-        'ReissueLabelQtyDataGridViewTextBoxColumn
-        '
-        Me.ReissueLabelQtyDataGridViewTextBoxColumn.DataPropertyName = "ReissueLabelQty"
-        Me.ReissueLabelQtyDataGridViewTextBoxColumn.HeaderText = "ReissueLabelQty"
-        Me.ReissueLabelQtyDataGridViewTextBoxColumn.Name = "ReissueLabelQtyDataGridViewTextBoxColumn"
-        '
-        'AndonDataGridViewTextBoxColumn
-        '
-        Me.AndonDataGridViewTextBoxColumn.DataPropertyName = "Andon"
-        Me.AndonDataGridViewTextBoxColumn.HeaderText = "Andon"
-        Me.AndonDataGridViewTextBoxColumn.Name = "AndonDataGridViewTextBoxColumn"
-        '
-        'OPJudgementDataGridViewTextBoxColumn
-        '
-        Me.OPJudgementDataGridViewTextBoxColumn.DataPropertyName = "OPJudgement"
-        Me.OPJudgementDataGridViewTextBoxColumn.HeaderText = "OPJudgement"
-        Me.OPJudgementDataGridViewTextBoxColumn.Name = "OPJudgementDataGridViewTextBoxColumn"
-        '
-        'LotJudgementDataGridViewTextBoxColumn
-        '
-        Me.LotJudgementDataGridViewTextBoxColumn.DataPropertyName = "LotJudgement"
-        Me.LotJudgementDataGridViewTextBoxColumn.HeaderText = "LotJudgement"
-        Me.LotJudgementDataGridViewTextBoxColumn.Name = "LotJudgementDataGridViewTextBoxColumn"
-        '
-        'SelfConVersionDataGridViewTextBoxColumn
-        '
-        Me.SelfConVersionDataGridViewTextBoxColumn.DataPropertyName = "SelfConVersion"
-        Me.SelfConVersionDataGridViewTextBoxColumn.HeaderText = "SelfConVersion"
-        Me.SelfConVersionDataGridViewTextBoxColumn.Name = "SelfConVersionDataGridViewTextBoxColumn"
-        '
-        'GLCheckDataGridViewTextBoxColumn
-        '
-        Me.GLCheckDataGridViewTextBoxColumn.DataPropertyName = "GLCheck"
-        Me.GLCheckDataGridViewTextBoxColumn.HeaderText = "GLCheck"
-        Me.GLCheckDataGridViewTextBoxColumn.Name = "GLCheckDataGridViewTextBoxColumn"
-        '
-        'RemarkDataGridViewTextBoxColumn
-        '
-        Me.RemarkDataGridViewTextBoxColumn.DataPropertyName = "Remark"
-        Me.RemarkDataGridViewTextBoxColumn.HeaderText = "Remark"
-        Me.RemarkDataGridViewTextBoxColumn.Name = "RemarkDataGridViewTextBoxColumn"
-        '
-        'NetVersionDataGridViewTextBoxColumn
-        '
-        Me.NetVersionDataGridViewTextBoxColumn.DataPropertyName = "NetVersion"
-        Me.NetVersionDataGridViewTextBoxColumn.HeaderText = "NetVersion"
-        Me.NetVersionDataGridViewTextBoxColumn.Name = "NetVersionDataGridViewTextBoxColumn"
         '
         'ContextMenuStrip2
         '
@@ -1799,6 +1651,154 @@ Partial Class Form1
         Me.Label17.Size = New System.Drawing.Size(1894, 13)
         Me.Label17.TabIndex = 270
         '
+        'MAPALDataBindingSource
+        '
+        Me.MAPALDataBindingSource.DataMember = "MAPALData"
+        Me.MAPALDataBindingSource.DataSource = Me.DBxDataSet
+        '
+        'DBxDataSet
+        '
+        Me.DBxDataSet.DataSetName = "DBxDataSet"
+        Me.DBxDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'MCNoDataGridViewTextBoxColumn
+        '
+        Me.MCNoDataGridViewTextBoxColumn.DataPropertyName = "MCNo"
+        Me.MCNoDataGridViewTextBoxColumn.HeaderText = "MCNo"
+        Me.MCNoDataGridViewTextBoxColumn.Name = "MCNoDataGridViewTextBoxColumn"
+        '
+        'LotNoDataGridViewTextBoxColumn
+        '
+        Me.LotNoDataGridViewTextBoxColumn.DataPropertyName = "LotNo"
+        Me.LotNoDataGridViewTextBoxColumn.HeaderText = "LotNo"
+        Me.LotNoDataGridViewTextBoxColumn.Name = "LotNoDataGridViewTextBoxColumn"
+        '
+        'LotStartTimeDataGridViewTextBoxColumn
+        '
+        Me.LotStartTimeDataGridViewTextBoxColumn.DataPropertyName = "LotStartTime"
+        Me.LotStartTimeDataGridViewTextBoxColumn.HeaderText = "LotStartTime"
+        Me.LotStartTimeDataGridViewTextBoxColumn.Name = "LotStartTimeDataGridViewTextBoxColumn"
+        '
+        'LotEndTimeDataGridViewTextBoxColumn
+        '
+        Me.LotEndTimeDataGridViewTextBoxColumn.DataPropertyName = "LotEndTime"
+        Me.LotEndTimeDataGridViewTextBoxColumn.HeaderText = "LotEndTime"
+        Me.LotEndTimeDataGridViewTextBoxColumn.Name = "LotEndTimeDataGridViewTextBoxColumn"
+        '
+        'OPNoDataGridViewTextBoxColumn
+        '
+        Me.OPNoDataGridViewTextBoxColumn.DataPropertyName = "OPNo"
+        Me.OPNoDataGridViewTextBoxColumn.HeaderText = "OPNo"
+        Me.OPNoDataGridViewTextBoxColumn.Name = "OPNoDataGridViewTextBoxColumn"
+        '
+        'InputQtyDataGridViewTextBoxColumn
+        '
+        Me.InputQtyDataGridViewTextBoxColumn.DataPropertyName = "InputQty"
+        Me.InputQtyDataGridViewTextBoxColumn.HeaderText = "InputQty"
+        Me.InputQtyDataGridViewTextBoxColumn.Name = "InputQtyDataGridViewTextBoxColumn"
+        '
+        'TotalGoodDataGridViewTextBoxColumn
+        '
+        Me.TotalGoodDataGridViewTextBoxColumn.DataPropertyName = "TotalGood"
+        Me.TotalGoodDataGridViewTextBoxColumn.HeaderText = "TotalGood"
+        Me.TotalGoodDataGridViewTextBoxColumn.Name = "TotalGoodDataGridViewTextBoxColumn"
+        '
+        'TotalNGDataGridViewTextBoxColumn
+        '
+        Me.TotalNGDataGridViewTextBoxColumn.DataPropertyName = "TotalNG"
+        Me.TotalNGDataGridViewTextBoxColumn.HeaderText = "TotalNG"
+        Me.TotalNGDataGridViewTextBoxColumn.Name = "TotalNGDataGridViewTextBoxColumn"
+        '
+        'LabelPosChkBeDataGridViewTextBoxColumn
+        '
+        Me.LabelPosChkBeDataGridViewTextBoxColumn.DataPropertyName = "LabelPosChkBe"
+        Me.LabelPosChkBeDataGridViewTextBoxColumn.HeaderText = "LabelPosChkBe"
+        Me.LabelPosChkBeDataGridViewTextBoxColumn.Name = "LabelPosChkBeDataGridViewTextBoxColumn"
+        '
+        'LabelPosChkAfDataGridViewTextBoxColumn
+        '
+        Me.LabelPosChkAfDataGridViewTextBoxColumn.DataPropertyName = "LabelPosChkAf"
+        Me.LabelPosChkAfDataGridViewTextBoxColumn.HeaderText = "LabelPosChkAf"
+        Me.LabelPosChkAfDataGridViewTextBoxColumn.Name = "LabelPosChkAfDataGridViewTextBoxColumn"
+        '
+        'LabelMarkChkBeDataGridViewTextBoxColumn
+        '
+        Me.LabelMarkChkBeDataGridViewTextBoxColumn.DataPropertyName = "LabelMarkChkBe"
+        Me.LabelMarkChkBeDataGridViewTextBoxColumn.HeaderText = "LabelMarkChkBe"
+        Me.LabelMarkChkBeDataGridViewTextBoxColumn.Name = "LabelMarkChkBeDataGridViewTextBoxColumn"
+        '
+        'LabelMarkChkAfDataGridViewTextBoxColumn
+        '
+        Me.LabelMarkChkAfDataGridViewTextBoxColumn.DataPropertyName = "LabelMarkChkAf"
+        Me.LabelMarkChkAfDataGridViewTextBoxColumn.HeaderText = "LabelMarkChkAf"
+        Me.LabelMarkChkAfDataGridViewTextBoxColumn.Name = "LabelMarkChkAfDataGridViewTextBoxColumn"
+        '
+        'LabelChangeDataGridViewTextBoxColumn
+        '
+        Me.LabelChangeDataGridViewTextBoxColumn.DataPropertyName = "LabelChange"
+        Me.LabelChangeDataGridViewTextBoxColumn.HeaderText = "LabelChange"
+        Me.LabelChangeDataGridViewTextBoxColumn.Name = "LabelChangeDataGridViewTextBoxColumn"
+        '
+        'StickLabelChangeDataGridViewTextBoxColumn
+        '
+        Me.StickLabelChangeDataGridViewTextBoxColumn.DataPropertyName = "StickLabelChange"
+        Me.StickLabelChangeDataGridViewTextBoxColumn.HeaderText = "StickLabelChange"
+        Me.StickLabelChangeDataGridViewTextBoxColumn.Name = "StickLabelChangeDataGridViewTextBoxColumn"
+        '
+        'ReissueLabelDataGridViewTextBoxColumn
+        '
+        Me.ReissueLabelDataGridViewTextBoxColumn.DataPropertyName = "ReissueLabel"
+        Me.ReissueLabelDataGridViewTextBoxColumn.HeaderText = "ReissueLabel"
+        Me.ReissueLabelDataGridViewTextBoxColumn.Name = "ReissueLabelDataGridViewTextBoxColumn"
+        '
+        'ReissueLabelQtyDataGridViewTextBoxColumn
+        '
+        Me.ReissueLabelQtyDataGridViewTextBoxColumn.DataPropertyName = "ReissueLabelQty"
+        Me.ReissueLabelQtyDataGridViewTextBoxColumn.HeaderText = "ReissueLabelQty"
+        Me.ReissueLabelQtyDataGridViewTextBoxColumn.Name = "ReissueLabelQtyDataGridViewTextBoxColumn"
+        '
+        'AndonDataGridViewTextBoxColumn
+        '
+        Me.AndonDataGridViewTextBoxColumn.DataPropertyName = "Andon"
+        Me.AndonDataGridViewTextBoxColumn.HeaderText = "Andon"
+        Me.AndonDataGridViewTextBoxColumn.Name = "AndonDataGridViewTextBoxColumn"
+        '
+        'OPJudgementDataGridViewTextBoxColumn
+        '
+        Me.OPJudgementDataGridViewTextBoxColumn.DataPropertyName = "OPJudgement"
+        Me.OPJudgementDataGridViewTextBoxColumn.HeaderText = "OPJudgement"
+        Me.OPJudgementDataGridViewTextBoxColumn.Name = "OPJudgementDataGridViewTextBoxColumn"
+        '
+        'LotJudgementDataGridViewTextBoxColumn
+        '
+        Me.LotJudgementDataGridViewTextBoxColumn.DataPropertyName = "LotJudgement"
+        Me.LotJudgementDataGridViewTextBoxColumn.HeaderText = "LotJudgement"
+        Me.LotJudgementDataGridViewTextBoxColumn.Name = "LotJudgementDataGridViewTextBoxColumn"
+        '
+        'SelfConVersionDataGridViewTextBoxColumn
+        '
+        Me.SelfConVersionDataGridViewTextBoxColumn.DataPropertyName = "SelfConVersion"
+        Me.SelfConVersionDataGridViewTextBoxColumn.HeaderText = "SelfConVersion"
+        Me.SelfConVersionDataGridViewTextBoxColumn.Name = "SelfConVersionDataGridViewTextBoxColumn"
+        '
+        'GLCheckDataGridViewTextBoxColumn
+        '
+        Me.GLCheckDataGridViewTextBoxColumn.DataPropertyName = "GLCheck"
+        Me.GLCheckDataGridViewTextBoxColumn.HeaderText = "GLCheck"
+        Me.GLCheckDataGridViewTextBoxColumn.Name = "GLCheckDataGridViewTextBoxColumn"
+        '
+        'RemarkDataGridViewTextBoxColumn
+        '
+        Me.RemarkDataGridViewTextBoxColumn.DataPropertyName = "Remark"
+        Me.RemarkDataGridViewTextBoxColumn.HeaderText = "Remark"
+        Me.RemarkDataGridViewTextBoxColumn.Name = "RemarkDataGridViewTextBoxColumn"
+        '
+        'NetVersionDataGridViewTextBoxColumn
+        '
+        Me.NetVersionDataGridViewTextBoxColumn.DataPropertyName = "NetVersion"
+        Me.NetVersionDataGridViewTextBoxColumn.HeaderText = "NetVersion"
+        Me.NetVersionDataGridViewTextBoxColumn.Name = "NetVersionDataGridViewTextBoxColumn"
+        '
         'MAPAlarmInfoBindingSource
         '
         Me.MAPAlarmInfoBindingSource.DataMember = "MAPAlarmInfo"
@@ -1853,8 +1853,6 @@ Partial Class Form1
         Me.Name = "Form1"
         Me.Text = "Self Controller"
         Me.ContextMenuStrip1.ResumeLayout(False)
-        CType(Me.MAPALDataBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DBxDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ContextMenuStrip2.ResumeLayout(False)
@@ -1867,6 +1865,8 @@ Partial Class Form1
         Me.MenuStrip1.PerformLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TransactionDataBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.MAPALDataBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DBxDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.MAPAlarmInfoBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.MAPALDataBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)

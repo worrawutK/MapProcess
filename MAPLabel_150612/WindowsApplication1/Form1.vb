@@ -3,7 +3,7 @@
 Imports System.IO
 Imports System.Runtime.InteropServices
 Imports System.Text
-Imports Rohm.Apcs.Tdc
+'Imports Rohm.Apcs.Tdc
 
 Imports System.IO.Ports
 'Imports Rohm.Database
@@ -27,6 +27,13 @@ Public Class Form1
         g.DrawString(str, F1, sbrush, PictureBox1.Left, PictureBox1.Bottom + 15)
     End Sub
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        MachineOnline("MAP-" & My.Settings.MCNo, iLibraryService.MachineOnline.Online)
+
+        m_LotData = ReadXml(Of LotData)(m_PathFileLotData)
+        If m_LotData Is Nothing Then
+            m_LotData = New LotData
+        End If
+
         Try
             Dim reg As EmsMachineRegisterInfo = New EmsMachineRegisterInfo(My.Settings.MCNo, "MAP-" & My.Settings.MCNo, "MAP", My.Settings.MachineType, "", 0, 0, 0, 0, 0)
             m_EmsClient.Register(reg)
@@ -57,8 +64,8 @@ Public Class Form1
 
 
 
-        m_TdcService = TdcService.GetInstance()
-        m_TdcService.ConnectionString = My.Settings.APCSDBConnectionString
+        'm_TdcService = TdcService.GetInstance()
+        'm_TdcService.ConnectionString = My.Settings.APCSDBConnectionString
 
         '!! Check Comment at [On Error Resume Next] of [ Protected Overrides Sub WndProc] for test this Sub afer new edit
         initial()
@@ -646,8 +653,9 @@ Public Class Form1
 
         End If
         '  If My.Settings.RunOffline = False Then
-        Dim resEnd As TdcResponse = m_TdcService.LotEnd(ProcessHeader & lbMC.Text, lbLotNo.Text, DBxDataSet.MAPALData.Rows(0)("LotEndTime"), CInt(lbGood.Text), CInt(lbInput.Text) - CInt(lbGood.Text), EndModeType.Normal, lbOp.Text)
-        SaveLog(Message.Cellcon, lbLotNo.Text & ":" & lbOp.Text & ">>" & resEnd.ErrorCode & ":" & resEnd.ErrorMessage)
+        EndLot(lbLotNo.Text, ProcessHeader & lbMC.Text, lbOp.Text, CInt(lbGood.Text), CInt(lbInput.Text) - CInt(lbGood.Text))
+        ' Dim resEnd As TdcResponse = m_TdcService.LotEnd(ProcessHeader & lbMC.Text, lbLotNo.Text, DBxDataSet.MAPALData.Rows(0)("LotEndTime"), CInt(lbGood.Text), CInt(lbInput.Text) - CInt(lbGood.Text), EndModeType.Normal, lbOp.Text)
+        ' SaveLog(Message.Cellcon, lbLotNo.Text & ":" & lbOp.Text & ">>" & resEnd.ErrorCode & ":" & resEnd.ErrorMessage)
         '  End If
 
         'EMS end
@@ -1273,14 +1281,21 @@ fin:
                         SendPLC("RELEASE")
                         Log.TextBox1.Text &= Format(Now, "yyyy-MM-dd HH:mm:ss") & " : Send >> " & "RELEASE" & vbCrLf
                     Else
+                        SaveLog(Message.Send, "Send error: SplitData(1) =" & SplitData(1))
                         MsgBox(SplitData(1))
                     End If
 
                 Catch ex As Exception
+                    SaveLog(Message.Send, "Send error Exception:" & ex.Message.ToString)
                     '    addlogfile(CellConData.LotNo & " : LR :" & ex.Message)
                 End Try
             Case "LS"
                 Dim LotNo As String = SplitData(1)
+                If lbLotNo.Text.ToUpper.Trim <> LotNo.ToUpper.Trim Then
+                    MessageDialog.MessageBoxDialog.ShowMessageDialog("LS", "LotNo not match MC[" & LotNo & "] Cellcon[" & lbLotNo.Text & "]", "Error")
+                    SaveLog(Message.Rcv, "LotNo not match MC[" & LotNo & "] Cellcon[" & lbLotNo.Text & "]")
+                    Return
+                End If
                 Label10.Text = "Running"
                 Alarm = "START"
 
@@ -1295,8 +1310,9 @@ fin:
                 End Try
 
                 WrDBX() 'add to MAPALData
-                Dim resSet As TdcResponse = m_TdcService.LotSet(ProcessHeader & lbMC.Text, lbLotNo.Text, DBxDataSet.MAPALData.Rows(0)("LotStartTime"), lbOp.Text, RunModeType.Normal)
-                SaveLog(Message.Cellcon, lbLotNo.Text & ":" & lbOp.Text & ">>" & resSet.ErrorCode & ":" & resSet.ErrorMessage)
+                StartLot(lbLotNo.Text, ProcessHeader & lbMC.Text, lbOp.Text)
+                'Dim resSet As TdcResponse = m_TdcService.LotSet(ProcessHeader & lbMC.Text, lbLotNo.Text, DBxDataSet.MAPALData.Rows(0)("LotStartTime"), lbOp.Text, RunModeType.Normal)
+
 
 
                 'EMS monitor
@@ -1493,11 +1509,35 @@ fin:
 
     Private Sub ScanQR()
         MAPFormat = Nothing
+InputQr:
         Dim frm As frmInputQrCode = New frmInputQrCode
         frm.lbCaption.Text = "Input QR Code"
         ' frm.ShowDialog()
-
         If frm.ShowDialog = Windows.Forms.DialogResult.OK Then
+
+            If Not SetupLot(frm.LotNo, ProcessHeader & lbMC.Text, frm.OpNo, "MAP", "0288") Then
+                GoTo InputQr
+            End If
+
+            Dim dr As DBxDataSet.MAPALDataRow = DBxDataSet.MAPALData.NewRow
+            dr.MCNo = ProcessHeader & lbMC.Text
+            dr.LotNo = frm.LotNo
+            dr.InputQty = frm.InputQty
+            dr.OPNo = frm.OpNo
+
+            For Each row As DataRow In DBxDataSet.MAPALData.ToArray
+                If Not row.Item("LotNo") Is Nothing AndAlso row.Item("LotNo").ToString = frm.LotNo Then
+                    DBxDataSet.MAPALData.Rows.Remove(row)
+                End If
+
+            Next
+
+            'DBxDataSet.MAPALData.Rows(0).Item("LotNo")
+            ' dr.LotStartTime = Format(Now, "yyyy/MM/dd HH:mm:ss")
+            DBxDataSet.MAPALData.Rows.InsertAt(dr, 0)
+            MAPALDataBindingSource.Position = 0          'Update new data 
+
+
             '  Dim WorkSlipQR As New WorkingSlipQRCode
             '  WorkSlipQR.SplitQRCode(Parameter.QR)
             Dim frmRing As InputRing = New InputRing
@@ -1554,7 +1594,7 @@ fin:
                 Me.TransactionDataTableAdapter.Fill(DBxDataSet.TransactionData, Parameter.LotNo)
                 If DBxDataSet.TransactionData.Count <> 0 Then
                     lbMarkNo.Text = DBxDataSet.TransactionData(0)("MarkTextLine1") & " " & DBxDataSet.TransactionData(0)("MarkTextLine2") _
-                               & " " & DBxDataSet.TransactionData(0)("MarkTextLine3")
+                                   & " " & DBxDataSet.TransactionData(0)("MarkTextLine3")
                 End If
 
                 'End If
@@ -2138,10 +2178,12 @@ aa:
     'End Sub
     Private Sub btnClose_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnClose.Click
         '  Me.Close()
+
         Dim result As Integer = MessageBox.Show("ต้องการออกจากโปรแกรมหรือไม่ ?", "Message", MessageBoxButtons.YesNo)
         If result = DialogResult.No Then
 
         ElseIf result = DialogResult.Yes Then
+            MachineOnline("MAP-" & My.Settings.MCNo, iLibraryService.MachineOnline.Offline)
             Me.Close()
         End If
     End Sub

@@ -1,7 +1,7 @@
 ﻿Imports System.IO
 Imports System.Runtime.InteropServices
 Imports System.Text
-Imports Rohm.Apcs.Tdc
+'Imports Rohm.Apcs.Tdc
 Imports Rohm.Ems
 
 Public Class Form1
@@ -26,8 +26,7 @@ Public Class Form1
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
 
-        m_TdcService = TdcService.GetInstance()
-        m_TdcService.ConnectionString = My.Settings.APCSDBConnectionString
+
         '!! Check Comment at [On Error Resume Next] of [ Protected Overrides Sub WndProc] for test this Sub afer new edit
         initial()
         BuildMCList()
@@ -993,15 +992,16 @@ Public Class Form1
         'SendPostMessage("@LOTEND|" & ProcessHeader & lbMC.Text & "|" & lbLotNo.Text & "," & _
         ' lbEnd.Text & "," & lbGood.Text & "," & CInt(lbInput.Text) - CInt(lbGood.Text) & ",01") 'Lot End       'Normal
         'TDC End
-        ' Dim resEnd As TdcResponse = m_TdcService.LotEnd(ProcessHeader & lbMC.Text, lbLotNo.Text, CDate(lbEnd.Text), CInt(lbGood.Text), CInt(lbInput.Text) - CInt(lbGood.Text), EndModeType.Normal, lbOp.Text)
-
-        Dim resEnd As TdcResponse = m_TdcService.LotEnd(ProcessHeader & lbMC.Text, lbLotNo.Text, CDate(lbEnd.Text), CInt(lbGood.Text), CInt(lbInput.Text) - CInt(lbGood.Text), EndModeType.Normal, lbOp.Text)
+        EndLot(lbLotNo.Text, ProcessHeader & lbMC.Text, lbOp.Text, CInt(lbGood.Text), CInt(lbInput.Text) - CInt(lbGood.Text))
+        'Dim resEnd As TdcResponse = m_TdcService.LotEnd(ProcessHeader & lbMC.Text, lbLotNo.Text, CDate(lbEnd.Text), CInt(lbGood.Text), CInt(lbInput.Text) - CInt(lbGood.Text), EndModeType.Normal, lbOp.Text)
 
         'EMS end
         Try
             m_EmsClient.SetOutput(lbMC.Text, CInt(lbGood.Text), CInt(lbInput.Text) - CInt(lbGood.Text))
             m_EmsClient.SetLotEnd(lbMC.Text) 'LA-01
             m_EmsClient.SetActivity(lbMC.Text, "Stop", TmeCategory.StopLoss)
+            btnFinal.Enabled = False
+
         Catch ex As Exception
             SaveLog(Message.Cellcon, "SetActivity Stop:" & ex.ToString)
         End Try
@@ -1053,8 +1053,8 @@ Public Class Form1
 
 
 
-        If tbxCtrl.Text >= Int16.MaxValue Then
-            MsgBox(" ใส่ค่าได้ไม่เกิน" & Int16.MaxValue)
+        If tbxCtrl.Text >= Int32.MaxValue Then
+            MsgBox(" ใส่ค่าได้ไม่เกิน" & Int32.MaxValue)
             Exit Sub
         End If
         LB.Font = New Font("Microsoft Sans Serif", 9, FontStyle.Regular)
@@ -1476,10 +1476,13 @@ Public Class Form1
         DBxDataSet.TransactionData.Clear()
         'No Binding Controls ---------------
         lbStatus.Hide()
-
+        If lbEnd.Text = "" Then
+            btnFinal.Enabled = True
+        End If
         tbxRemark.Text = ""
 
         lbMC.Text = sender.text            'Set Click MC No.
+        MachineOnline(ProcessHeader & lbMC.Text, iLibraryService.MachineOnline.Online)
         '=== Query 
         'EMS
         Try
@@ -1552,7 +1555,7 @@ Public Class Form1
 
             lbNowBladeWearZ1.Text = ""
             lbNowBladeWearZ2.Text = ""
-
+inputQr:
             Dim QRInput As New frmInputQrCode
             QRInput.lbCaption.Text = "Input QR Code"
             tbBladeLotNoZ1.Text = ""
@@ -1562,12 +1565,27 @@ Public Class Form1
 
             QRInput.ShowDialog()
 
-            If Not lbLotNo.Text = "" Then
+            If Not QRInput.lotNo = "" Then
+                '  SendPostMessage("@LOTREQ" & "|" & ProcessHeader & lbMC.Text & "|" & lbLotNo.Text & "," & lbOp.Text & ",00")   'Normal
+                If QRInput.IsPass = False OrElse Not SetupLot(QRInput.LotNo, ProcessHeader & lbMC.Text, QRInput.OpNo, "MAP", "0250") Then
+                    GoTo inputQr
+                End If
+                'Save data to MAPPKGDCDatatable
+                Dim dr As DBxDataSet.MAPPKGDCDataRow = DBxDataSet.MAPPKGDCData.NewRow
+                dr.MCNo = ProcessHeader & lbMC.Text
+                dr.LotNo = QRInput.LotNo
+                dr.InputQty = QRInput.InputQty
+                dr.OPNo = QRInput.OpNo
+                dr.LotStartTime = Format(Now, "yyyy/MM/dd HH:mm:ss")
+                DBxDataSet.MAPPKGDCData.Rows.InsertAt(dr, 0)
+
+                MAPPKGDCDataBindingSource.Position = 0          'Update new data 
+
                 '    SendPostMessage("@LOTREQ" & "|" & ProcessHeader & lbMC.Text & "|" & lbLotNo.Text & "," & lbOp.Text & ",00")   'Normal
                 'LotSet TDC
                 Try
-                    Dim resSet As TdcResponse = m_TdcService.LotSet(ProcessHeader & lbMC.Text, lbLotNo.Text, CDate(lbStart.Text), lbOp.Text, RunModeType.Normal)
-
+                    'Dim resSet As TdcResponse = m_TdcService.LotSet(ProcessHeader & lbMC.Text, lbLotNo.Text, CDate(lbStart.Text), lbOp.Text, RunModeType.Normal)
+                    StartLot(lbLotNo.Text, ProcessHeader & lbMC.Text, lbOp.Text)
                 Catch ex As Exception
                     MsgBox(ex.Message.ToString)
                     If My.Settings.RunOffline Then
@@ -1751,12 +1769,14 @@ Public Class Form1
             DateTimePicker1.Format = DateTimePickerFormat.Custom
             DateTimePicker1.CustomFormat = "yyyy-MM-dd  HH :mm :ss"
             DateTimePicker1.Show()
+            btnFinal.Enabled = True
             If sender.name = "lbEnd" Then
                 clickLb = True
             Else
                 clickLb = False
             End If
             DateTimePicker1.Value = lbStart.Text
+
         End If
     End Sub
     Private Sub lbStart_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lbStart.MouseHover, lbEnd.MouseHover
@@ -1857,7 +1877,8 @@ Public Class Form1
             strDataRow.Remark = "LotCancel"
             '   LotNo = strDataRow.LotNo
         Next
-        Dim resEnd As TdcResponse = m_TdcService.LotEnd(ProcessHeader & lbMC.Text, lbLotNo.Text, Format(Now, "yyyy-MM-dd HH:mm:ss"), 0, 0, EndModeType.AbnormalEndReset, lbOp.Text)
+        CancelLot(lbLotNo.Text, ProcessHeader & lbMC.Text, lbOp.Text)
+        'Dim resEnd As TdcResponse = m_TdcService.LotEnd(ProcessHeader & lbMC.Text, lbLotNo.Text, Format(Now, "yyyy-MM-dd HH:mm:ss"), 0, 0, EndModeType.AbnormalEndReset, lbOp.Text)
         'EMS end
         Try
             m_EmsClient.SetOutput(lbMC.Text, 0, 0)
@@ -2012,6 +2033,10 @@ Public Class Form1
         Me.WindowState = FormWindowState.Minimized
     End Sub
     Private Sub btnClose_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnClose.Click
+        If lbMC.Text <> "lbMC" Then
+            MachineOnline(ProcessHeader & lbMC.Text, iLibraryService.MachineOnline.Offline)
+        End If
+
         Me.Close()
     End Sub
 
@@ -2133,4 +2158,6 @@ Public Class Form1
 
         file_Log.Close()
     End Sub
+
+
 End Class

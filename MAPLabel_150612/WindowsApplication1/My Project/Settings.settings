@@ -11,7 +11,7 @@
       <Value Profile="(Default)">Data Source=172.16.0.102;Initial Catalog=DBx;Persist Security Info=True;User ID=dbxuser</Value>
     </Setting>
     <Setting Name="MCNo" Type="System.String" Scope="User">
-      <Value Profile="(Default)">LA-01</Value>
+      <Value Profile="(Default)">LA-00</Value>
     </Setting>
     <Setting Name="NotFound" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">1</Value>

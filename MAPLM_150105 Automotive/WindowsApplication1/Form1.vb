@@ -1,7 +1,8 @@
 ﻿Imports System.IO
 Imports System.Runtime.InteropServices
 Imports System.Text
-Imports Rohm.Apcs.Tdc
+Imports Rohm
+'Imports Rohm.Apcs.Tdc
 Imports Rohm.Ems
 
 Public Class Form1
@@ -16,11 +17,6 @@ Public Class Form1
         g.DrawString(str, F1, sbrush, lbMinimize.Left, lbMinimize.Bottom + 15)
     End Sub
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-
-
-
-        m_TdcService = TdcService.GetInstance()
-        m_TdcService.ConnectionString = My.Settings.APCSDBConnectionString
 
         '!! Check Comment at [On Error Resume Next] of [ Protected Overrides Sub WndProc] for test this Sub afer new edit
 
@@ -638,8 +634,6 @@ Public Class Form1
 
         If Master Then
             DBxDataSet.MAPLMData.Rows(0)("LotEndTime") = DateTimePicker1.Value
-
-
         Else
             DBxDataSet.MAPLMData.Rows(0)("LotEndTime") = Format(Now, "yyyy/MM/dd HH:mm:ss")
         End If
@@ -654,12 +648,14 @@ Public Class Form1
         'SendPostMessage("@LOTEND|" & ProcessHeader & lbMC.Text & "|" & lbLotNo.Text & "," & _
         ' lbEnd.Text & "," & lbGood.Text & "," & CInt(lbInput.Text) - CInt(lbGood.Text) & ",01") 'Lot End       'Normal
         'CDate(lbEnd.Text),Format(Now, "yyyy-MM-dd HH:mm:ss")
-        Dim resEnd As TdcResponse = m_TdcService.LotEnd(ProcessHeader & lbMC.Text, lbLotNo.Text, CDate(lbEnd.Text), CInt(lbGood.Text), CInt(lbInput.Text) - CInt(lbGood.Text), EndModeType.Normal, lbOp.Text)
+        'Dim resEnd As TdcResponse = m_TdcService.LotEnd(ProcessHeader & lbMC.Text, lbLotNo.Text, CDate(lbEnd.Text), CInt(lbGood.Text), CInt(lbInput.Text) - CInt(lbGood.Text), EndModeType.Normal, lbOp.Text)
+        EndLot(lbLotNo.Text, ProcessHeader & lbMC.Text, lbOp.Text, CInt(lbGood.Text), CInt(lbInput.Text) - CInt(lbGood.Text))
         'EMS end
         Try
             m_EmsClient.SetOutput(lbMC.Text, CInt(lbGood.Text), CInt(lbInput.Text) - CInt(lbGood.Text))
             m_EmsClient.SetLotEnd(lbMC.Text) 'LA-01
             m_EmsClient.SetActivity(lbMC.Text, "Stop", TmeCategory.StopLoss)
+            btnFinal.Enabled = False
         Catch ex As Exception
             SaveLog(Message.Cellcon, "SetActivity Stop:" & ex.ToString)
         End Try
@@ -1000,8 +996,9 @@ Public Class Form1
         tbxRemark.Text = ""
         lbMarkNo.Text = ""
         lbMC.Text = sender.text            'Set Click MC No.
+        btnFinal.Enabled = True
         '=== Query 
-
+        MachineOnline("MAP-" & lbMC.Text, iLibraryService.MachineOnline.Online)
         'EMS
         Try
             If RegisterEMS = False Then
@@ -1071,14 +1068,41 @@ fin:
 
                 End If
             Next
-
+inputQr:
             Dim QRInput As New frmInputQrCode
             QRInput.lbCaption.Text = "Input QR Code"
             QRInput.ShowDialog()
-            If Not lbLotNo.Text = "" Then
+            If Not QRInput.LotNo = "" Then
                 '  SendPostMessage("@LOTREQ" & "|" & ProcessHeader & lbMC.Text & "|" & lbLotNo.Text & "," & lbOp.Text & ",00")   'Normal
+                If Not SetupLot(QRInput.LotNo, ProcessHeader & lbMC.Text, QRInput.OpNo, "MAP", "0250") Then
+                    GoTo inputQr
+                End If
 
-                Dim resSet As TdcResponse = m_TdcService.LotSet(ProcessHeader & lbMC.Text, lbLotNo.Text, CDate(lbStart.Text), lbOp.Text, RunModeType.Normal)
+
+                Dim trans As TransactionData = New TransactionData(QRInput.QrCode)
+                If My.Computer.Network.IsAvailable Then
+                    If My.Computer.Network.Ping(_ipDbxUser) Then                                                        ' Save QR Code to transsaction table                                On Error GoTo ErrHander
+                        trans.Save()
+
+                    End If
+                Else
+
+                End If
+                'Save data to MAPLMdatatable
+                Dim dr As DBxDataSet.MAPLMDataRow = DBxDataSet.MAPLMData.NewRow
+                dr.MCNo = ProcessHeader & lbMC.Text
+                dr.LotNo = QRInput.LotNo
+                dr.InputQty = QRInput.InputQty
+                dr.OPNo = QRInput.OpNo
+                dr.LotStartTime = Format(Now, "yyyy/MM/dd HH:mm:ss")
+                DBxDataSet.MAPLMData.Rows.InsertAt(dr, 0)
+
+                MAPLMDataBindingSource.Position = 0          'Update new data 
+                lbGood.Enabled = False
+
+
+                StartLot(lbLotNo.Text, ProcessHeader & lbMC.Text, lbOp.Text)
+                'Dim resSet As TdcResponse = m_TdcService.LotSet(ProcessHeader & lbMC.Text, lbLotNo.Text, CDate(lbStart.Text), lbOp.Text, RunModeType.Normal)
 
                 'EMS monitor
                 Try
@@ -1165,6 +1189,7 @@ fin:
             DateTimePicker1.Format = DateTimePickerFormat.Custom
             DateTimePicker1.CustomFormat = "yyyy-MM-dd  HH :mm :ss"
             DateTimePicker1.Show()
+            btnFinal.Enabled = True
             If sender.name = "lbEnd" Then
                 clickLb = True
             Else
@@ -1347,6 +1372,10 @@ fin:
         Me.WindowState = FormWindowState.Minimized
     End Sub
     Private Sub btnClose_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnClose.Click
+        If lbMC.Text <> "lbMC" Then
+            MachineOnline("MAP-" & lbMC.Text, iLibraryService.MachineOnline.Offline)
+        End If
+
         Me.Close()
     End Sub
 

@@ -56,17 +56,22 @@
     <DocumentationFile>MAP_OSFT.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="AuthenticationUser">
-      <HintPath>..\..\MAPLM_150105 Automotive\WindowsApplication1\bin\Debug\AuthenticationUser.dll</HintPath>
+      <HintPath>Dll\AuthenticationUser.dll</HintPath>
     </Reference>
     <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\FDLess\IPBC\netfdd40_Convert\netfdd\ICSharpCode.SharpZipLib.dll</HintPath>
+      <HintPath>Dll\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
-    <Reference Include="Rohm.Apcs.Tdc, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="MessageDialog">
+      <HintPath>\\172.16.0.115\_PublicShare\Apcs Pro\MessageDialog.dll</HintPath>
+    </Reference>
     <Reference Include="Rohm.Ems">
-      <HintPath>..\..\MAPLabel_150612\WindowsApplication1\bin\Debug\Rohm.Ems.dll</HintPath>
+      <HintPath>Dll\Rohm.Ems.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -105,6 +110,7 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AutoloadTester.vb" />
     <Compile Include="ClientSocket.vb" />
     <Compile Include="clsAntiInjection.vb" />
     <Compile Include="clsCheckSum.vb" />
@@ -154,12 +160,21 @@
     <Compile Include="frmInputQrCode.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FTSetupData.vb" />
+    <Compile Include="FTSetupRecord.vb" />
+    <Compile Include="InputCarrier.Designer.vb">
+      <DependentUpon>InputCarrier.vb</DependentUpon>
+    </Compile>
+    <Compile Include="InputCarrier.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="KeyBoard.Designer.vb">
       <DependentUpon>KeyBoard.vb</DependentUpon>
     </Compile>
     <Compile Include="KeyBoard.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="LotData.vb" />
     <Compile Include="Mode.designer.vb">
       <DependentUpon>Mode.vb</DependentUpon>
     </Compile>
@@ -200,7 +215,13 @@
     <Compile Include="ProcessSelect.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Service References\RohmService\Reference.vb">
+    <Compile Include="Resultbase.vb" />
+    <Compile Include="Service References\FTService\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\iLibraryService\Reference.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -210,6 +231,13 @@
       <DependentUpon>SettingTDC.vb</DependentUpon>
     </Compile>
     <Compile Include="SettingTDC.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LotInfo.vb" />
+    <Compile Include="TestProgramAutoloadingDialog.Designer.vb">
+      <DependentUpon>TestProgramAutoloadingDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TestProgramAutoloadingDialog.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="VerticalProgressbar.Designer.vb">
@@ -235,6 +263,9 @@
     <EmbeddedResource Include="frmInputQrCode.resx">
       <DependentUpon>frmInputQrCode.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="InputCarrier.resx">
+      <DependentUpon>InputCarrier.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="KeyBoard.resx">
       <DependentUpon>KeyBoard.vb</DependentUpon>
     </EmbeddedResource>
@@ -259,12 +290,17 @@
     <EmbeddedResource Include="SettingTDC.resx">
       <DependentUpon>SettingTDC.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="TestProgramAutoloadingDialog.resx">
+      <DependentUpon>TestProgramAutoloadingDialog.vb</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
     </None>
+    <None Include="My Project\DataSources\FTSetupRecord.datasource" />
     <None Include="My Project\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <CustomToolNamespace>My</CustomToolNamespace>
@@ -319,28 +355,110 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\MAPOSFT.png" />
-    <None Include="Service References\RohmService\apcswebservice.wsdl" />
+    <None Include="Service References\FTService\SettingService.wsdl" />
+    <None Include="Service References\iLibraryService\MAP_OSFT.iLibraryService.CancelLotResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\iLibraryService\MAP_OSFT.iLibraryService.CarrierInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\iLibraryService\MAP_OSFT.iLibraryService.CheckLotApcsProResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\iLibraryService\MAP_OSFT.iLibraryService.EndLotResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\iLibraryService\MAP_OSFT.iLibraryService.iReportResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\iLibraryService\MAP_OSFT.iLibraryService.LotInformation.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\iLibraryService\MAP_OSFT.iLibraryService.MachineAlarmResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\iLibraryService\MAP_OSFT.iLibraryService.MachineOnlineStateResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\iLibraryService\MAP_OSFT.iLibraryService.OnlineEndResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\iLibraryService\MAP_OSFT.iLibraryService.OnlineStartResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\iLibraryService\MAP_OSFT.iLibraryService.ReinputResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\iLibraryService\MAP_OSFT.iLibraryService.SetupLotResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\iLibraryService\MAP_OSFT.iLibraryService.StartLotResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\iLibraryService\MAP_OSFT.iLibraryService.UpdateFinalinspectionResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\iLibraryService\MAP_OSFT.iLibraryService.UpdateFirstinspectionResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\iLibraryService\MAP_OSFT.iLibraryService.UpdateMachineStateResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\iLibraryService\ServiceiLibrary.wsdl" />
+    <None Include="Service References\iLibraryService\ServiceiLibrary.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\iLibraryService\ServiceiLibrary1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\iLibraryService\ServiceiLibrary2.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\RohmService\" />
+    <WCFMetadataStorage Include="Service References\FTService\" />
+    <WCFMetadataStorage Include="Service References\iLibraryService\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\RohmService\apcswebservice.disco" />
+    <None Include="Service References\iLibraryService\ServiceiLibrary.disco" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\RohmService\configuration91.svcinfo" />
+    <None Include="Service References\iLibraryService\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\RohmService\configuration.svcinfo" />
+    <None Include="Service References\iLibraryService\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\RohmService\Reference.svcmap">
+    <None Include="Service References\iLibraryService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.vb</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Dll\AuthenticationUser.dll" />
+    <Content Include="Dll\ICSharpCode.SharpZipLib.dll" />
+    <Content Include="Dll\MessageDialog.dll" />
+    <Content Include="Dll\Rohm.Apcs.Tdc.dll" />
+    <Content Include="Dll\Rohm.Ems.dll" />
+    <Content Include="Picture\AnguishedImpassionedGrosbeak-size_restricted.gif" />
+    <Content Include="Picture\checkbox-dribbble-looped-landing.gif" />
+    <Content Include="Picture\legalraasta.gif" />
+    <Content Include="Picture\loading.gif" />
+    <Content Include="Picture\success.gif" />
+    <None Include="Service References\FTService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+    <None Include="Service References\FTService\configuration.svcinfo" />
+    <None Include="Service References\FTService\configuration91.svcinfo" />
+    <None Include="Service References\FTService\SettingService.disco" />
+    <None Include="Resources\PictureBoxWrong.png" />
+    <None Include="Resources\PictureBoxQrCode.png" />
+    <None Include="Resources\PicturBoxRohmLogo.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

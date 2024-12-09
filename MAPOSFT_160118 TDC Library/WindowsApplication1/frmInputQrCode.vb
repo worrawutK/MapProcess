@@ -1,5 +1,5 @@
-﻿Imports Rohm.Apcs.Tdc
-Imports MAP_OSFT.RohmService
+﻿'Imports Rohm.Apcs.Tdc
+'Imports MAP_OSFT.RohmService
 
 
 Public Class frmInputQrCode
@@ -71,30 +71,30 @@ Public Class frmInputQrCode
     '
     '
 
-    Function LotRequestTDC(ByVal LotNo As String, ByVal rm As RunModeType, ByVal MCNo As String) As Boolean
-        ' Dim mc As String = "MAP-" & MCNo
-        Dim strMess As String = ""
-        Dim res As TdcLotRequestResponse = m_TdcService.LotRequest(MCNo, LotNo, rm)
+    'Function LotRequestTDC(ByVal LotNo As String, ByVal rm As RunModeType, ByVal MCNo As String) As Boolean
+    '    ' Dim mc As String = "MAP-" & MCNo
+    '    Dim strMess As String = ""
+    '    Dim res As TdcLotRequestResponse = m_TdcService.LotRequest(MCNo, LotNo, rm)
 
-        If res.HasError Then
+    '    If res.HasError Then
 
-            Using svError As ApcsWebServiceSoapClient = New ApcsWebServiceSoapClient
-                If svError.LotRptIgnoreError(MCNo, res.ErrorCode) = False Then
-                    Dim li As LotInfo = Nothing
-                    li = m_TdcService.GetLotInfo(LotNo, MCNo)
-                    Using dlg As TdcAlarmMessageForm = New TdcAlarmMessageForm(res.ErrorCode, res.ErrorMessage, LotNo, li)
-                        dlg.ShowDialog()
-                        Return False
-                    End Using
-                End If
-            End Using
-            strMess = res.ErrorCode & " : " & res.ErrorMessage
-            Return True
-        Else
-            strMess = "00 : Run Normal"
-            Return True
-        End If
-    End Function
+    '        Using svError As ApcsWebServiceSoapClient = New ApcsWebServiceSoapClient
+    '            If svError.LotRptIgnoreError(MCNo, res.ErrorCode) = False Then
+    '                Dim li As LotInfo = Nothing
+    '                li = m_TdcService.GetLotInfo(LotNo, MCNo)
+    '                Using dlg As TdcAlarmMessageForm = New TdcAlarmMessageForm(res.ErrorCode, res.ErrorMessage, LotNo, li)
+    '                    dlg.ShowDialog()
+    '                    Return False
+    '                End Using
+    '            End If
+    '        End Using
+    '        strMess = res.ErrorCode & " : " & res.ErrorMessage
+    '        Return True
+    '    Else
+    '        strMess = "00 : Run Normal"
+    '        Return True
+    '    End If
+    'End Function
 
     Private Sub TbQRInput_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles TbQRInput.KeyPress, tbxInput.KeyPress
 
@@ -105,50 +105,51 @@ Public Class frmInputQrCode
 
                 Case "Input QR Code"
 
-                    If TbQRInput.Text.Length = 252 Then
-                        '
-                        'TDC -------------------------------------------------------------------------------
-                        '   
-                        'TDC -------------------------------------------------------------------------------
-                        '   
-                        If My.Settings.RunOffline = False Then
-                            If LotRequestTDC(TbQRInput.Text.Substring(30, 10), RunModeType.Normal, "MAP-" & frmMain.lbMC.Text) = False Then
-                                'TbQRInput.Text = ""
-                                ' TbQRInput.Select()
-                                GoTo FailTDC
-                            End If
-                        End If
+'                    If TbQRInput.Text.Length = 252 Then
+'                        '
+'                        'TDC -------------------------------------------------------------------------------
+'                        '   
+'                        'TDC -------------------------------------------------------------------------------
+'                        '   
+'                        If My.Settings.RunOffline = False Then
+'                            m_iLibraryService.SetupLot()
+'                            If LotRequestTDC(TbQRInput.Text.Substring(30, 10), RunModeType.Normal, "MAP-" & frmMain.lbMC.Text) = False Then
+'                                'TbQRInput.Text = ""
+'                                ' TbQRInput.Select()
+'                                GoTo FailTDC
+'                            End If
+'                        End If
 
-                        ' Save QR Code to transsaction table                                On Error GoTo ErrHander
-                        lotNo = TbQRInput.Text.Substring(30, 10)
-                        TransactionDataTableAdapter.Fill(DBxDataSet.TransactionData, lotNo)
-                        Dim trans As DBxDataSet.TransactionDataRow = DBxDataSet.TransactionData.Rows(0)
+'                        ' Save QR Code to transsaction table                                On Error GoTo ErrHander
+'                        lotNo = TbQRInput.Text.Substring(30, 10)
+'                        TransactionDataTableAdapter.Fill(DBxDataSet.TransactionData, lotNo)
+'                        Dim trans As DBxDataSet.TransactionDataRow = DBxDataSet.TransactionData.Rows(0)
 
-                        '
-                        'QR OK Data Save -----------------------------------------------------------------------------------
-                        '
+'                        '
+'                        'QR OK Data Save -----------------------------------------------------------------------------------
+'                        '
 
-                        LbPKG.Text = "Package             : " & trans.Package
-                        LbDevice.Text = "Device               : " & trans.Device
-                        LbLotNo.Text = "Lot No.               : " & lotNo
+'                        LbPKG.Text = "Package             : " & trans.Package
+'                        LbDevice.Text = "Device               : " & trans.Device
+'                        LbLotNo.Text = "Lot No.               : " & lotNo
 
 
-                        '
-                        'Switch to OP No. input -------------------------------------------------------------------------------
-                        '
-                        lbCaption.Text = "Input OP No."
-                        lbCaption.ForeColor = Color.Blue
-                        TbQRInput.Text = ""
-                        TbQRInput.Select()
-                        ProgressBar1.Maximum = 3
+'                        '
+'                        'Switch to OP No. input -------------------------------------------------------------------------------
+'                        '
+'                        lbCaption.Text = "Input OP No."
+'                        lbCaption.ForeColor = Color.Blue
+'                        TbQRInput.Text = ""
+'                        TbQRInput.Select()
+'                        ProgressBar1.Maximum = 3
 
-                        Exit Sub
-                    Else
-                        MsgBox("Please Input QR Code Size ''252''", 48, "QR Code Size ''" & TbQRInput.Text.Length & "''")
-FailTDC:
-                        TbQRInput.Text = ""
-                        TbQRInput.Select()
-                    End If
+'                        Exit Sub
+'                    Else
+'                        MsgBox("Please Input QR Code Size ''252''", 48, "QR Code Size ''" & TbQRInput.Text.Length & "''")
+'FailTDC:
+'                        TbQRInput.Text = ""
+'                        TbQRInput.Select()
+'                    End If
 
                 Case "Input OP No."
 
